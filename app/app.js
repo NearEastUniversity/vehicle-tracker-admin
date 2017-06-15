@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Master from './components/Master'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+import Master from './components/Master';
+import SignIn from './components/SignIn';
+
+injectTapEventPlugin();
 
 const App = () => (
   <div>
-    <Master />
+  	<MuiThemeProvider>
+    	<SignIn />
+    </MuiThemeProvider>
   </div>
 )
 
