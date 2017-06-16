@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
@@ -7,7 +9,6 @@ import style from './style';
 import logo from './img/logo.svg'
 
 const materialSignInStyles = {
-
 	signIN: {
 		padding: 30,
 		width: 350,
@@ -65,12 +66,13 @@ const SignIn = () => (
 					style={materialSignInStyles.textFieldSecond} />
 				<br />
 				<RaisedButton 
+					href="/home"
 			  	label="SIGN IN" 
 				  backgroundColor="#039BE5" 
 		    	labelColor="#ffffff" 
 				  fullWidth={true} 
 			  	style={materialSignInStyles.button} 
-				  labelStyle={materialSignInStyles.buttonText} />
+				  labelStyle={materialSignInStyles.buttonText}/>
 			</Paper>
 
 			<Paper style={materialSignInStyles.blankDiv}>
