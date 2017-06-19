@@ -66,7 +66,7 @@ const SignIn = () => (
 					style={materialSignInStyles.textFieldSecond} />
 				<br />
 				<RaisedButton
-					href="/dashboard"
+					href="/home"
 			  	label="SIGN IN"
 				  backgroundColor="#039BE5"
 		    	labelColor="#ffffff"
