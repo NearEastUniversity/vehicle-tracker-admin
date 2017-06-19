@@ -4,8 +4,10 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Home from './components/home';
-import SignIn from './components/signIn';
+import Dashboard from './components/Dashboard';
+import SignIn from './components/SignIn';
+import Settings from './components/Settings';
+import Navbar from './components/Navbar';
 
 injectTapEventPlugin();
 
@@ -14,9 +16,11 @@ const App = () => (
   	<MuiThemeProvider>
 
     	<Router history={history}>
-			  <div>		
+			  <div>
 			   	<Route exact path="/" component={SignIn}/>
-		      <Route exact path="/home" component={Home}/>
+          <Navbar />
+		      <Route path="/dashboard" component={Dashboard}/>
+          <Route path="/settings" component={Settings}/>
 		    </div>
 	  	</Router>
 

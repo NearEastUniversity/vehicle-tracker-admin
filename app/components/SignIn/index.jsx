@@ -52,26 +52,26 @@ const SignIn = () => (
    	<div className={style.container}>
 			<Paper zDepth={4} style={materialSignInStyles.signIN} >
 				<h2>Sign In</h2>
-				<TextField 
-		    	hintText="email@example.com" 
+				<TextField
+		    	hintText="email@example.com"
 				  floatingLabelText="Email"
-				  floatingLabelStyle={materialSignInStyles.floatingLabelTextStyle} 
+				  floatingLabelStyle={materialSignInStyles.floatingLabelTextStyle}
 				  style={materialSignInStyles.textFieldFirst} />
 				 <br />
-				<TextField 
-	    		hintText="********" 
+				<TextField
+	    		hintText="********"
 					floatingLabelText="Password"
 	    		type="password"
 			  	floatingLabelStyle={materialSignInStyles.floatingLabelTextStyle}
 					style={materialSignInStyles.textFieldSecond} />
 				<br />
-				<RaisedButton 
-					href="/home"
-			  	label="SIGN IN" 
-				  backgroundColor="#039BE5" 
-		    	labelColor="#ffffff" 
-				  fullWidth={true} 
-			  	style={materialSignInStyles.button} 
+				<RaisedButton
+					href="/dashboard"
+			  	label="SIGN IN"
+				  backgroundColor="#039BE5"
+		    	labelColor="#ffffff"
+				  fullWidth={true}
+			  	style={materialSignInStyles.button}
 				  labelStyle={materialSignInStyles.buttonText}/>
 			</Paper>
 
