@@ -1,42 +1,53 @@
 import React from 'react';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, } from 'material-ui/Table';
-import RaisedButton from 'material-ui/RaisedButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import GridList from 'material-ui/GridList';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import ImageEdit from 'material-ui/svg-icons/image/edit';
-import ContentRemoveCircle from 'material-ui/svg-icons/content/remove-circle';
+import ActionDelete from 'material-ui/svg-icons/action/delete';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import style from './style';
 
 const materialuiDashboardStyle = {
-  paper: {
-    padding: '50px',
-  },
   paperInput: {
-    margin: '50px',
-    textAlign: 'center',
+    margin: '50px 50px 0px 50px',
+  },
+  floatingLabelStyle: {
+    fontWeight: 'normal',
+  },
+  paper: {
+    padding: '0px 50px 50px 50px',
   },
   iconEditButton: {
     color: '#039BE5',
   },
   iconUnassignButton: {
     color: '#FF0000',
-  }
+  },
+  iconButton: {
+    zIndex: '9999 !important',
+  },
 }
 
 export default class Dashoboard extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: 1};
+    this.state = {vehicleValue: 1, agentValue: 1};
   }
 
-  handleChange(event, index, value) {
-    this.setState({value});
+  vehicleChange(event, index, vehicleValue) {
+    this.setState({vehicleValue});
+  }
+
+  agentChange(event, index, agentValue) {
+    this.setState({agentValue});
   }
 
   render() {
@@ -45,39 +56,52 @@ export default class Dashoboard extends React.Component {
 
         <div className={style.input}>
           <Paper zDepth={1} style={materialuiDashboardStyle.paperInput}>
-            <div className={style.DropDown}>
+            <h3>New Connection</h3>
+            <div className={style.dropDown}>
               <SelectField
-                floatingLabelText="Agents"
-                value={this.state.value}
-                onChange={this.handleChange.bind(this)}>
+                floatingLabelText="Select Agent"
+                floatingLabelFixed={true}
+                floatingLabelStyle={materialuiDashboardStyle.floatingLabelStyle}
+                maxHeight={300}
+                value={this.state.agentValue}
+                onChange={this.agentChange.bind(this)}>
                 <MenuItem value={1} primaryText="Agents" />
-                <MenuItem value={2} primaryText="Every Night" />
-                <MenuItem value={3} primaryText="Weeknights" />
-                <MenuItem value={4} primaryText="Weekends" />
-                <MenuItem value={5} primaryText="Weekly" />
+                <MenuItem value={2} primaryText="Agents1" />
+                <MenuItem value={3} primaryText="Agents2" />
+                <MenuItem value={4} primaryText="Agents3" />
+                <MenuItem value={5} primaryText="Agents4" />
               </SelectField>
             </div>
 
-            <div className={style.DropDown}>
+            <div className={style.dropDown}>
               <SelectField
-                floatingLabelText="Vehicles"
-                value={this.state.value}
-                onChange={this.handleChange.bind(this)}>
+                floatingLabelText="Select vehicle"
+                floatingLabelFixed={true}
+                floatingLabelStyle={materialuiDashboardStyle.floatingLabelStyle}
+                maxHeight={300}
+                value={this.state.vehicleValue}
+                onChange={this.vehicleChange.bind(this)}>
                 <MenuItem value={1} primaryText="Vehicles" />
-                <MenuItem value={2} primaryText="Every Night" />
-                <MenuItem value={3} primaryText="Weeknights" />
-                <MenuItem value={4} primaryText="Weekends" />
-                <MenuItem value={5} primaryText="Weekly" />
+                <MenuItem value={2} primaryText="Vehicles1" />
+                <MenuItem value={3} primaryText="Vehicles2" />
+                <MenuItem value={4} primaryText="Vehicles3" />
+                <MenuItem value={5} primaryText="Vehicles4" />
               </SelectField>
             </div>
             <div className={style.createButton}>
-              <RaisedButton>Create</RaisedButton>
+              <RaisedButton
+                label="Create"
+                icon={<ContentAdd/>}
+                labelColor="#fff"
+                backgroundColor="#039BE5"
+                style={materialuiDashboardStyle.createRisedButton}/>
             </div>
           </Paper>
         </div>
 
         <div className={style.table}>
           <Paper zDepth={1} style={materialuiDashboardStyle.paper}>
+            <h3>Connections</h3>
             <Table
               selectable={false}>
                <TableHeader
@@ -96,16 +120,18 @@ export default class Dashoboard extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
+                       style={materialuiDashboardStyle.iconButton}
                        iconStyle={materialuiDashboardStyle.iconEditButton}
                        tooltip="Edit"
-                       tooltipPosition="top-center"
                        touch={true}>
                          <ImageEdit/>
                      </IconButton>
                      <IconButton
+                       style={materialuiDashboardStyle.iconButton}
                        iconStyle={materialuiDashboardStyle.iconUnassignButton}
+                       tooltip="Unassign"
                        touch={true}>
-                         <ContentRemoveCircle/>
+                         <ActionDelete/>
                      </IconButton>
                    </TableRowColumn>
                  </TableRow>
@@ -114,13 +140,18 @@ export default class Dashoboard extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       iconStyle={materialuiDashboardStyle.iconEditButton}>
+                       style={materialuiDashboardStyle.iconButton}
+                       iconStyle={materialuiDashboardStyle.iconEditButton}
+                       tooltip="Edit"
+                       touch={true}>
                          <ImageEdit/>
                      </IconButton>
                      <IconButton
+                       style={materialuiDashboardStyle.iconButton}
                        iconStyle={materialuiDashboardStyle.iconUnassignButton}
+                       tooltip="Unassign"
                        touch={true}>
-                         <ContentRemoveCircle/>
+                         <ActionDelete/>
                      </IconButton>
                    </TableRowColumn>
                  </TableRow>
@@ -129,13 +160,18 @@ export default class Dashoboard extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       iconStyle={materialuiDashboardStyle.iconEditButton}>
+                       style={materialuiDashboardStyle.iconButton}
+                       iconStyle={materialuiDashboardStyle.iconEditButton}
+                       tooltip="Edit"
+                       touch={true}>
                          <ImageEdit/>
                      </IconButton>
                      <IconButton
+                       style={materialuiDashboardStyle.iconButton}
                        iconStyle={materialuiDashboardStyle.iconUnassignButton}
+                       tooltip="Unassign"
                        touch={true}>
-                         <ContentRemoveCircle/>
+                         <ActionDelete/>
                      </IconButton>
                    </TableRowColumn>
                  </TableRow>
@@ -144,13 +180,18 @@ export default class Dashoboard extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       iconStyle={materialuiDashboardStyle.iconEditButton}>
+                       style={materialuiDashboardStyle.iconButton}
+                       iconStyle={materialuiDashboardStyle.iconEditButton}
+                       tooltip="Edit"
+                       touch={true}>
                          <ImageEdit/>
                      </IconButton>
                      <IconButton
+                       style={materialuiDashboardStyle.iconButton}
                        iconStyle={materialuiDashboardStyle.iconUnassignButton}
+                       tooltip="Unassign"
                        touch={true}>
-                         <ContentRemoveCircle/>
+                         <ActionDelete/>
                      </IconButton>
                    </TableRowColumn>
                  </TableRow>
@@ -159,13 +200,18 @@ export default class Dashoboard extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       iconStyle={materialuiDashboardStyle.iconEditButton}>
+                       style={materialuiDashboardStyle.iconButton}
+                       iconStyle={materialuiDashboardStyle.iconEditButton}
+                       tooltip="Edit"
+                       touch={true}>
                          <ImageEdit/>
                      </IconButton>
                      <IconButton
+                       style={materialuiDashboardStyle.iconButton}
                        iconStyle={materialuiDashboardStyle.iconUnassignButton}
+                       tooltip="Unassign"
                        touch={true}>
-                         <ContentRemoveCircle/>
+                         <ActionDelete/>
                      </IconButton>
                    </TableRowColumn>
                  </TableRow>
