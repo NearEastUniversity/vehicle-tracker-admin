@@ -62,7 +62,7 @@ export default class ConnectionsTable extends React.Component {
     this.setState({agentValue});
   }
 
-  dialogOpen() {
+  dialogEdit() {
     this.setState({dialogEdit: true});
 	}
 
@@ -128,7 +128,7 @@ export default class ConnectionsTable extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       onTouchTap={this.dialogOpen.bind(this)}
+                       onTouchTap={this.dialogEdit.bind(this)}
                        style={materialuiConnectionsTableStyle.iconButton}
                        iconStyle={materialuiConnectionsTableStyle.iconEditButton}
                        tooltip="Edit"
@@ -150,7 +150,7 @@ export default class ConnectionsTable extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       onTouchTap={this.dialogOpen.bind(this)}
+                       onTouchTap={this.dialogEdit.bind(this)}
                        style={materialuiConnectionsTableStyle.iconButton}
                        iconStyle={materialuiConnectionsTableStyle.iconEditButton}
                        tooltip="Edit"
@@ -172,7 +172,7 @@ export default class ConnectionsTable extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       onTouchTap={this.dialogOpen.bind(this)}
+                       onTouchTap={this.dialogEdit.bind(this)}
                        style={materialuiConnectionsTableStyle.iconButton}
                        iconStyle={materialuiConnectionsTableStyle.iconEditButton}
                        tooltip="Edit"
@@ -194,7 +194,7 @@ export default class ConnectionsTable extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       onTouchTap={this.dialogOpen.bind(this)}
+                       onTouchTap={this.dialogEdit.bind(this)}
                        style={materialuiConnectionsTableStyle.iconButton}
                        iconStyle={materialuiConnectionsTableStyle.iconEditButton}
                        tooltip="Edit"
@@ -216,7 +216,7 @@ export default class ConnectionsTable extends React.Component {
                    <TableRowColumn>AD 234</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       onTouchTap={this.dialogOpen.bind(this)}
+                       onTouchTap={this.dialogEdit.bind(this)}
                        style={materialuiConnectionsTableStyle.iconButton}
                        iconStyle={materialuiConnectionsTableStyle.iconEditButton}
                        tooltip="Edit"

@@ -7,7 +7,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Dashboard from './components/Dashboard';
 import SignIn from './components/SignIn';
 import Settings from './components/Settings';
-import Navbar from './components/Navbar';
 
 injectTapEventPlugin();
 
@@ -18,7 +17,6 @@ const App = () => (
     	<Router history={history}>
 			  <div>
 			   	<Route exact path="/" component={SignIn}/>
-          <Navbar />
 		      <Route path="/dashboard" component={Dashboard}/>
           <Route path="/settings" component={Settings}/>
 		    </div>
