@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
+import NewConnection from '../NewConnection'
+import ConnectionsTable from '../ConnectionsTable'
 
-import NewConnection from '../NewConnection';
-import ConnectionsTable from '../ConnectionsTable';
-import Navbar from '../Navbar';
+import Navbar from '../Navbar'
 
-import style from './style';
+import style from './style'
 
 export default class Dashoboard extends React.Component {
   render() {
@@ -13,8 +13,7 @@ export default class Dashoboard extends React.Component {
           <Navbar />
           <NewConnection />
           <ConnectionsTable />
-
      </div>
-    );
+    )
   }
 }

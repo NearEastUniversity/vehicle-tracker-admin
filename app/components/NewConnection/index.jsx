@@ -1,11 +1,11 @@
-import React from 'react';
-import MenuItem from 'material-ui/MenuItem';
-import Paper from 'material-ui/Paper';
-import SelectField from 'material-ui/SelectField';
-import RaisedButton from 'material-ui/RaisedButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import React from 'react'
+import MenuItem from 'material-ui/MenuItem'
+import Paper from 'material-ui/Paper'
+import SelectField from 'material-ui/SelectField'
+import RaisedButton from 'material-ui/RaisedButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 
-import style from './style';
+import style from './style'
 
 const materialuiNewConnectionStyle = {
   paperInput: {
@@ -13,7 +13,7 @@ const materialuiNewConnectionStyle = {
   },
   floatingLabelStyle: {
     fontWeight: 'normal',
-  },
+  }
 }
 
 const vehicles = [
@@ -22,7 +22,7 @@ const vehicles = [
   <MenuItem key={3} value={3} primaryText="Vehicles2" />,
   <MenuItem key={4} value={4} primaryText="Vehicles3" />,
   <MenuItem key={5} value={5} primaryText="Vehicles4" />,
-];
+]
 
 const agents = [
   <MenuItem key={1} value={1} primaryText="Agents"  />,
@@ -30,24 +30,24 @@ const agents = [
   <MenuItem key={3} value={3} primaryText="Agents2" />,
   <MenuItem key={4} value={4} primaryText="Agents3" />,
   <MenuItem key={5} value={5} primaryText="Agents4" />,
-];
+]
 
 export default class NewConnection extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       vehicleValue: 1,
       agentValue: 1
-    };
+    }
   }
 
   vehicleSelect(event, index, vehicleValue) {
-    this.setState({vehicleValue});
+    this.setState({vehicleValue})
   }
 
   agentSelect(event, index, agentValue) {
-    this.setState({agentValue});
+    this.setState({agentValue})
   }
 
   render() {
@@ -88,6 +88,6 @@ export default class NewConnection extends React.Component {
           </div>
         </Paper>
       </div>
-    );
+    )
   }
 }

@@ -1,9 +1,9 @@
-import React from 'react';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
+import React from 'react'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import Paper from 'material-ui/Paper'
 
-import style from './style';
+import style from './style'
 import logo from './img/logo.svg'
 
 const materialSignInStyles = {
@@ -42,8 +42,8 @@ const materialSignInStyles = {
 	},
 	adminText: {
 		color: '#4A4A4A',
-	},
-};
+	}
+}
 
 const SignIn = () => (
   <div className={style.app}>
@@ -79,6 +79,6 @@ const SignIn = () => (
 			</Paper>
 		</div>
 	</div>
-);
+)
 
-export default SignIn;
+export default SignIn

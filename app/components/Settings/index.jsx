@@ -1,7 +1,7 @@
-import React from 'react';
-import Navbar from '../Navbar';
+import React from 'react'
+import Navbar from '../Navbar'
 
-import style from './style';
+import style from './style'
 
 const Settings = (props) => (
   <div className={style.app}>
@@ -9,6 +9,6 @@ const Settings = (props) => (
     <h1>Settings</h1>
     {console.log(props.role)}
   </div>
-);
+)
 
-export default Settings;
+export default Settings

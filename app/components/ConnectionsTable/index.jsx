@@ -1,15 +1,15 @@
-import React from 'react';
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, } from 'material-ui/Table';
-import Paper from 'material-ui/Paper';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
-import SelectField from 'material-ui/SelectField';
-import ImageEdit from 'material-ui/svg-icons/image/edit';
-import ActionDelete from 'material-ui/svg-icons/action/delete';
+import React from 'react'
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, } from 'material-ui/Table'
+import Paper from 'material-ui/Paper'
+import MenuItem from 'material-ui/MenuItem'
+import IconButton from 'material-ui/IconButton'
+import FlatButton from 'material-ui/FlatButton'
+import Dialog from 'material-ui/Dialog'
+import SelectField from 'material-ui/SelectField'
+import ImageEdit from 'material-ui/svg-icons/image/edit'
+import ActionDelete from 'material-ui/svg-icons/action/delete'
 
-import style from './style';
+import style from './style'
 
 const materialuiConnectionsTableStyle = {
   paper: {
@@ -23,7 +23,7 @@ const materialuiConnectionsTableStyle = {
   },
   iconButton: {
     zIndex: '9999 !important',
-  },
+  }
 }
 
 const vehicles = [
@@ -32,7 +32,7 @@ const vehicles = [
   <MenuItem key={3} value={3} primaryText="Vehicles2" />,
   <MenuItem key={4} value={4} primaryText="Vehicles3" />,
   <MenuItem key={5} value={5} primaryText="Vehicles4" />,
-];
+]
 
 const agents = [
   <MenuItem key={1} value={1} primaryText="Agents"  />,
@@ -40,38 +40,38 @@ const agents = [
   <MenuItem key={3} value={3} primaryText="Agents2" />,
   <MenuItem key={4} value={4} primaryText="Agents3" />,
   <MenuItem key={5} value={5} primaryText="Agents4" />,
-];
+]
 
 export default class ConnectionsTable extends React.Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       dialogEdit: false,
       dialogAlert: false,
       vehicleValue: 1,
       agentValue: 1
-    };
+    }
   }
 
   vehicleChange(event, index, vehicleValue) {
-    this.setState({vehicleValue});
+    this.setState({vehicleValue})
   }
 
   agentChange(event, index, agentValue) {
-    this.setState({agentValue});
+    this.setState({agentValue})
   }
 
   dialogEdit() {
-    this.setState({dialogEdit: true});
+    this.setState({dialogEdit: true})
 	}
 
   dialogAlert() {
-    this.setState({dialogAlert: true});
+    this.setState({dialogAlert: true})
 	}
 
 	dialogClose() {
-		this.setState({dialogEdit: false, dialogAlert: false});
+		this.setState({dialogEdit: false, dialogAlert: false})
 	}
 
   render() {
@@ -88,7 +88,7 @@ export default class ConnectionsTable extends React.Component {
         primary={true}
         onTouchTap={this.dialogClose.bind(this)}
       />,
-    ];
+    ]
 
     const alertActions = [
       <FlatButton
@@ -103,7 +103,7 @@ export default class ConnectionsTable extends React.Component {
         primary={true}
         onTouchTap={this.dialogClose.bind(this)}
       />,
-    ];
+    ]
 
     return (
       <div className={style.app}>
@@ -279,6 +279,6 @@ export default class ConnectionsTable extends React.Component {
        </Dialog>
 
      </div>
-    );
+    )
   }
 }

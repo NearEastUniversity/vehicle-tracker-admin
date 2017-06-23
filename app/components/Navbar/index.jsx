@@ -1,12 +1,12 @@
-import React from 'react';
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
+import React from 'react'
+import AppBar from 'material-ui/AppBar'
+import IconButton from 'material-ui/IconButton'
 
-import ActionDashboard from 'material-ui/svg-icons/action/Dashboard';
-import ActionSettings from 'material-ui/svg-icons/action/settings';
-import ActionexitToapp from 'material-ui/svg-icons/action/exit-to-app';
+import ActionDashboard from 'material-ui/svg-icons/action/Dashboard'
+import ActionSettings from 'material-ui/svg-icons/action/settings'
+import ActionexitToapp from 'material-ui/svg-icons/action/exit-to-app'
 
-import style from './style';
+import style from './style'
 
 const materialuiNavbarStyles = {
   appbar: {
@@ -15,7 +15,7 @@ const materialuiNavbarStyles = {
   },
   iconButtons: {
     color: '#ffffff',
-  },
+  }
 }
 
 const Navbar = () => (
@@ -51,6 +51,6 @@ const Navbar = () => (
       }
   	/>
   </div>
-);
+)
 
-export default Navbar;
+export default Navbar
