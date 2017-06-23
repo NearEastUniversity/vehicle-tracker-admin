@@ -8,6 +8,9 @@ import Dashboard from './components/Dashboard';
 import SignIn from './components/SignIn';
 import Settings from './components/Settings';
 
+// Higher Order components
+import requiresAuth from './components/HOCs/requiresAuth';
+
 injectTapEventPlugin();
 
 const App = () => (
@@ -17,8 +20,8 @@ const App = () => (
     	<Router history={history}>
 			  <div>
 			   	<Route exact path="/" component={SignIn}/>
-		      <Route path="/dashboard" component={Dashboard}/>
-          <Route path="/settings" component={Settings}/>
+		      <Route path="/dashboard" component={requiresAuth(Dashboard)}/>
+          <Route path="/settings" component={requiresAuth(Settings, {role: "admin"})}/>
 		    </div>
 	  	</Router>
 

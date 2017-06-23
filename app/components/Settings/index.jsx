@@ -3,10 +3,11 @@ import Navbar from '../Navbar';
 
 import style from './style';
 
-const Settings = () => (
+const Settings = (props) => (
   <div className={style.app}>
     <Navbar />
     <h1>Settings</h1>
+    {console.log(props.role)}
   </div>
 );
 
