@@ -1,5 +1,5 @@
 import React from 'react'
-// import {isAuthenticated, removeUserEssentials} from './actions'
+import {isAuthenticated, removeUserEssentials} from './actions'
 
 export default function requiresAuth(Component, config) {
   class AuthenticatedComponent extends React.Component {
@@ -7,7 +7,7 @@ export default function requiresAuth(Component, config) {
     constructor(props) {
       super()
       this.state = {
-        isAuthenticated: true
+        // isAuthenticated: true
       }
     }
 
@@ -22,18 +22,18 @@ export default function requiresAuth(Component, config) {
     }
 
     _checkAndRedirect() {
-      if(!this.state.isAuthenticated) {
+      if(!isAuthenticated()) {
         this.props.history.push('/')
+        removeUserEssentials()
       } else {
         console.log("authenticated user")
       }
     }
 
         render() {
-            let isAuthenticated = this.state.isAuthenticated
             return (
                 <div className="authenticated">
-                    { isAuthenticated ? <Component {...this.props} role={config.role}/> : null }
+                    { isAuthenticated() ? <Component {...this.props}/> : null }
                 </div>
             )
         }

@@ -16,12 +16,12 @@ injectTapEventPlugin();
 const App = () => (
   <div>
   	<MuiThemeProvider>
-      
+
     	<Router history={history}>
 			  <div>
 			   	<Route exact path="/" component={SignIn}/>
-		      <Route path="/dashboard" component={requiresAuth(Dashboard, {role: "admin"})}/>
-          <Route path="/settings" component={requiresAuth(Settings, {role: "admin"})}/>
+		      <Route path="/dashboard" component={requiresAuth(Dashboard)}/>
+          <Route path="/settings" component={requiresAuth(Settings)}/>
 		    </div>
 	  	</Router>
 
