@@ -44,6 +44,7 @@ const Navbar = () => (
           href="/"
           iconStyle={materialuiNavbarStyles.iconButtons}
           tooltip="Sign out"
+          tooltipPosition="bottom-left"
           touch={true}>
             <ActionexitToapp/>
         </IconButton>

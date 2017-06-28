@@ -11,8 +11,16 @@ const materialuiCreateConnectionStyle = {
   paperInput: {
     margin: '50px 50px 0px 50px',
   },
+  selectFieldStyle: {
+    display: 'inline-block',
+    textAlign: 'left',
+    margin: '0px 50px 50px 50px',
+  },
   floatingLabelStyle: {
     fontWeight: 'normal',
+  },
+  createRisedButton: {
+    margin: '20px',
   }
 }
 
@@ -55,8 +63,8 @@ export default class CreateConnection extends React.Component {
       <div className={style.app}>
         <Paper zDepth={1} style={materialuiCreateConnectionStyle.paperInput}>
           <h3>Create Connection</h3>
-          <div className={style.dropDown}>
             <SelectField
+              style={materialuiCreateConnectionStyle.selectFieldStyle}
               floatingLabelText="Select Agent"
               floatingLabelFixed={true}
               floatingLabelStyle={materialuiCreateConnectionStyle.floatingLabelStyle}
@@ -65,9 +73,8 @@ export default class CreateConnection extends React.Component {
               onChange={this.agentSelect.bind(this)}>
               {agents}
             </SelectField>
-          </div>
-          <div className={style.dropDown}>
             <SelectField
+              style={materialuiCreateConnectionStyle.selectFieldStyle}
               floatingLabelText="Select vehicle"
               floatingLabelFixed={true}
               floatingLabelStyle={materialuiCreateConnectionStyle.floatingLabelStyle}
@@ -76,15 +83,12 @@ export default class CreateConnection extends React.Component {
               onChange={this.vehicleSelect.bind(this)}>
               {vehicles}
             </SelectField>
-          </div>
-          <div className={style.createButton}>
             <RaisedButton
               label="Create"
               icon={<ContentAdd/>}
               labelColor="#fff"
               backgroundColor="#039BE5"
               style={materialuiCreateConnectionStyle.createRisedButton}/>
-          </div>
         </Paper>
       </div>
     )
