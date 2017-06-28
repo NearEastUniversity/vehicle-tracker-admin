@@ -41,7 +41,7 @@ const Navbar = () => (
             <ActionSettings/>
         </IconButton>
         <IconButton
-          href="/"
+          href="/signout"
           iconStyle={materialuiNavbarStyles.iconButtons}
           tooltip="Sign out"
           tooltipPosition="bottom-left"
