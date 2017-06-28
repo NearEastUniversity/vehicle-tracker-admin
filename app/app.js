@@ -6,6 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 
 import Dashboard from './components/Dashboard'
 import SignIn from './components/SignIn'
+import SignOut from './components/SignOut'
 import Settings from './components/Settings'
 
 // Higher Order components
@@ -22,6 +23,7 @@ const App = () => (
 			   	<Route exact path="/" component={SignIn}/>
 		      <Route path="/dashboard" component={requiresAuth(Dashboard)}/>
           <Route path="/settings" component={requiresAuth(Settings)}/>
+          <Route path="/signout" component={requiresAuth(SignOut)}/>
 		    </div>
 	  	</Router>
 
