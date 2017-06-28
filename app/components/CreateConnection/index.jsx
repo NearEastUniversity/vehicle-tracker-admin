@@ -7,7 +7,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add'
 
 import style from './style'
 
-const materialuiNewConnectionStyle = {
+const materialuiCreateConnectionStyle = {
   paperInput: {
     margin: '50px 50px 0px 50px',
   },
@@ -32,7 +32,7 @@ const agents = [
   <MenuItem key={5} value={5} primaryText="Agents4" />,
 ]
 
-export default class NewConnection extends React.Component {
+export default class CreateConnection extends React.Component {
 
   constructor(props) {
     super(props)
@@ -53,25 +53,24 @@ export default class NewConnection extends React.Component {
   render() {
     return (
       <div className={style.app}>
-        <Paper zDepth={1} style={materialuiNewConnectionStyle.paperInput}>
-          <h3>New Connection</h3>
+        <Paper zDepth={1} style={materialuiCreateConnectionStyle.paperInput}>
+          <h3>Create Connection</h3>
           <div className={style.dropDown}>
             <SelectField
               floatingLabelText="Select Agent"
               floatingLabelFixed={true}
-              floatingLabelStyle={materialuiNewConnectionStyle.floatingLabelStyle}
+              floatingLabelStyle={materialuiCreateConnectionStyle.floatingLabelStyle}
               maxHeight={300}
               value={this.state.agentValue}
               onChange={this.agentSelect.bind(this)}>
               {agents}
             </SelectField>
           </div>
-
           <div className={style.dropDown}>
             <SelectField
               floatingLabelText="Select vehicle"
               floatingLabelFixed={true}
-              floatingLabelStyle={materialuiNewConnectionStyle.floatingLabelStyle}
+              floatingLabelStyle={materialuiCreateConnectionStyle.floatingLabelStyle}
               maxHeight={300}
               value={this.state.vehicleValue}
               onChange={this.vehicleSelect.bind(this)}>
@@ -84,7 +83,7 @@ export default class NewConnection extends React.Component {
               icon={<ContentAdd/>}
               labelColor="#fff"
               backgroundColor="#039BE5"
-              style={materialuiNewConnectionStyle.createRisedButton}/>
+              style={materialuiCreateConnectionStyle.createRisedButton}/>
           </div>
         </Paper>
       </div>

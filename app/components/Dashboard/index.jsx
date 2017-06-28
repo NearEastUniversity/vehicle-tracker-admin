@@ -1,7 +1,6 @@
 import React from 'react'
-import NewConnection from '../NewConnection'
+import CreateConnection from '../CreateConnection'
 import ConnectionsTable from '../ConnectionsTable'
-
 import Navbar from '../Navbar'
 
 import style from './style'
@@ -11,7 +10,7 @@ export default class Dashoboard extends React.Component {
     return (
       <div className={style.app}>
           <Navbar />
-          <NewConnection />
+          <CreateConnection />
           <ConnectionsTable />
      </div>
     )
