@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
@@ -20,7 +20,12 @@ const App = () => (
 
     	<Router history={history}>
 			  <div>
-			   	<Route exact path="/" component={SignIn}/>
+			   	<Route exact path="/"
+            render={() => (
+              <Redirect to={{pathname: '/dashboard'}}/>
+            )}
+          />
+          <Route exact path="/signin" component={SignIn}/>
 		      <Route path="/dashboard" component={requiresAuth(Dashboard)}/>
           <Route path="/settings" component={requiresAuth(Settings)}/>
           <Route path="/signout" component={requiresAuth(SignOut)}/>

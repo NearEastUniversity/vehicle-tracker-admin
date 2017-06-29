@@ -16,7 +16,7 @@ export default class SignOut extends Component {
 
   signOutUser() {
       localStorage.clear()
-      this.props.history.push('/')
+      this.props.history.push('/signin')
   }
 
   render () {
