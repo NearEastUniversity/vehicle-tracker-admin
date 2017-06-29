@@ -8,28 +8,27 @@ export default function requiresAuth(Component, config) {
     constructor(props) {
       super()
       this.state = {
-        // isAuthenticated: true
       }
     }
 
     componentDidMount() {
         console.log('didMount: AuthenticatedComponent')
         // this._checkAndRedirect()
-        console.log(config)
+        // console.log(config)
     }
 
     componentDidUpdate() {
         console.log('didUpdate: AuthenticatedComponent')
     }
 
-    _checkAndRedirect() {
-      if(!isAuthenticated()) {
-        this.props.history.push('/')
-        removeUserEssentials()
-      } else {
-        console.log("authenticated user")
-      }
-    }
+    // _checkAndRedirect() {
+    //   if(!isAuthenticated()) {
+    //     this.props.history.push('/')
+    //     removeUserEssentials()
+    //   } else {
+    //     console.log("authenticated user")
+    //   }
+    // }
 
         render() {
             return (
