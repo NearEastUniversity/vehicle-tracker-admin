@@ -14,13 +14,13 @@ const materialuiCreateConnectionStyle = {
   selectFieldStyle: {
     display: 'inline-block',
     textAlign: 'left',
-    margin: '0px 50px 50px 50px',
+    margin: '0px 20px 40px 20px',
   },
   floatingLabelStyle: {
     fontWeight: 'normal',
   },
   createRisedButton: {
-    margin: '20px',
+    margin: '0px 20px 40px 20px',
   }
 }
 

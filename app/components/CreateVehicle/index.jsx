@@ -21,9 +21,11 @@ const materialuiCreateAgentStyle = {
   },
   textFieldStyle: {
     margin: '0px 20px',
+    width: '200px',
   },
   createButtonStyle:{
-    margin: '40px 20px 40px 20px',
+    margin: '80px 0px 40px',
+    display: 'inline-block',
   },
   iconDeleteButton: {
     color: '#FF0000',
@@ -102,15 +104,13 @@ export default class CreateVehicle extends React.Component {
                   style={materialuiCreateAgentStyle.textFieldStyle}
                 />
               </div>
-              <div className={style.raisedButton}>
-                <RaisedButton
-                  label="Create"
-                  icon={<ContentAdd/>}
-                  labelColor="#fff"
-                  backgroundColor="#039BE5"
-                  style={materialuiCreateAgentStyle.createButtonStyle}
-                />
-              </div>
+              <RaisedButton
+                label="Create"
+                icon={<ContentAdd/>}
+                labelColor="#fff"
+                backgroundColor="#039BE5"
+                style={materialuiCreateAgentStyle.createButtonStyle}
+              />
             </div>
 
             {/* Table with created Vechicles */}
@@ -221,12 +221,12 @@ export default class CreateVehicle extends React.Component {
          </div>
 
         <Dialog
-         title="Delete Agent"
+         title="Delete Vehicle"
          actions={alertActions}
          modal={false}
          open={this.state.dialogAlert}
          onRequestClose={this.dialogClose.bind(this)}>
-         Do you realy want to delete this agent?
+         Do you realy want to delete this vehicle?
        </Dialog>
 
      </div>
