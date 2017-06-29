@@ -78,6 +78,11 @@ export default class CreateUser extends React.Component {
               floatingLabelText="Email"
               floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
               style={materialuiCreateUserStyle.textFieldStyle}/>
+            <TextField
+              hintText="12345678"
+              floatingLabelText="Password"
+              floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
+              style={materialuiCreateUserStyle.textFieldStyle}/>
             <RaisedButton
               label="Create"
               icon={<ContentAdd/>}
