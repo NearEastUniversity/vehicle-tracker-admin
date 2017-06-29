@@ -1,9 +1,10 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Paper from 'material-ui/Paper'
 
-import {authUser} from './actions'
+import {authUser, isSignedIn} from './actions'
 
 import style from './style'
 import logo from './img/logo.svg'
@@ -108,44 +109,48 @@ class SignIn extends React.Component {
 	render() {
 		return (
 			<div className={style.app}>
-				<div className={style.container}>
-					<Paper zDepth={4} style={materialSignInStyles.signIN} >
-						<h2>Sign In</h2>
-						<form onSubmit={this.handleSubmit}>
-						<TextField
-							hintText="email@example.com"
-							floatingLabelText="Email"
-							value={this.state.email}
-							onChange={this.handleEmailChange}
-							floatingLabelStyle={materialSignInStyles.floatingLabelTextStyle}
-							style={materialSignInStyles.textFieldFirst} />
-						 <br />
-						<TextField
-							hintText="********"
-							floatingLabelText="Password"
-							type="password"
-							value={this.state.password}
-							onChange={this.handlePasswordChange}
-							floatingLabelStyle={materialSignInStyles.floatingLabelTextStyle}
-							style={materialSignInStyles.textFieldSecond} />
-						<br />
-						<RaisedButton
-							// href="/dashboard"
-							type="submit"
-							label="SIGN IN"
-							backgroundColor="#039BE5"
-							labelColor="#ffffff"
-							fullWidth={true}
-							style={materialSignInStyles.button}
-							labelStyle={materialSignInStyles.buttonText}/>
-						</form>
-					</Paper>
+				{isSignedIn() ? (
+					<Redirect to="/"/>
+				) : (
+					<div className={style.container}>
+						<Paper zDepth={4} style={materialSignInStyles.signIN} >
+							<h2>Sign In</h2>
+							<form onSubmit={this.handleSubmit}>
+							<TextField
+								hintText="email@example.com"
+								floatingLabelText="Email"
+								value={this.state.email}
+								onChange={this.handleEmailChange}
+								floatingLabelStyle={materialSignInStyles.floatingLabelTextStyle}
+								style={materialSignInStyles.textFieldFirst} />
+							 <br />
+							<TextField
+								hintText="********"
+								floatingLabelText="Password"
+								type="password"
+								value={this.state.password}
+								onChange={this.handlePasswordChange}
+								floatingLabelStyle={materialSignInStyles.floatingLabelTextStyle}
+								style={materialSignInStyles.textFieldSecond} />
+							<br />
+							<RaisedButton
+								// href="/dashboard"
+								type="submit"
+								label="SIGN IN"
+								backgroundColor="#039BE5"
+								labelColor="#ffffff"
+								fullWidth={true}
+								style={materialSignInStyles.button}
+								labelStyle={materialSignInStyles.buttonText}/>
+							</form>
+						</Paper>
 
-					<Paper style={materialSignInStyles.blankDiv}>
-							<img src={logo} alt={"logo"}/>
-							<h3 style={materialSignInStyles.adminText}>NEU Bus Tracker Admin</h3>
-					</Paper>
-				</div>
+						<Paper style={materialSignInStyles.blankDiv}>
+								<img src={logo} alt={"logo"}/>
+								<h3 style={materialSignInStyles.adminText}>NEU Bus Tracker Admin</h3>
+						</Paper>
+					</div>
+					)}
 			</div>
 		)
 	}

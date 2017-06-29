@@ -23,3 +23,16 @@ export function authUser(email, password, handler, errorHandler) {
     errorHandler();
   });
 }
+
+export function getToken() {
+    return localStorage.token
+}
+
+export function isSignedIn(){
+  if (getToken() != undefined) {
+    return true
+  }
+  else {
+    return false
+  }
+}
