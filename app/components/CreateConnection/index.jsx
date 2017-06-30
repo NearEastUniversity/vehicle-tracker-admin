@@ -12,7 +12,6 @@ const materialuiCreateConnectionStyle = {
     margin: '50px 50px 0px 50px',
   },
   selectFieldStyle: {
-    display: 'inline-block',
     textAlign: 'left',
     margin: '0px 20px 40px 20px',
   },

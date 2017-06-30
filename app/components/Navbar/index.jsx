@@ -1,6 +1,7 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
+import { BrowserRouter as IndexRoute, NavLink } from 'react-router-dom'
 
 import ActionDashboard from 'material-ui/svg-icons/action/Dashboard'
 import ActionSettings from 'material-ui/svg-icons/action/settings'
@@ -15,6 +16,7 @@ const materialuiNavbarStyles = {
   },
   iconButtons: {
     color: '#ffffff',
+    opacity: '0.5',
   }
 }
 
@@ -26,28 +28,31 @@ const Navbar = () => (
       showMenuIconButton={false}
     	iconElementRight={
       <div>
-        <IconButton
-          href="/dashboard"
-          iconStyle={materialuiNavbarStyles.iconButtons}
-          tooltip="Dashboard"
-          touch={true}>
-            <ActionDashboard/>
-        </IconButton>
-        <IconButton
-          href="/settings"
-          iconStyle={materialuiNavbarStyles.iconButtons}
-          tooltip="Settings"
-          touch={true}>
-            <ActionSettings/>
-        </IconButton>
-        <IconButton
-          href="/signout"
-          iconStyle={materialuiNavbarStyles.iconButtons}
-          tooltip="Sign out"
-          tooltipPosition="bottom-left"
-          touch={true}>
-            <ActionexitToapp/>
-        </IconButton>
+        <NavLink to="/dashboard" activeClassName={style.active}>
+          <IconButton
+            iconStyle={materialuiNavbarStyles.iconButtons}
+            tooltip="Dashboard"
+            touch={true}>
+              <ActionDashboard/>
+          </IconButton>
+        </NavLink>
+        <NavLink to="/settings" activeClassName={style.active}>
+          <IconButton
+            iconStyle={materialuiNavbarStyles.iconButtons}
+            tooltip="Settings"
+            touch={true}>
+              <ActionSettings/>
+          </IconButton>
+        </NavLink>
+        <NavLink to="/signout">
+          <IconButton
+            iconStyle={materialuiNavbarStyles.iconButtons}
+            tooltip="Sign out"
+            tooltipPosition="bottom-left"
+            touch={true}>
+              <ActionexitToapp/>
+          </IconButton>
+        </NavLink>
       </div>
       }
   	/>
