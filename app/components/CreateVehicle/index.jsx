@@ -21,11 +21,10 @@ const materialuiCreateAgentStyle = {
   },
   textFieldStyle: {
     margin: '0px 20px',
-    width: '200px',
   },
   createButtonStyle:{
-    margin: '80px 0px 40px',
-    display: 'inline-block',
+    margin: '80px 0px',
+    minWidth: '116px',
   },
   iconDeleteButton: {
     color: '#FF0000',
@@ -75,8 +74,9 @@ export default class CreateVehicle extends React.Component {
             <h3>Create Vehicle</h3>
 
             {/* Create new Vehicle TextFields */}
-            <div className={style.container}>
-              <div className={style.textField}>
+            <div style={{display: 'inline-flex'}}>
+              <div style={{maxWidth: '600px'}}>
+              <div className={style.container}>
                 <TextField
                   hintText="Example Label"
                   floatingLabelText="Label"
@@ -90,7 +90,7 @@ export default class CreateVehicle extends React.Component {
                   style={materialuiCreateAgentStyle.textFieldStyle}
                 />
               </div>
-              <div className={style.textField}>
+              <div className={style.container}>
                 <TextField
                   hintText="AD 345"
                   floatingLabelText="Plate ID"
@@ -104,13 +104,14 @@ export default class CreateVehicle extends React.Component {
                   style={materialuiCreateAgentStyle.textFieldStyle}
                 />
               </div>
-              <RaisedButton
-                label="Create"
-                icon={<ContentAdd/>}
-                labelColor="#fff"
-                backgroundColor="#039BE5"
-                style={materialuiCreateAgentStyle.createButtonStyle}
-              />
+            </div>
+            <RaisedButton
+              label="Create"
+              icon={<ContentAdd/>}
+              labelColor="#fff"
+              backgroundColor="#039BE5"
+              style={materialuiCreateAgentStyle.createButtonStyle}
+            />
             </div>
 
             {/* Table with created Vechicles */}

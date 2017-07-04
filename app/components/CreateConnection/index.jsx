@@ -13,13 +13,13 @@ const materialuiCreateConnectionStyle = {
   },
   selectFieldStyle: {
     textAlign: 'left',
-    margin: '0px 20px 40px 20px',
+    margin: '0px 20px 40px',
   },
   floatingLabelStyle: {
     fontWeight: 'normal',
   },
   createRisedButton: {
-    margin: '0px 20px 40px 20px',
+    margin: '0px 20px 40px',
   }
 }
 
@@ -62,32 +62,40 @@ export default class CreateConnection extends React.Component {
       <div className={style.app}>
         <Paper zDepth={1} style={materialuiCreateConnectionStyle.paperInput}>
           <h3>Create Connection</h3>
-            <SelectField
-              style={materialuiCreateConnectionStyle.selectFieldStyle}
-              floatingLabelText="Select Agent"
-              floatingLabelFixed={true}
-              floatingLabelStyle={materialuiCreateConnectionStyle.floatingLabelStyle}
-              maxHeight={300}
-              value={this.state.agentValue}
-              onChange={this.agentSelect.bind(this)}>
-              {agents}
-            </SelectField>
-            <SelectField
-              style={materialuiCreateConnectionStyle.selectFieldStyle}
-              floatingLabelText="Select vehicle"
-              floatingLabelFixed={true}
-              floatingLabelStyle={materialuiCreateConnectionStyle.floatingLabelStyle}
-              maxHeight={300}
-              value={this.state.vehicleValue}
-              onChange={this.vehicleSelect.bind(this)}>
-              {vehicles}
-            </SelectField>
-            <RaisedButton
-              label="Create"
-              icon={<ContentAdd/>}
-              labelColor="#fff"
-              backgroundColor="#039BE5"
-              style={materialuiCreateConnectionStyle.createRisedButton}/>
+
+            <div className={style.container}>
+              <SelectField
+                style={materialuiCreateConnectionStyle.selectFieldStyle}
+                floatingLabelText="Select Agent"
+                floatingLabelFixed={true}
+                floatingLabelStyle={materialuiCreateConnectionStyle.floatingLabelStyle}
+                maxHeight={300}
+                value={this.state.agentValue}
+                onChange={this.agentSelect.bind(this)}>
+                {agents}
+              </SelectField>
+            </div>
+            <div className={style.container}>
+              <SelectField
+                style={materialuiCreateConnectionStyle.selectFieldStyle}
+                floatingLabelText="Select vehicle"
+                floatingLabelFixed={true}
+                floatingLabelStyle={materialuiCreateConnectionStyle.floatingLabelStyle}
+                maxHeight={300}
+                value={this.state.vehicleValue}
+                onChange={this.vehicleSelect.bind(this)}>
+                {vehicles}
+              </SelectField>
+            </div>
+            <div className={style.container}>
+              <RaisedButton
+                label="Create"
+                icon={<ContentAdd/>}
+                labelColor="#fff"
+                backgroundColor="#039BE5"
+                style={materialuiCreateConnectionStyle.createRisedButton}/>
+            </div>
+
         </Paper>
       </div>
     )
