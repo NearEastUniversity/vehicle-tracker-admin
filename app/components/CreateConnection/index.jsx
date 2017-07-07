@@ -87,14 +87,12 @@ export default class CreateConnection extends React.Component {
                 {vehicles}
               </SelectField>
             </div>
-            <div className={style.container}>
-              <RaisedButton
-                label="Create"
-                icon={<ContentAdd/>}
-                labelColor="#fff"
-                backgroundColor="#039BE5"
-                style={materialuiCreateConnectionStyle.createRisedButton}/>
-            </div>
+            <RaisedButton
+              label="Create"
+              icon={<ContentAdd/>}
+              labelColor="#fff"
+              backgroundColor="#039BE5"
+              style={materialuiCreateConnectionStyle.createRisedButton}/>
 
         </Paper>
       </div>
