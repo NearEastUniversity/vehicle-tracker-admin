@@ -1,17 +1,24 @@
 import React from 'react'
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, } from 'material-ui/Table'
+
+// Material UI imports
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn
+} from 'material-ui/Table'
 import Paper from 'material-ui/Paper'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
-
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 
-import style from './style'
-
+// Material UI Styles
 const materialuiCreateUserStyle = {
   paper: {
     padding: '0px 50px 50px 50px',
@@ -33,13 +40,25 @@ const materialuiCreateUserStyle = {
   }
 }
 
+// Component Style
+import style from './style'
+
+// Component Actions
+import {getUsers} from './actions'
+
+
 export default class CreateUser extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      dialogAlert: false
+      dialogAlert: false,
+      users: []
     }
+  }
+
+  componentWillMount() {
+    this.updateUsers()
   }
 
   dialogAlert() {
@@ -50,7 +69,19 @@ export default class CreateUser extends React.Component {
 		this.setState({dialogAlert: false})
 	}
 
+  updateUsers() {
+    let that = this
+    getUsers((data) => {
+      that.setState({
+        users: data,
+      });
+    }, (res) => {
+      console.log("error: " + res);
+    })
+  }
+
   render() {
+
     const alertActions = [
       <FlatButton
         label="Cancel"
@@ -71,15 +102,15 @@ export default class CreateUser extends React.Component {
         <div className={style.connections}>
           <Paper zDepth={1} style={materialuiCreateUserStyle.paper}>
             <h3>Create User</h3>
-
             {/* Create new User TextFields */}
             <TextField
+              type="email"
               hintText="example@example.com"
               floatingLabelText="Email"
               floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
               style={materialuiCreateUserStyle.textFieldStyle}/>
             <TextField
-              hintText="12345678"
+              hintText="set a password"
               floatingLabelText="Password"
               floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
               style={materialuiCreateUserStyle.textFieldStyle}/>
@@ -97,96 +128,45 @@ export default class CreateUser extends React.Component {
                  displaySelectAll={false}
                  adjustForCheckbox={false}>
                  <TableRow>
-                   <TableHeaderColumn>User ID</TableHeaderColumn>
                    <TableHeaderColumn>Email</TableHeaderColumn>
                    <TableHeaderColumn>Options</TableHeaderColumn>
                  </TableRow>
                </TableHeader>
                <TableBody
                  displayRowCheckbox={false}>
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>example@email.com</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateUserStyle.iconButton}
-                       iconStyle={materialuiCreateUserStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>example@email.com</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateUserStyle.iconButton}
-                       iconStyle={materialuiCreateUserStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>example@email.com</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateUserStyle.iconButton}
-                       iconStyle={materialuiCreateUserStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>example@email.com</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateUserStyle.iconButton}
-                       iconStyle={materialuiCreateUserStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>example@email.com</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateUserStyle.iconButton}
-                       iconStyle={materialuiCreateUserStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
+
+                 {/* Maps through the users state to render user rows */}
+                 {this.state.users.map((user, index) => {
+                   return (
+                     <TableRow key={index}>
+                       <TableRowColumn>{user.email && user.email}</TableRowColumn>
+                       <TableRowColumn>
+                         <IconButton
+                           onTouchTap={this.dialogAlert.bind(this)}
+                           style={materialuiCreateUserStyle.iconButton}
+                           iconStyle={materialuiCreateUserStyle.iconDeleteButton}
+                           tooltip="Delete"
+                           touch={true}>
+                             <ActionDelete/>
+                         </IconButton>
+                       </TableRowColumn>
+                     </TableRow>
+                   )
+                 })}
+
                </TableBody>
              </Table>
            </Paper>
          </div>
 
-        <Dialog
-         title="Delete User"
-         actions={alertActions}
-         modal={false}
-         open={this.state.dialogAlert}
-         onRequestClose={this.dialogClose.bind(this)}>
-         Do you realy want to delete this user?
-       </Dialog>
+         <Dialog
+          title="Delete User"
+          actions={alertActions}
+          modal={false}
+          open={this.state.dialogAlert}
+          onRequestClose={this.dialogClose.bind(this)}>
+          Do you realy want to delete user?
+        </Dialog>
 
      </div>
     )
