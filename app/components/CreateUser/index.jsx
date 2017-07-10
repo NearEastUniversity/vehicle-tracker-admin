@@ -44,7 +44,7 @@ const materialuiCreateUserStyle = {
 import style from './style'
 
 // Component Actions
-import {getUsers} from './actions'
+import {getUsers, createUser} from './actions'
 
 
 export default class CreateUser extends React.Component {
@@ -53,7 +53,9 @@ export default class CreateUser extends React.Component {
     super(props)
     this.state = {
       dialogAlert: false,
-      users: []
+      users: [],
+      emailInput: "",
+      passwordInput: ""
     }
   }
 
@@ -70,15 +72,50 @@ export default class CreateUser extends React.Component {
 	}
 
   updateUsers() {
-    let that = this
     getUsers((data) => {
-      that.setState({
+      this.setState({
         users: data,
       });
     }, (res) => {
       console.log("error: " + res);
     })
   }
+
+  handleEmailChange(event){
+    this.setState({
+      emailInput: event.target.value
+    })
+  }
+
+  handlePasswordChange(event){
+    this.setState({
+      passwordInput: event.target.value
+    })
+  }
+
+  handleCreateUser(event){
+    // Call preventDefault() on the event to prevent the browser's default
+    // action of submitting the form.
+    event.preventDefault();
+
+    const email = this.state.emailInput;
+    const password = this.state.passwordInput;
+
+    console.log(email, password);
+
+    createUser(email, password, (res) => {
+      let newUser = res
+      let newUsers = this.state.users.slice()
+      newUsers.push(newUser)
+      this.setState({
+        users: newUsers
+      })
+    }, (res) => {
+      console.log(`error on creating user: ${res}`);
+    })
+
+  }
+
 
   render() {
 
@@ -103,25 +140,31 @@ export default class CreateUser extends React.Component {
           <Paper zDepth={1} style={materialuiCreateUserStyle.paper}>
             <h3>Create User</h3>
             {/* Create new User TextFields */}
-            <TextField
-              type="email"
-              hintText="example@example.com"
-              floatingLabelText="Email"
-              floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
-              style={materialuiCreateUserStyle.textFieldStyle}/>
-            <TextField
-              hintText="set a password"
-              floatingLabelText="Password"
-              floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
-              style={materialuiCreateUserStyle.textFieldStyle}/>
-            <RaisedButton
-              label="Create"
-              icon={<ContentAdd/>}
-              labelColor="#fff"
-              backgroundColor="#039BE5"
-              style={materialuiCreateUserStyle.createButtonStyle}/>
+            <form id="createUser" onSubmit={this.handleCreateUser.bind(this)}>
+              <TextField
+                value={this.state.emailInput}
+                onChange={this.handleEmailChange.bind(this)}
+                type="email"
+                hintText="example@example.com"
+                floatingLabelText="Email"
+                floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
+                style={materialuiCreateUserStyle.textFieldStyle}/>
+              <TextField
+                value={this.state.passwordInput}
+                onChange={this.handlePasswordChange.bind(this)}
+                hintText="set a password"
+                floatingLabelText="Password"
+                floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
+                style={materialuiCreateUserStyle.textFieldStyle}/>
+              <RaisedButton
+                type="submit"
+                label="Create"
+                icon={<ContentAdd/>}
+                labelColor="#fff"
+                backgroundColor="#039BE5"
+                style={materialuiCreateUserStyle.createButtonStyle}/>
+            </form>
 
-            {/* Table with created Vechicles */}
             <Table
               selectable={false}>
                <TableHeader
