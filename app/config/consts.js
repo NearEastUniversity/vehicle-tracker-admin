@@ -3,4 +3,4 @@ const API_ROOT = "http://127.0.0.1:5004";
 
 // AUTH
 export const AUTH_URL = `${API_ROOT}/auth/`;
-export const GETALLUSERS_URL = `${API_ROOT}/user/`;
+export const USERS_URL = `${API_ROOT}/user/`;
