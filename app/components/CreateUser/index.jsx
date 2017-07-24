@@ -139,6 +139,7 @@ export default class CreateUser extends React.Component {
         <div className={style.connections}>
           <Paper zDepth={1} style={materialuiCreateUserStyle.paper}>
             <h3>Create User</h3>
+
             {/* Create new User TextFields */}
             <form id="createUser" onSubmit={this.handleCreateUser.bind(this)}>
               <TextField
@@ -202,6 +203,7 @@ export default class CreateUser extends React.Component {
            </Paper>
          </div>
 
+         {/* Delete User Dialog */}
          <Dialog
           title="Delete User"
           actions={alertActions}

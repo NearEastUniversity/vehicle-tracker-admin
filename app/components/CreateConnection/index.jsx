@@ -1,12 +1,13 @@
 import React from 'react'
+
+// Material UI imports
 import MenuItem from 'material-ui/MenuItem'
 import Paper from 'material-ui/Paper'
 import SelectField from 'material-ui/SelectField'
 import RaisedButton from 'material-ui/RaisedButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
-import style from './style'
-
+// Material UI Styles
 const materialuiCreateConnectionStyle = {
   paperInput: {
     margin: '50px 50px 0px 50px',
@@ -22,6 +23,10 @@ const materialuiCreateConnectionStyle = {
     margin: '0px 20px 40px',
   }
 }
+
+// Component Style
+import style from './style'
+
 
 const vehicles = [
   <MenuItem key={1} value={1} primaryText="Vehicles"  />,
@@ -58,11 +63,13 @@ export default class CreateConnection extends React.Component {
   }
 
   render() {
+
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={materialuiCreateConnectionStyle.paperInput}>
           <h3>Create Connection</h3>
 
+            {/* Create Connection SelectFields and Button */}
             <div className={style.container}>
               <SelectField
                 style={materialuiCreateConnectionStyle.selectFieldStyle}

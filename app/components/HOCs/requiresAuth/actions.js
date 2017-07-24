@@ -2,7 +2,6 @@ export function getToken() {
     return localStorage.token
 }
 
-
 export function removeUserEssentials() {
   localStorage.removeItem('token');
   // localStorage.removeItem('roles');

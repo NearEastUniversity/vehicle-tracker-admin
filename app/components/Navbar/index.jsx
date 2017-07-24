@@ -1,14 +1,18 @@
 import React from 'react'
+import {
+  BrowserRouter as
+  IndexRoute,
+  NavLink
+} from 'react-router-dom'
+
+// Material UI imports
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
-import { BrowserRouter as IndexRoute, NavLink } from 'react-router-dom'
-
 import ActionDashboard from 'material-ui/svg-icons/action/Dashboard'
 import ActionSettings from 'material-ui/svg-icons/action/settings'
 import ActionexitToapp from 'material-ui/svg-icons/action/exit-to-app'
 
-import style from './style'
-
+// Material UI Styles
 const materialuiNavbarStyles = {
   appbar: {
     backgroundColor: '#039BE5',
@@ -19,6 +23,10 @@ const materialuiNavbarStyles = {
     opacity: '0.5',
   }
 }
+
+// Component Style
+import style from './style'
+
 
 const Navbar = () => (
   <div className={style.app}>

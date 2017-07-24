@@ -1,5 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
+
+// Component Actions
 import { isAuthenticated, removeUserEssentials } from './actions'
 
 export default function requiresAuth(Component, config) {

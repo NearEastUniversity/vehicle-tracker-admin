@@ -1,10 +1,14 @@
 import React from 'react'
+
+// Component's paths
 import Navbar from '../Navbar'
 import CreateUser from '../CreateUser'
 import CreateAgent from '../CreateAgent'
 import CreateVehicle from '../CreateVehicle'
 
+// Component Style
 import style from './style'
+
 
 export default class Dashoboard extends React.Component {
   render() {

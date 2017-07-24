@@ -1,17 +1,24 @@
 import React from 'react'
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, } from 'material-ui/Table'
+
+// Material UI imports
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table'
 import Paper from 'material-ui/Paper'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
-
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 
-import style from './style'
-
+// Material UI Styles
 const materialuiCreateAgentStyle = {
   paper: {
     padding: '0px 50px 50px 50px',
@@ -33,6 +40,10 @@ const materialuiCreateAgentStyle = {
   }
 }
 
+// Component Style
+import style from './style'
+
+
 export default class CreateAgent extends React.Component {
 
   constructor(props) {
@@ -51,6 +62,7 @@ export default class CreateAgent extends React.Component {
 	}
 
   render() {
+
     const alertActions = [
       <FlatButton
         label="Cancel"
@@ -174,6 +186,7 @@ export default class CreateAgent extends React.Component {
            </Paper>
          </div>
 
+        {/* Delete Agent Dialog */} 
         <Dialog
          title="Delete Agent"
          actions={alertActions}

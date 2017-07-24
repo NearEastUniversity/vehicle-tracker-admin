@@ -1,14 +1,12 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
+
+// Material UI imports
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Paper from 'material-ui/Paper'
 
-import {authUser, isSignedIn} from './actions'
-
-import style from './style'
-import logo from './img/logo.svg'
-
+// Material UI Styles
 const materialSignInStyles = {
 	signIN: {
 		padding: 30,
@@ -47,6 +45,14 @@ const materialSignInStyles = {
 		color: '#4A4A4A',
 	}
 }
+
+// Component Style
+import style from './style'
+import logo from './img/logo.svg'
+
+// Component Actions
+import {authUser, isSignedIn} from './actions'
+
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -107,6 +113,7 @@ class SignIn extends React.Component {
 	}
 
 	render() {
+		
 		return (
 			<div className={style.app}>
 				{isSignedIn() ? (
@@ -134,7 +141,6 @@ class SignIn extends React.Component {
 								style={materialSignInStyles.textFieldSecond} />
 							<br />
 							<RaisedButton
-								// href="/dashboard"
 								type="submit"
 								label="SIGN IN"
 								backgroundColor="#039BE5"

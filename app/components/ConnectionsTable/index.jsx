@@ -1,5 +1,14 @@
 import React from 'react'
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, } from 'material-ui/Table'
+
+// Material UI imports
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table'
 import Paper from 'material-ui/Paper'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
@@ -9,8 +18,7 @@ import SelectField from 'material-ui/SelectField'
 import ImageEdit from 'material-ui/svg-icons/image/edit'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 
-import style from './style'
-
+// Material UI Styles
 const materialuiConnectionsTableStyle = {
   paper: {
     padding: '0px 50px 50px 50px',
@@ -25,6 +33,10 @@ const materialuiConnectionsTableStyle = {
     zIndex: '9999 !important',
   }
 }
+
+// Component Style
+import style from './style'
+
 
 const vehicles = [
   <MenuItem key={1} value={1} primaryText="Vehicles"  />,
@@ -75,6 +87,7 @@ export default class ConnectionsTable extends React.Component {
 	}
 
   render() {
+
     const editActions = [
       <FlatButton
         label="Cancel"
@@ -108,7 +121,9 @@ export default class ConnectionsTable extends React.Component {
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={materialuiConnectionsTableStyle.paper}>
-          <h3>Connections</h3>
+          <h3>Connections Table</h3>
+          
+          {/* Table with conections */}
           <Table
             selectable={false}>
              <TableHeader
@@ -236,7 +251,7 @@ export default class ConnectionsTable extends React.Component {
            </Table>
          </Paper>
 
-
+         {/* Edit Connection dialog */}
          <Dialog
           title="Edit Connection"
           actions={editActions}
@@ -268,6 +283,7 @@ export default class ConnectionsTable extends React.Component {
             </div>
         </Dialog>
 
+        {/* Unassign Connection dialog */}
         <Dialog
          title="Unassign Connection"
          actions={alertActions}
