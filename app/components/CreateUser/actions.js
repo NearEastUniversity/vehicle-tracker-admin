@@ -1,12 +1,14 @@
 import axios from 'axios'
 import {USERS_URL} from '../../config/consts'
 
-const HEADERS = {Authorization: `Bearer ${localStorage.token}`}
+function getToken() {
+  return localStorage.token
+}
 
 export function getUsers(handler, errorHandler) {
   axios({
     method: 'get',
-    headers: HEADERS,
+    headers: {Authorization: "Bearer " + getToken()},
     responseType: 'json',
     url: USERS_URL
   })
@@ -28,7 +30,7 @@ export function createUser(email, password, handler, errorHandler) {
 
   axios({
     method: 'post',
-    headers: HEADERS,
+    headers: {Authorization: "Bearer " + getToken()},
     responseType: 'json',
     url: USERS_URL,
     data: {
