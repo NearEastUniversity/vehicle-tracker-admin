@@ -44,7 +44,7 @@ const materialuiCreateUserStyle = {
 import style from './style'
 
 // Component Actions
-import {getUsers, createUser} from './actions'
+import {getUsers, createUser, deleteUser} from './actions'
 
 
 export default class CreateUser extends React.Component {
@@ -53,6 +53,7 @@ export default class CreateUser extends React.Component {
     super(props)
     this.state = {
       dialogAlert: false,
+      deleteUser: {},
       users: [],
       emailInput: "",
       passwordInput: ""
@@ -70,6 +71,26 @@ export default class CreateUser extends React.Component {
 	dialogClose() {
 		this.setState({dialogAlert: false})
 	}
+
+  handleDeleteUser(user) {
+    this.setState({
+      dialogAlert: true,
+      deleteUser: user
+    })
+  }
+
+  confirmDeleteUser(){
+    deleteUser(this.state.deleteUser.uuid, (res) => {
+      this.updateUsers()
+      this.setState({
+        dialogAlert: false,
+        deleteUser: {}
+      })
+    }, (res) => {
+      console.log(`delete user error: ${res}`);
+    })
+  }
+
 
   updateUsers() {
     getUsers((data) => {
@@ -108,7 +129,9 @@ export default class CreateUser extends React.Component {
       let newUsers = this.state.users.slice()
       newUsers.push(newUser)
       this.setState({
-        users: newUsers
+        users: newUsers,
+        emailInput: "",
+        passwordInput: ""
       })
     }, (res) => {
       console.log(`error on creating user: ${res}`);
@@ -130,7 +153,7 @@ export default class CreateUser extends React.Component {
         label="Delete"
         style={{color: "#ff0000"}}
         primary={true}
-        onTouchTap={this.dialogClose.bind(this)}
+        onTouchTap={this.confirmDeleteUser.bind(this)}
       />,
     ]
 
@@ -186,7 +209,7 @@ export default class CreateUser extends React.Component {
                        <TableRowColumn>{user.email && user.email}</TableRowColumn>
                        <TableRowColumn>
                          <IconButton
-                           onTouchTap={this.dialogAlert.bind(this)}
+                           onTouchTap={this.handleDeleteUser.bind(this, user)}
                            style={materialuiCreateUserStyle.iconButton}
                            iconStyle={materialuiCreateUserStyle.iconDeleteButton}
                            tooltip="Delete"
@@ -205,12 +228,18 @@ export default class CreateUser extends React.Component {
 
          {/* Delete User Dialog */}
          <Dialog
-          title="Delete User"
-          actions={alertActions}
-          modal={false}
-          open={this.state.dialogAlert}
-          onRequestClose={this.dialogClose.bind(this)}>
-          Do you realy want to delete user?
+           className={style.dialog}
+           title="Delete User"
+           actions={alertActions}
+           modal={false}
+           open={this.state.dialogAlert}
+           onRequestClose={this.dialogClose.bind(this)}
+         >
+            Do you realy want to delete
+            <span className={style.highlight}>
+              {this.state.deleteUser.email}
+            </span>
+            ?
         </Dialog>
 
      </div>
