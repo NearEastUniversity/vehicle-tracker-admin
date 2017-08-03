@@ -15,7 +15,7 @@ export function authUser(email, password, handler, errorHandler) {
   .then(function (res){
     if (res.status < 400){
       localStorage.token = res.data.authorization_token;
-      console.log(localStorage.token);
+      console.log(res);
       handler();
     }
   })

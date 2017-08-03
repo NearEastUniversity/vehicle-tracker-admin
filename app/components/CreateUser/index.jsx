@@ -33,7 +33,7 @@ const materialuiCreateUserStyle = {
     margin: '0px 20px 40px 20px',
   },
   iconDeleteButton: {
-    color: '#FF0000',
+    color: '#FF1744',
   },
   iconButton: {
     zIndex: '9999 !important',
