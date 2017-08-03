@@ -20,7 +20,7 @@ const materialuiCreateConnectionStyle = {
     fontWeight: 'normal',
   },
   createRisedButton: {
-    margin: '0px 20px 40px',
+    margin: '0px 0px 40px 0px',
   }
 }
 
@@ -94,12 +94,14 @@ export default class CreateConnection extends React.Component {
                 {vehicles}
               </SelectField>
             </div>
+            <div className={style.container}>
             <RaisedButton
               label="Create"
               icon={<ContentAdd/>}
               labelColor="#fff"
               backgroundColor="#039BE5"
               style={materialuiCreateConnectionStyle.createRisedButton}/>
+            </div>
 
         </Paper>
       </div>
