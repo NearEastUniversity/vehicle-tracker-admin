@@ -44,13 +44,20 @@ const materialuiCreateAgentStyle = {
 // Component Style
 import style from './style'
 
+import { createVehicle } from './actions'
+
 
 export default class CreateVehicle extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      dialogAlert: false
+      dialogAlert: false,
+      agentUuidInput: "",
+      vehicleTypeInput: "",
+      plateIdInput: "",
+      groupNumInput: "",
+      inputError: ""
     }
   }
 
@@ -61,6 +68,76 @@ export default class CreateVehicle extends React.Component {
 	dialogClose() {
 		this.setState({dialogAlert: false})
 	}
+
+
+
+  // handle inputs
+  handleAgentUuidChange(event){
+    this.setState({
+      agentUuidInput: event.target.value
+    })
+  }
+
+  handleVehicleTypeChange(event){
+    this.setState({
+      vehicleTypeInput: event.target.value
+    })
+  }
+
+  handlePlateIdChange(event){
+    this.setState({
+      plateIdInput: event.target.value
+    })
+  }
+
+  handleGroupNumChange(event){
+    this.setState({
+      groupNumInput: event.target.value
+    })
+  }
+
+  handleCreateVehicle(event) {
+    // Call preventDefault() on the event to prevent the browser's default
+    // action of submitting the form.
+    event.preventDefault();
+
+    let agentUuid = this.state.agentUuidInput
+    let vehicleType = this.state.vehicleTypeInput
+    let plateId = this.state.plateIdInput
+    let groupNum = this.state.groupNumInput
+
+
+    let validateForm = function(arr) {
+      for (var i = 0; i < arr.length; i++) {
+    		if (arr[i] == null || arr[i] == "") {
+          return false
+    		}
+      }
+      return true
+    }
+
+
+    let reqInputs = [plateId, vehicleType];
+
+    if (validateForm(reqInputs)) {
+
+      let formData = {
+        plate_id: plateId,
+        type: vehicleType
+      }
+
+      createVehicle(formData, (res) => {
+        console.log(res);
+      }, (res) => {
+        console.log("error on create vehicle\n" + res);
+      })
+
+    } else {
+      this.setState({
+        inputError: "This field is required."
+      });
+    }
+  }
 
   render() {
 
@@ -85,46 +162,68 @@ export default class CreateVehicle extends React.Component {
           <Paper zDepth={1} style={materialuiCreateAgentStyle.paper}>
             <h3>Create Vehicle</h3>
 
-            {/* Create new Vehicle TextFields */}
-            <div style={{display: 'inline-flex'}}>
-              <div style={{maxWidth: '600px'}}>
-              <div className={style.container}>
-                <TextField
-                  hintText="Example Label"
-                  floatingLabelText="Label"
-                  floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
-                  style={materialuiCreateAgentStyle.textFieldStyle}
-                />
-                <TextField
-                  hintText="SCHOOL-BUS"
-                  floatingLabelText="Type"
-                  floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
-                  style={materialuiCreateAgentStyle.textFieldStyle}
-                />
+            {/* Create new Vehicle Form */}
+            <form
+              id="createVehicle"
+              onSubmit={this.handleCreateVehicle.bind(this)}
+              >
+              <div style={{display: 'inline-flex'}}>
+                <div style={{maxWidth: '600px'}}>
+                <div className={style.container}>
+
+                  <TextField
+                    value={this.state.plateIdInput}
+                    onChange={this.handlePlateIdChange.bind(this)}
+                    hintText="AA535"
+                    floatingLabelText="Plate ID"
+                    errorText={this.state.inputError}
+                    floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
+                    style={materialuiCreateAgentStyle.textFieldStyle}
+                  />
+
+                  <TextField
+                    value={this.state.vehicleTypeInput}
+                    onChange={this.handleVehicleTypeChange.bind(this)}
+                    hintText="SCHOOL-BUS"
+                    floatingLabelText="Vehicle Type"
+                    errorText={this.state.inputError}
+                    floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
+                    style={materialuiCreateAgentStyle.textFieldStyle}
+                  />
+
+                </div>
+                <div className={style.container}>
+
+                  <TextField
+                    value={this.state.agentUuidInput}
+                    onChange={this.handleAgentUuidChange.bind(this)}
+                    floatingLabelText="Agent UUID (optional)"
+                    floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
+                    style={materialuiCreateAgentStyle.textFieldStyle}
+                  />
+
+                  <TextField
+                    value={this.state.groupNumInput}
+                    onChange={this.handleGroupNumChange.bind(this)}
+                    floatingLabelText="Group Number (optional)"
+                    floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
+                    style={materialuiCreateAgentStyle.textFieldStyle}
+                  />
+
+                </div>
               </div>
-              <div className={style.container}>
-                <TextField
-                  hintText="AD 345"
-                  floatingLabelText="Plate ID"
-                  floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
-                  style={materialuiCreateAgentStyle.textFieldStyle}
-                />
-                <TextField
-                  hintText="3"
-                  floatingLabelText="Group"
-                  floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
-                  style={materialuiCreateAgentStyle.textFieldStyle}
-                />
+
+              <RaisedButton
+                type="submit"
+                label="Create"
+                icon={<ContentAdd/>}
+                labelColor="#fff"
+                backgroundColor="#039BE5"
+                style={materialuiCreateAgentStyle.createButtonStyle}
+              />
+
               </div>
-            </div>
-            <RaisedButton
-              label="Create"
-              icon={<ContentAdd/>}
-              labelColor="#fff"
-              backgroundColor="#039BE5"
-              style={materialuiCreateAgentStyle.createButtonStyle}
-            />
-            </div>
+            </form>
 
             {/* Table with created Vechicles */}
             <Table
@@ -143,6 +242,7 @@ export default class CreateVehicle extends React.Component {
                </TableHeader>
                <TableBody
                  displayRowCheckbox={false}>
+
                  <TableRow>
                    <TableRowColumn>123456</TableRowColumn>
                    <TableRowColumn>Example Label</TableRowColumn>
@@ -160,80 +260,13 @@ export default class CreateVehicle extends React.Component {
                      </IconButton>
                    </TableRowColumn>
                  </TableRow>
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>Example Label</TableRowColumn>
-                   <TableRowColumn>SCHOOL-BUS</TableRowColumn>
-                   <TableRowColumn>AD 345</TableRowColumn>
-                   <TableRowColumn>3</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateAgentStyle.iconButton}
-                       iconStyle={materialuiCreateAgentStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>Example Label</TableRowColumn>
-                   <TableRowColumn>SCHOOL-BUS</TableRowColumn>
-                   <TableRowColumn>AD 345</TableRowColumn>
-                   <TableRowColumn>3</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateAgentStyle.iconButton}
-                       iconStyle={materialuiCreateAgentStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>Example Label</TableRowColumn>
-                   <TableRowColumn>SCHOOL-BUS</TableRowColumn>
-                   <TableRowColumn>AD 345</TableRowColumn>
-                   <TableRowColumn>3</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateAgentStyle.iconButton}
-                       iconStyle={materialuiCreateAgentStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>Example Label</TableRowColumn>
-                   <TableRowColumn>SCHOOL-BUS</TableRowColumn>
-                   <TableRowColumn>AD 345</TableRowColumn>
-                   <TableRowColumn>3</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateAgentStyle.iconButton}
-                       iconStyle={materialuiCreateAgentStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
+
                </TableBody>
              </Table>
            </Paper>
          </div>
 
-        {/* Delete Vehicle Dialog */} 
+        {/* Delete Vehicle Dialog */}
         <Dialog
          title="Delete Vehicle"
          actions={alertActions}
