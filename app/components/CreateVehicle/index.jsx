@@ -14,6 +14,8 @@ import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
@@ -44,7 +46,7 @@ const materialuiCreateAgentStyle = {
 // Component Style
 import style from './style'
 
-import { createVehicle, getVehicles } from './actions'
+import { createVehicle, getVehicles, getVehicleTypes } from './actions'
 
 
 export default class CreateVehicle extends React.Component {
@@ -54,7 +56,8 @@ export default class CreateVehicle extends React.Component {
     this.state = {
       dialogAlert: false,
       agentUuidInput: "",
-      vehicleTypeInput: "",
+      vehicleTypeSelect: "",
+      vehicleTypeList: [],
       plateIdInput: "",
       groupNumInput: "",
       inputError: "",
@@ -65,7 +68,20 @@ export default class CreateVehicle extends React.Component {
 
   componentWillMount() {
     this.updateVehicleList()
+    this.updateVehicleTypes()
   }
+
+
+  updateVehicleTypes(){
+    getVehicleTypes((data) => {
+      this.setState({
+        vehicleTypeList: data,
+      });
+    }, (error) => {
+      console.error(error);
+    })
+  }
+
 
   updateVehicleList(){
     getVehicles((data) => {
@@ -73,7 +89,7 @@ export default class CreateVehicle extends React.Component {
         vehicleList: data
       });
     }, (error) => {
-      console.log(error);
+      console.error(error);
     })
   }
 
@@ -95,9 +111,9 @@ export default class CreateVehicle extends React.Component {
     })
   }
 
-  handleVehicleTypeChange(event){
+  handleVehicleTypeChange(event, key, value){
     this.setState({
-      vehicleTypeInput: event.target.value
+      vehicleTypeSelect: value
     })
   }
 
@@ -119,7 +135,7 @@ export default class CreateVehicle extends React.Component {
     event.preventDefault();
 
     let agentUuid = this.state.agentUuidInput
-    let vehicleType = this.state.vehicleTypeInput
+    let vehicleType = this.state.vehicleTypeSelect
     let plateId = this.state.plateIdInput
     let groupNum = this.state.groupNumInput
 
@@ -144,9 +160,18 @@ export default class CreateVehicle extends React.Component {
       }
 
       createVehicle(formData, (res) => {
-        console.log(res);
-      }, (res) => {
-        console.log("error on create vehicle\n" + res);
+        let newVehicle = res
+        let newVehicleList = this.state.vehicleList.slice()
+        newVehicleList.push(newVehicle)
+        this.setState({
+          vehicleList: newVehicleList,
+          plateIdInput: "",
+          vehicleTypeSelect: "",
+          agentUuidInput: "",
+          groupNumInput: ""
+        })
+      }, (err) => {
+        console.error(err);
       })
 
     } else {
@@ -175,8 +200,6 @@ export default class CreateVehicle extends React.Component {
       />,
     ]
 
-    console.log(this.state.vehicleList);
-
 
     return (
       <div className={style.app}>
@@ -203,15 +226,21 @@ export default class CreateVehicle extends React.Component {
                     style={materialuiCreateAgentStyle.textFieldStyle}
                   />
 
-                  <TextField
-                    value={this.state.vehicleTypeInput}
-                    onChange={this.handleVehicleTypeChange.bind(this)}
-                    hintText="SCHOOL-BUS"
-                    floatingLabelText="Vehicle Type"
+                  <SelectField
+                    className={style.selectField}
+                    floatingLabelText="Type"
                     errorText={this.state.inputError}
-                    floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
-                    style={materialuiCreateAgentStyle.textFieldStyle}
-                  />
+                    value={this.state.vehicleTypeSelect}
+                    onChange={
+                      (event, key, value) => {this.handleVehicleTypeChange(event, key, value)}
+                    }
+                  >
+                    {this.state.vehicleTypeList.map((type, index) => {
+                      return (
+                        <MenuItem key={index} value={type} primaryText={type} />
+                      )
+                    })}
+                  </SelectField>
 
                 </div>
                 <div className={style.container}>
