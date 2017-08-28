@@ -44,7 +44,7 @@ const materialuiCreateAgentStyle = {
 // Component Style
 import style from './style'
 
-import { createVehicle } from './actions'
+import { createVehicle, getVehicles } from './actions'
 
 
 export default class CreateVehicle extends React.Component {
@@ -57,9 +57,26 @@ export default class CreateVehicle extends React.Component {
       vehicleTypeInput: "",
       plateIdInput: "",
       groupNumInput: "",
-      inputError: ""
+      inputError: "",
+      vehicleList: []
     }
   }
+
+
+  componentWillMount() {
+    this.updateVehicleList()
+  }
+
+  updateVehicleList(){
+    getVehicles((data) => {
+      this.setState({
+        vehicleList: data
+      });
+    }, (error) => {
+      console.log(error);
+    })
+  }
+
 
   dialogAlert() {
     this.setState({dialogAlert: true})
@@ -139,6 +156,8 @@ export default class CreateVehicle extends React.Component {
     }
   }
 
+
+
   render() {
 
     const alertActions = [
@@ -155,6 +174,9 @@ export default class CreateVehicle extends React.Component {
         onTouchTap={this.dialogClose.bind(this)}
       />,
     ]
+
+    console.log(this.state.vehicleList);
+
 
     return (
       <div className={style.app}>
@@ -232,35 +254,35 @@ export default class CreateVehicle extends React.Component {
                  displaySelectAll={false}
                  adjustForCheckbox={false}>
                  <TableRow>
-                   <TableHeaderColumn>Agent ID</TableHeaderColumn>
-                   <TableHeaderColumn>Label</TableHeaderColumn>
-                   <TableHeaderColumn>Type</TableHeaderColumn>
                    <TableHeaderColumn>Plate ID</TableHeaderColumn>
-                   <TableHeaderColumn>Group</TableHeaderColumn>
+                   <TableHeaderColumn>Type</TableHeaderColumn>
+                   <TableHeaderColumn>Groups</TableHeaderColumn>
                    <TableHeaderColumn>Options</TableHeaderColumn>
                  </TableRow>
                </TableHeader>
                <TableBody
                  displayRowCheckbox={false}>
 
-                 <TableRow>
-                   <TableRowColumn>123456</TableRowColumn>
-                   <TableRowColumn>Example Label</TableRowColumn>
-                   <TableRowColumn>SCHOOL-BUS</TableRowColumn>
-                   <TableRowColumn>AD 345</TableRowColumn>
-                   <TableRowColumn>3</TableRowColumn>
-                   <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
-                       style={materialuiCreateAgentStyle.iconButton}
-                       iconStyle={materialuiCreateAgentStyle.iconDeleteButton}
-                       tooltip="Delete"
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
-                   </TableRowColumn>
-                 </TableRow>
-
+                 {/* Maps through the vehicleList state to render vehicle rows */}
+                 {this.state.vehicleList.map((vehicle, index) => {
+                   return (
+                     <TableRow key={index}>
+                       <TableRowColumn>{vehicle.plate_id && vehicle.plate_id}</TableRowColumn>
+                       <TableRowColumn>{vehicle.type && vehicle.type}</TableRowColumn>
+                       <TableRowColumn>{vehicle.groups || ""}</TableRowColumn>
+                       <TableRowColumn>
+                         <IconButton
+                           onTouchTap={this.dialogAlert.bind(this)}
+                           style={materialuiCreateAgentStyle.iconButton}
+                           iconStyle={materialuiCreateAgentStyle.iconDeleteButton}
+                           tooltip="Delete"
+                           touch={true}>
+                             <ActionDelete/>
+                         </IconButton>
+                       </TableRowColumn>
+                     </TableRow>
+                   )
+                 })}
                </TableBody>
              </Table>
            </Paper>
