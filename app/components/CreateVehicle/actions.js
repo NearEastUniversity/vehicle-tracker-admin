@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {VEHICLE_URL, VEHICLE_TYPE_URL} from '../../config/consts'
+import {VEHICLE_URL, VEHICLE_TYPE_URL, AGENT_URL} from '../../config/consts'
 
 function getToken() {
   return localStorage.token
@@ -46,6 +46,23 @@ export function getVehicleTypes(handler, errorHandler) {
     headers: {Authorization: "Bearer " + getToken()},
     responseType: 'json',
     url: VEHICLE_TYPE_URL
+  })
+  .then(function (res){
+    if (res.status < 400) {
+      handler(res.data)
+    }
+  })
+  .catch(function (res){
+    errorHandler(res)
+  })
+}
+
+export function getAgents(handler, errorHandler) {
+  axios({
+    method: 'get',
+    headers: {Authorization: "Bearer " + getToken()},
+    responseType: 'json',
+    url: AGENT_URL
   })
   .then(function (res){
     if (res.status < 400) {

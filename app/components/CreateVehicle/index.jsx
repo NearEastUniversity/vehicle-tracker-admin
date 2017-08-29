@@ -46,7 +46,7 @@ const materialuiCreateAgentStyle = {
 // Component Style
 import style from './style'
 
-import { createVehicle, getVehicles, getVehicleTypes } from './actions'
+import { createVehicle, getVehicles, getVehicleTypes, getAgents } from './actions'
 
 
 export default class CreateVehicle extends React.Component {
@@ -55,13 +55,14 @@ export default class CreateVehicle extends React.Component {
     super(props)
     this.state = {
       dialogAlert: false,
-      agentUuidInput: "",
+      agentListSelect: "",
       vehicleTypeSelect: "",
       vehicleTypeList: [],
       plateIdInput: "",
       groupNumInput: "",
       inputError: "",
-      vehicleList: []
+      vehicleList: [],
+      agentsList:[]
     }
   }
 
@@ -69,6 +70,24 @@ export default class CreateVehicle extends React.Component {
   componentWillMount() {
     this.updateVehicleList()
     this.updateVehicleTypes()
+    this.updateAgentSelectList()
+  }
+
+  updateAgentSelectList(){
+    getAgents((data) => {
+      if (data.length = 0) {
+        this.setState({
+          agentsList: data,
+        });
+      } else {
+        this.setState({
+          agentsList: ["---"],
+        });
+      }
+
+    }, (error) => {
+      console.error(error);
+    })
   }
 
 
@@ -105,9 +124,9 @@ export default class CreateVehicle extends React.Component {
 
 
   // handle inputs
-  handleAgentUuidChange(event){
+  handleAgentListChange(event, key, value){
     this.setState({
-      agentUuidInput: event.target.value
+      vehicleTypeSelect: value
     })
   }
 
@@ -134,7 +153,7 @@ export default class CreateVehicle extends React.Component {
     // action of submitting the form.
     event.preventDefault();
 
-    let agentUuid = this.state.agentUuidInput
+    // let agentUuid = this.state.agentListSelect
     let vehicleType = this.state.vehicleTypeSelect
     let plateId = this.state.plateIdInput
     let groupNum = this.state.groupNumInput
@@ -167,7 +186,7 @@ export default class CreateVehicle extends React.Component {
           vehicleList: newVehicleList,
           plateIdInput: "",
           vehicleTypeSelect: "",
-          agentUuidInput: "",
+          agentListSelect: "",
           groupNumInput: ""
         })
       }, (err) => {
@@ -245,13 +264,20 @@ export default class CreateVehicle extends React.Component {
                 </div>
                 <div className={style.container}>
 
-                  <TextField
-                    value={this.state.agentUuidInput}
-                    onChange={this.handleAgentUuidChange.bind(this)}
-                    floatingLabelText="Agent UUID (optional)"
-                    floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
-                    style={materialuiCreateAgentStyle.textFieldStyle}
-                  />
+                  <SelectField
+                    className={style.selectField}
+                    floatingLabelText="Agent"
+                    value={this.state.agentListSelect}
+                    onChange={
+                      (event, key, value) => {this.handleAgentListChange(event, key, value)}
+                    }
+                  >
+                    {this.state.agentsList.map((type, index) => {
+                      return (
+                        <MenuItem key={index} value={type} primaryText={type} />
+                      )
+                    })}
+                  </SelectField>
 
                   <TextField
                     value={this.state.groupNumInput}
