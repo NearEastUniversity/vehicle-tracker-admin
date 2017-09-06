@@ -113,7 +113,7 @@ class SignIn extends React.Component {
 	}
 
 	render() {
-		
+
 		return (
 			<div className={style.app}>
 				{isSignedIn() ? (

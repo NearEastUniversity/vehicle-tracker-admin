@@ -16,6 +16,8 @@ import SignIn from '../SignIn'
 import SignOut from '../SignOut'
 import Settings from '../Settings'
 
+// Component Style
+import style from './style'
 
 export default class Master extends Component {
 
