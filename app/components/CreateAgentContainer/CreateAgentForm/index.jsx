@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
 // Material UI Styles
-const materialuiCreateAgentStyle = {
+const muiStyle = {
   floatingLabelStyle: {
     fontWeight: 'normal',
   },
@@ -26,14 +26,14 @@ export default class CreateAgentContainer extends React.Component {
         <TextField
           hintText="Example Label"
           floatingLabelText="Agent Label"
-          floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
-          style={materialuiCreateAgentStyle.textFieldStyle}/>
+          floatingLabelStyle={muiStyle.floatingLabelStyle}
+          style={muiStyle.textFieldStyle}/>
         <RaisedButton
           label="Create"
           icon={<ContentAdd/>}
           labelColor="#fff"
           backgroundColor="#039BE5"
-          style={materialuiCreateAgentStyle.createButtonStyle}/>
+          style={muiStyle.createButtonStyle}/>
       </div>
     )
   }

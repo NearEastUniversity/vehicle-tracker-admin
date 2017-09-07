@@ -18,7 +18,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 
 // Material UI Styles
-const materialuiCreateAgentStyle = {
+const muiStyle = {
   floatingLabelStyle: {
     fontWeight: 'normal',
   },
@@ -92,8 +92,8 @@ export default class CreateAgentContainer extends React.Component {
              <TableRowColumn>
                <IconButton
                  onTouchTap={this.dialogAlert.bind(this)}
-                 style={materialuiCreateAgentStyle.iconButton}
-                 iconStyle={materialuiCreateAgentStyle.iconDeleteButton}
+                 style={muiStyle.iconButton}
+                 iconStyle={muiStyle.iconDeleteButton}
                  tooltip="Delete"
                  touch={true}>
                    <ActionDelete/>

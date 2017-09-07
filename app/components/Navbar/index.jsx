@@ -13,7 +13,7 @@ import ActionSettings from 'material-ui/svg-icons/action/settings'
 import ActionexitToapp from 'material-ui/svg-icons/action/exit-to-app'
 
 // Material UI Styles
-const materialuiNavbarStyles = {
+const muiStyle = {
   appbar: {
     backgroundColor: '#039BE5',
     position: 'relative',
@@ -30,14 +30,14 @@ import style from './style'
 const Navbar = () => (
   <div className={style.app}>
     <AppBar
-      style={materialuiNavbarStyles.appbar}
+      style={muiStyle.appbar}
    		title="NEU Bus Tracker Admin"
       showMenuIconButton={false}
     	iconElementRight={
       <div>
         <NavLink to="/dashboard" activeClassName={style.active}>
           <IconButton
-            iconStyle={materialuiNavbarStyles.iconButtons}
+            iconStyle={muiStyle.iconButtons}
             tooltip="Dashboard"
             touch={true}>
               <ActionDashboard/>
@@ -45,7 +45,7 @@ const Navbar = () => (
         </NavLink>
         <NavLink to="/settings" activeClassName={style.active}>
           <IconButton
-            iconStyle={materialuiNavbarStyles.iconButtons}
+            iconStyle={muiStyle.iconButtons}
             tooltip="Settings"
             touch={true}>
               <ActionSettings/>
@@ -53,7 +53,7 @@ const Navbar = () => (
         </NavLink>
         <NavLink to="/signout">
           <IconButton
-            iconStyle={materialuiNavbarStyles.iconButtons}
+            iconStyle={muiStyle.iconButtons}
             tooltip="Sign out"
             tooltipPosition="bottom-left"
             touch={true}>

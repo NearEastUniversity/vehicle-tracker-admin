@@ -8,7 +8,7 @@ import CreateAgentForm from './CreateAgentForm'
 import AgentsTable from './AgentsTable';
 
 // Material UI Styles
-const materialuiCreateAgentStyle = {
+const muiStyle = {
   paper: {
     padding: '0px 50px 50px 50px',
   }
@@ -22,7 +22,7 @@ export default class CreateAgentContainer extends React.Component {
   render() {
     return (
       <div className={style.app}>
-          <Paper zDepth={1} style={materialuiCreateAgentStyle.paper}>
+          <Paper zDepth={1} style={muiStyle.paper}>
             <h3>Create Agent</h3>
             <CreateAgentForm />
             <AgentsTable />

@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
 // Material UI Styles
-const materialuiCreateConnectionFormStyle = {
+const muiStyle = {
   selectFieldStyle: {
     textAlign: 'left',
     margin: '0px 20px 40px',
@@ -63,10 +63,10 @@ export default class CreateConnectionContainer extends React.Component {
         {/* Create Connection SelectFields and Button */}
         <div className={style.container}>
           <SelectField
-            style={materialuiCreateConnectionFormStyle.selectFieldStyle}
+            style={muiStyle.selectFieldStyle}
             floatingLabelText="Select Agent"
             floatingLabelFixed={true}
-            floatingLabelStyle={materialuiCreateConnectionFormStyle.floatingLabelStyle}
+            floatingLabelStyle={muiStyle.floatingLabelStyle}
             maxHeight={300}
             value={this.state.agentValue}
             onChange={this.agentSelect.bind(this)}>
@@ -75,10 +75,10 @@ export default class CreateConnectionContainer extends React.Component {
         </div>
         <div className={style.container}>
           <SelectField
-            style={materialuiCreateConnectionFormStyle.selectFieldStyle}
+            style={muiStyle.selectFieldStyle}
             floatingLabelText="Select vehicle"
             floatingLabelFixed={true}
-            floatingLabelStyle={materialuiCreateConnectionFormStyle.floatingLabelStyle}
+            floatingLabelStyle={muiStyle.floatingLabelStyle}
             maxHeight={300}
             value={this.state.vehicleValue}
             onChange={this.vehicleSelect.bind(this)}>
@@ -91,7 +91,7 @@ export default class CreateConnectionContainer extends React.Component {
           icon={<ContentAdd/>}
           labelColor="#fff"
           backgroundColor="#039BE5"
-          style={materialuiCreateConnectionFormStyle.createRisedButton}/>
+          style={muiStyle.createRisedButton}/>
         </div>
       </div>
     )

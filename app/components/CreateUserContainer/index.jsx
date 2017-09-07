@@ -8,7 +8,7 @@ import CreateUserForm from './CreateUserForm'
 import UsersTable from './UsersTable'
 
 // Material UI Styles
-const materialuiCreateUserContainerStyle = {
+const muiStyle = {
   paper: {
     padding: '0px 50px 50px 50px',
   }
@@ -59,7 +59,7 @@ export default class CreateUserContainer extends React.Component {
   render() {
     return (
       <div className={style.app}>
-        <Paper zDepth={1} style={materialuiCreateUserContainerStyle.paper}>
+        <Paper zDepth={1} style={muiStyle.paper}>
           <h3>Create User</h3>
           <CreateUserForm userCreated={this.userCreated.bind(this)}/>
           <UsersTable users={this.state.users} changeOnUserList={this.changeOnUserList.bind(this)}/>

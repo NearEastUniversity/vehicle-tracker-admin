@@ -18,7 +18,7 @@ import ImageEdit from 'material-ui/svg-icons/image/edit'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 
 // Material UI Styles
-const materialuiConnectionsTableStyle = {
+const muiStyle = {
   iconEditButton: {
     color: '#039BE5',
   },
@@ -135,16 +135,16 @@ export default class ConnectionsTable extends React.Component {
                  <TableRowColumn>
                    <IconButton
                      onTouchTap={this.dialogEdit.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconEditButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconEditButton}
                      tooltip="Edit"
                      touch={true}>
                        <ImageEdit/>
                    </IconButton>
                    <IconButton
                      onTouchTap={this.dialogAlert.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconUnassignButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconUnassignButton}
                      tooltip="Unassign"
                      touch={true}>
                        <ActionDelete/>
@@ -157,16 +157,16 @@ export default class ConnectionsTable extends React.Component {
                  <TableRowColumn>
                    <IconButton
                      onTouchTap={this.dialogEdit.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconEditButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconEditButton}
                      tooltip="Edit"
                      touch={true}>
                        <ImageEdit/>
                    </IconButton>
                    <IconButton
                      onTouchTap={this.dialogAlert.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconUnassignButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconUnassignButton}
                      tooltip="Unassign"
                      touch={true}>
                        <ActionDelete/>
@@ -179,16 +179,16 @@ export default class ConnectionsTable extends React.Component {
                  <TableRowColumn>
                    <IconButton
                      onTouchTap={this.dialogEdit.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconEditButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconEditButton}
                      tooltip="Edit"
                      touch={true}>
                        <ImageEdit/>
                    </IconButton>
                    <IconButton
                      onTouchTap={this.dialogAlert.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconUnassignButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconUnassignButton}
                      tooltip="Unassign"
                      touch={true}>
                        <ActionDelete/>
@@ -201,16 +201,16 @@ export default class ConnectionsTable extends React.Component {
                  <TableRowColumn>
                    <IconButton
                      onTouchTap={this.dialogEdit.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconEditButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconEditButton}
                      tooltip="Edit"
                      touch={true}>
                        <ImageEdit/>
                    </IconButton>
                    <IconButton
                      onTouchTap={this.dialogAlert.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconUnassignButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconUnassignButton}
                      tooltip="Unassign"
                      touch={true}>
                        <ActionDelete/>
@@ -223,16 +223,16 @@ export default class ConnectionsTable extends React.Component {
                  <TableRowColumn>
                    <IconButton
                      onTouchTap={this.dialogEdit.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconEditButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconEditButton}
                      tooltip="Edit"
                      touch={true}>
                        <ImageEdit/>
                    </IconButton>
                    <IconButton
                      onTouchTap={this.dialogAlert.bind(this)}
-                     style={materialuiConnectionsTableStyle.iconButton}
-                     iconStyle={materialuiConnectionsTableStyle.iconUnassignButton}
+                     style={muiStyle.iconButton}
+                     iconStyle={muiStyle.iconUnassignButton}
                      tooltip="Unassign"
                      touch={true}>
                        <ActionDelete/>
@@ -253,7 +253,7 @@ export default class ConnectionsTable extends React.Component {
               <SelectField
                 floatingLabelText="Select Agent"
                 floatingLabelFixed={true}
-                floatingLabelStyle={materialuiConnectionsTableStyle.floatingLabelStyle}
+                floatingLabelStyle={muiStyle.floatingLabelStyle}
                 maxHeight={300}
                 value={this.state.agentValue}
                 onChange={this.agentChange.bind(this)}>
@@ -265,7 +265,7 @@ export default class ConnectionsTable extends React.Component {
               <SelectField
                 floatingLabelText="Select vehicle"
                 floatingLabelFixed={true}
-                floatingLabelStyle={materialuiConnectionsTableStyle.floatingLabelStyle}
+                floatingLabelStyle={muiStyle.floatingLabelStyle}
                 maxHeight={300}
                 value={this.state.vehicleValue}
                 onChange={this.vehicleChange.bind(this)}>

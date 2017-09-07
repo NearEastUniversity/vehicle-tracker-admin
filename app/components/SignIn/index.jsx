@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Paper from 'material-ui/Paper'
 
 // Material UI Styles
-const materialSignInStyles = {
+const muiStyle = {
 	signIN: {
 		padding: 30,
 		width: 350,
@@ -120,7 +120,7 @@ class SignIn extends React.Component {
 					<Redirect to="/"/>
 				) : (
 					<div className={style.container}>
-						<Paper zDepth={4} style={materialSignInStyles.signIN} >
+						<Paper zDepth={4} style={muiStyle.signIN} >
 							<h2>Sign In</h2>
 							<form onSubmit={this.handleSubmit}>
 							<TextField
@@ -128,8 +128,8 @@ class SignIn extends React.Component {
 								floatingLabelText="Email"
 								value={this.state.email}
 								onChange={this.handleEmailChange}
-								floatingLabelStyle={materialSignInStyles.floatingLabelTextStyle}
-								style={materialSignInStyles.textFieldFirst} />
+								floatingLabelStyle={muiStyle.floatingLabelTextStyle}
+								style={muiStyle.textFieldFirst} />
 							 <br />
 							<TextField
 								hintText="********"
@@ -137,8 +137,8 @@ class SignIn extends React.Component {
 								type="password"
 								value={this.state.password}
 								onChange={this.handlePasswordChange}
-								floatingLabelStyle={materialSignInStyles.floatingLabelTextStyle}
-								style={materialSignInStyles.textFieldSecond} />
+								floatingLabelStyle={muiStyle.floatingLabelTextStyle}
+								style={muiStyle.textFieldSecond} />
 							<br />
 							<RaisedButton
 								type="submit"
@@ -146,14 +146,14 @@ class SignIn extends React.Component {
 								backgroundColor="#039BE5"
 								labelColor="#ffffff"
 								fullWidth={true}
-								style={materialSignInStyles.button}
-								labelStyle={materialSignInStyles.buttonText}/>
+								style={muiStyle.button}
+								labelStyle={muiStyle.buttonText}/>
 							</form>
 						</Paper>
 
-						<Paper style={materialSignInStyles.blankDiv}>
+						<Paper style={muiStyle.blankDiv}>
 								<img src={logo} alt={"logo"}/>
-								<h3 style={materialSignInStyles.adminText}>NEU Bus Tracker Admin</h3>
+								<h3 style={muiStyle.adminText}>NEU Bus Tracker Admin</h3>
 						</Paper>
 					</div>
 					)}

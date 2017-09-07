@@ -21,7 +21,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 
 // Material UI Styles
-const materialuiCreateAgentStyle = {
+const muiStyle = {
   paper: {
     padding: '0px 50px 50px 50px',
   },
@@ -223,7 +223,7 @@ export default class CreateVehicle extends React.Component {
     return (
       <div className={style.app}>
         <div className={style.connections}>
-          <Paper zDepth={1} style={materialuiCreateAgentStyle.paper}>
+          <Paper zDepth={1} style={muiStyle.paper}>
             <h3>Create Vehicle</h3>
 
             {/* Create new Vehicle Form */}
@@ -241,8 +241,8 @@ export default class CreateVehicle extends React.Component {
                     hintText="AA535"
                     floatingLabelText="Plate ID"
                     errorText={this.state.inputError}
-                    floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
-                    style={materialuiCreateAgentStyle.textFieldStyle}
+                    floatingLabelStyle={muiStyle.floatingLabelStyle}
+                    style={muiStyle.textFieldStyle}
                   />
 
                   <SelectField
@@ -283,8 +283,8 @@ export default class CreateVehicle extends React.Component {
                     value={this.state.groupNumInput}
                     onChange={this.handleGroupNumChange.bind(this)}
                     floatingLabelText="Group Number (optional)"
-                    floatingLabelStyle={materialuiCreateAgentStyle.floatingLabelStyle}
-                    style={materialuiCreateAgentStyle.textFieldStyle}
+                    floatingLabelStyle={muiStyle.floatingLabelStyle}
+                    style={muiStyle.textFieldStyle}
                   />
 
                 </div>
@@ -296,7 +296,7 @@ export default class CreateVehicle extends React.Component {
                 icon={<ContentAdd/>}
                 labelColor="#fff"
                 backgroundColor="#039BE5"
-                style={materialuiCreateAgentStyle.createButtonStyle}
+                style={muiStyle.createButtonStyle}
               />
 
               </div>
@@ -328,8 +328,8 @@ export default class CreateVehicle extends React.Component {
                        <TableRowColumn>
                          <IconButton
                            onTouchTap={this.dialogAlert.bind(this)}
-                           style={materialuiCreateAgentStyle.iconButton}
-                           iconStyle={materialuiCreateAgentStyle.iconDeleteButton}
+                           style={muiStyle.iconButton}
+                           iconStyle={muiStyle.iconDeleteButton}
                            tooltip="Delete"
                            touch={true}>
                              <ActionDelete/>
