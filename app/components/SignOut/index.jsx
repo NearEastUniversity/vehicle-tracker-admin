@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 
 export default class SignOut extends Component {
-
   constructor(props) {
     super(props);
     this.state = {};
@@ -21,5 +20,4 @@ export default class SignOut extends Component {
         <Redirect to="/signin"/>
       )
   }
-
 }

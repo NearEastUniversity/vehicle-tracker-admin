@@ -27,7 +27,6 @@ const materialuiNavbarStyles = {
 // Component Style
 import style from './style'
 
-
 const Navbar = () => (
   <div className={style.app}>
     <AppBar

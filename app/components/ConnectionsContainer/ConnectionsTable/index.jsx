@@ -9,7 +9,6 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table'
-import Paper from 'material-ui/Paper'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
@@ -20,9 +19,6 @@ import ActionDelete from 'material-ui/svg-icons/action/delete'
 
 // Material UI Styles
 const materialuiConnectionsTableStyle = {
-  paper: {
-    padding: '0px 50px 50px 50px',
-  },
   iconEditButton: {
     color: '#039BE5',
   },
@@ -36,7 +32,6 @@ const materialuiConnectionsTableStyle = {
 
 // Component Style
 import style from './style'
-
 
 const vehicles = [
   <MenuItem key={1} value={1} primaryText="Vehicles"  />,
@@ -120,9 +115,6 @@ export default class ConnectionsTable extends React.Component {
 
     return (
       <div className={style.app}>
-        <Paper zDepth={1} style={materialuiConnectionsTableStyle.paper}>
-          <h3>Connections Table</h3>
-          
           {/* Table with conections */}
           <Table
             selectable={false}>
@@ -249,7 +241,6 @@ export default class ConnectionsTable extends React.Component {
                </TableRow>
              </TableBody>
            </Table>
-         </Paper>
 
          {/* Edit Connection dialog */}
          <Dialog

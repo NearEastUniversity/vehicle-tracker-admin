@@ -10,7 +10,6 @@ injectTapEventPlugin();
 //import component(s)
 import Master from './components/Master'
 
-
 const App = () => (
   <div>
   	<MuiThemeProvider>
