@@ -15,7 +15,7 @@ import Dialog from 'material-ui/Dialog'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 
 // Material UI Styles
-const materialuiCreateUserStyle = {
+const materialuiUsersTableStyle = {
   floatingLabelStyle: {
     fontWeight: 'normal',
   },
@@ -117,8 +117,8 @@ export default class UsersTable extends React.Component {
                    <TableRowColumn>
                      <IconButton
                        onTouchTap={this.handleDeleteUser.bind(this, user)}
-                       style={materialuiCreateUserStyle.iconButton}
-                       iconStyle={materialuiCreateUserStyle.iconDeleteButton}
+                       style={materialuiUsersTableStyle.iconButton}
+                       iconStyle={materialuiUsersTableStyle.iconDeleteButton}
                        tooltip="Delete"
                        touch={true}>
                          <ActionDelete/>

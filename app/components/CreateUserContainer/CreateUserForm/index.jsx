@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
 // Material UI Styles
-const materialuiCreateUserStyle = {
+const materialuiCreateUserFormStyle = {
   floatingLabelStyle: {
     fontWeight: 'normal',
   },
@@ -75,22 +75,22 @@ export default class CreateUserForm extends React.Component {
             type="email"
             hintText="example@example.com"
             floatingLabelText="Email"
-            floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
-            style={materialuiCreateUserStyle.textFieldStyle}/>
+            floatingLabelStyle={materialuiCreateUserFormStyle.floatingLabelStyle}
+            style={materialuiCreateUserFormStyle.textFieldStyle}/>
           <TextField
             value={this.state.passwordInput}
             onChange={this.handlePasswordChange.bind(this)}
             hintText="set a password"
             floatingLabelText="Password"
-            floatingLabelStyle={materialuiCreateUserStyle.floatingLabelStyle}
-            style={materialuiCreateUserStyle.textFieldStyle}/>
+            floatingLabelStyle={materialuiCreateUserFormStyle.floatingLabelStyle}
+            style={materialuiCreateUserFormStyle.textFieldStyle}/>
           <RaisedButton
             type="submit"
             label="Create"
             icon={<ContentAdd/>}
             labelColor="#fff"
             backgroundColor="#039BE5"
-            style={materialuiCreateUserStyle.createButtonStyle}/>
+            style={materialuiCreateUserFormStyle.createButtonStyle}/>
         </form>
      </div>
     )
