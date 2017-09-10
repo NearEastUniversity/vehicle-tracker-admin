@@ -137,7 +137,6 @@ export default class ConnectionsTable extends React.Component {
                      onTouchTap={this.dialogEdit.bind(this)}
                      style={muiStyle.iconButton}
                      iconStyle={muiStyle.iconEditButton}
-                     tooltip="Edit"
                      touch={true}>
                        <ImageEdit/>
                    </IconButton>
@@ -145,7 +144,6 @@ export default class ConnectionsTable extends React.Component {
                      onTouchTap={this.dialogAlert.bind(this)}
                      style={muiStyle.iconButton}
                      iconStyle={muiStyle.iconUnassignButton}
-                     tooltip="Unassign"
                      touch={true}>
                        <ActionDelete/>
                    </IconButton>
@@ -159,7 +157,6 @@ export default class ConnectionsTable extends React.Component {
                      onTouchTap={this.dialogEdit.bind(this)}
                      style={muiStyle.iconButton}
                      iconStyle={muiStyle.iconEditButton}
-                     tooltip="Edit"
                      touch={true}>
                        <ImageEdit/>
                    </IconButton>
@@ -167,7 +164,6 @@ export default class ConnectionsTable extends React.Component {
                      onTouchTap={this.dialogAlert.bind(this)}
                      style={muiStyle.iconButton}
                      iconStyle={muiStyle.iconUnassignButton}
-                     tooltip="Unassign"
                      touch={true}>
                        <ActionDelete/>
                    </IconButton>
@@ -181,7 +177,6 @@ export default class ConnectionsTable extends React.Component {
                      onTouchTap={this.dialogEdit.bind(this)}
                      style={muiStyle.iconButton}
                      iconStyle={muiStyle.iconEditButton}
-                     tooltip="Edit"
                      touch={true}>
                        <ImageEdit/>
                    </IconButton>
@@ -189,51 +184,6 @@ export default class ConnectionsTable extends React.Component {
                      onTouchTap={this.dialogAlert.bind(this)}
                      style={muiStyle.iconButton}
                      iconStyle={muiStyle.iconUnassignButton}
-                     tooltip="Unassign"
-                     touch={true}>
-                       <ActionDelete/>
-                   </IconButton>
-                 </TableRowColumn>
-               </TableRow>
-               <TableRow>
-                 <TableRowColumn>123456</TableRowColumn>
-                 <TableRowColumn>AD 234</TableRowColumn>
-                 <TableRowColumn>
-                   <IconButton
-                     onTouchTap={this.dialogEdit.bind(this)}
-                     style={muiStyle.iconButton}
-                     iconStyle={muiStyle.iconEditButton}
-                     tooltip="Edit"
-                     touch={true}>
-                       <ImageEdit/>
-                   </IconButton>
-                   <IconButton
-                     onTouchTap={this.dialogAlert.bind(this)}
-                     style={muiStyle.iconButton}
-                     iconStyle={muiStyle.iconUnassignButton}
-                     tooltip="Unassign"
-                     touch={true}>
-                       <ActionDelete/>
-                   </IconButton>
-                 </TableRowColumn>
-               </TableRow>
-               <TableRow>
-                 <TableRowColumn>123456</TableRowColumn>
-                 <TableRowColumn>AD 234</TableRowColumn>
-                 <TableRowColumn>
-                   <IconButton
-                     onTouchTap={this.dialogEdit.bind(this)}
-                     style={muiStyle.iconButton}
-                     iconStyle={muiStyle.iconEditButton}
-                     tooltip="Edit"
-                     touch={true}>
-                       <ImageEdit/>
-                   </IconButton>
-                   <IconButton
-                     onTouchTap={this.dialogAlert.bind(this)}
-                     style={muiStyle.iconButton}
-                     iconStyle={muiStyle.iconUnassignButton}
-                     tooltip="Unassign"
                      touch={true}>
                        <ActionDelete/>
                    </IconButton>

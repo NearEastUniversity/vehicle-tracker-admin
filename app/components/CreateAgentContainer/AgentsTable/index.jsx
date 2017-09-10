@@ -94,7 +94,6 @@ export default class CreateAgentContainer extends React.Component {
                  onTouchTap={this.dialogAlert.bind(this)}
                  style={muiStyle.iconButton}
                  iconStyle={muiStyle.iconDeleteButton}
-                 tooltip="Delete"
                  touch={true}>
                    <ActionDelete/>
                </IconButton>
