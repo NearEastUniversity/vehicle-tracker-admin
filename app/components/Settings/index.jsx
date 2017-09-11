@@ -1,19 +1,19 @@
-import React from 'react'
+ import React from 'react'
 
 // Component's paths
 import Navbar from '../Navbar'
-import CreateUserContainer from '../CreateUserContainer'
-import CreateAgentContainer from '../CreateAgentContainer'
-import CreateVehicleContainer from '../CreateVehicleContainer'
+import UserContainer from '../UserContainer'
+import AgentContainer from '../AgentContainer'
+import VehicleContainer from '../VehicleContainer'
 
 export default class Dashoboard extends React.Component {
   render() {
     return (
       <div>
         <Navbar />
-        <CreateUserContainer />
-        <CreateAgentContainer />
-        <CreateVehicleContainer />
+        <UserContainer />
+        <AgentContainer />
+        <VehicleContainer />
       </div>
     )
   }

@@ -20,7 +20,7 @@ import style from './style'
 // Component Actions
 import {getUsers} from './actions'
 
-export default class CreateUserContainer extends React.Component {
+export default class UserContainer extends React.Component {
 
   constructor(props) {
     super(props)

@@ -20,7 +20,7 @@ import style from './style'
 // Component Actions
 import {getVehicles } from './actions'
 
-export default class CreateVehicleContainer extends React.Component {
+export default class VehicleContainer extends React.Component {
 
   constructor(props) {
     super(props)

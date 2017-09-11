@@ -17,7 +17,7 @@ const muiStyle = {
 // Component Style
 import style from './style'
 
-export default class CreateAgentContainer extends React.Component {
+export default class AgentContainer extends React.Component {
 
   render() {
     return (
