@@ -49,10 +49,10 @@ export default class CreateVehicleContainer extends React.Component {
   updateVehicleList(){
     getVehicles((data) => {
       this.setState({
-        vehicleList: data
+        vehicleList: data,
       });
-    }, (error) => {
-      console.error(error);
+    }, (res) => {
+      console.error(res);
     })
   }
 

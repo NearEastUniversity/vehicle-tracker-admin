@@ -38,8 +38,9 @@ export default class VehiclesTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      vehicleList: props.vehicleList,
       dialogAlert: false,
-      vehicleList: props.vehicleList
+      deleteVehicle: {}
     }
   }
 
@@ -51,8 +52,27 @@ export default class VehiclesTable extends React.Component {
 		this.setState({dialogAlert: false})
 	}
 
-  render() {
+  handleDeleteVehicle(vehicle) {
+    this.setState({
+      dialogAlert: true,
+      deleteVehicle: vehicle
+    })
+  }
 
+  confirmDeleteVehicle(){
+    deleteVehicle(this.state.deleteVehicle.plate_id, (res) => {
+
+      this.setState({
+        dialogAlert: false,
+        deleteVehicle: {}
+      })
+      this.props.changeOnVehicleList()
+    }, (res) => {
+      console.log(`delete vehicle error: ${res}`);
+    })
+  }
+
+  render() {
     const alertActions = [
       <FlatButton
         label="Cancel"
@@ -64,13 +84,12 @@ export default class VehiclesTable extends React.Component {
         label="Delete"
         style={{color: "#ff0000"}}
         primary={true}
-        onTouchTap={this.dialogClose.bind(this)}
+        onTouchTap={this.confirmDeleteVehicle.bind(this)}
       />,
     ]
 
     return (
       <div className={style.app}>
-        {/* Table with created Vechicles */}
         <Table
           selectable={false}>
            <TableHeader
@@ -95,7 +114,7 @@ export default class VehiclesTable extends React.Component {
                    <TableRowColumn>{vehicle.groups || ""}</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       onTouchTap={this.dialogAlert.bind(this)}
+                       onTouchTap={this.handleDeleteVehicle.bind(this, vehicle)}
                        style={muiStyle.iconButton}
                        iconStyle={muiStyle.iconDeleteButton}
                        touch={true}>
@@ -110,12 +129,17 @@ export default class VehiclesTable extends React.Component {
 
         {/* Delete Vehicle Dialog */}
         <Dialog
+         className={style.dialog}
          title="Delete Vehicle"
          actions={alertActions}
          modal={false}
          open={this.state.dialogAlert}
          onRequestClose={this.dialogClose.bind(this)}>
-         Do you realy want to delete this vehicle?
+         Do you realy want to delete
+         <span className={style.highlight}>
+           {this.state.deleteVehicle.plate_id}
+         </span>
+         plate ID vehicle?
        </Dialog>
      </div>
     )
