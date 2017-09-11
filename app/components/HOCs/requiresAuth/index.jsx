@@ -32,21 +32,21 @@ export default function requiresAuth(Component, config) {
     //   }
     // }
 
-        render() {
-            return (
-                <div className="authenticated">
-                    {isAuthenticated() ? (
-                      <Component {...this.props}/>
-                    ) : (
-                      <Redirect to={{
-                        pathname: '/signin',
-                        state: { from: this.props.location }
-                      }}/>
-                    )}
-                </div>
-            )
-        }
+    render() {
+      return (
+        <div className="authenticated">
+          {isAuthenticated() ? (
+            <Component {...this.props}/>
+          ) : (
+            <Redirect to={{
+              pathname: '/signin',
+              state: { from: this.props.location }
+            }}/>
+          )}
+        </div>
+      )
     }
+  }
 
-    return AuthenticatedComponent
+  return AuthenticatedComponent
 }

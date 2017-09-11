@@ -39,7 +39,7 @@ const agents = [
   <MenuItem key={5} value={5} primaryText="Agents4" />,
 ]
 
-export default class CreateConnectionContainer extends React.Component {
+export default class CreateConnectionForm extends React.Component {
 
   constructor(props) {
     super(props)

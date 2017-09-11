@@ -53,7 +53,6 @@ import logo from './img/logo.svg'
 // Component Actions
 import {authUser, isSignedIn} from './actions'
 
-
 class SignIn extends React.Component {
 	constructor(props) {
 		super();
@@ -113,7 +112,6 @@ class SignIn extends React.Component {
 	}
 
 	render() {
-
 		return (
 			<div className={style.app}>
 				{isSignedIn() ? (

@@ -6,7 +6,6 @@ import {
   Redirect
 } from 'react-router-dom'
 
-
 // Higher Order components
 import requiresAuth from '../HOCs/requiresAuth'
 
@@ -44,5 +43,4 @@ export default class Master extends Component {
       </Router>
     );
   }
-
 }

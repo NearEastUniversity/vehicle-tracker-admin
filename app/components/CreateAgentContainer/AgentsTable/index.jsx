@@ -12,19 +12,10 @@ import {
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 
 // Material UI Styles
 const muiStyle = {
-  floatingLabelStyle: {
-    fontWeight: 'normal',
-  },
-  textFieldStyle: {
-    margin: '0px 20px 40px 20px',
-  },
   iconDeleteButton: {
     color: '#FF0000',
   },

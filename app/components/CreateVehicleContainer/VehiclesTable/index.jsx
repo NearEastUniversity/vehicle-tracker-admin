@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableHeaderColumn,
   TableRow,
-  TableRowColumn
+  TableRowColumn,
 } from 'material-ui/Table'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
@@ -20,7 +20,7 @@ const muiStyle = {
     fontWeight: 'normal',
   },
   iconDeleteButton: {
-    color: '#FF1744',
+    color: '#FF0000',
   },
   iconButton: {
     zIndex: '9999 !important',
@@ -31,16 +31,15 @@ const muiStyle = {
 import style from './style'
 
 // Component Actions
-import {deleteUser} from './actions'
+import {deleteVehicle} from './actions'
 
-export default class UsersTable extends React.Component {
+export default class VehiclesTable extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      users: props.users,
       dialogAlert: false,
-      deleteUser: {}
+      vehicleList: props.vehicleList
     }
   }
 
@@ -52,27 +51,8 @@ export default class UsersTable extends React.Component {
 		this.setState({dialogAlert: false})
 	}
 
-  handleDeleteUser(user) {
-    this.setState({
-      dialogAlert: true,
-      deleteUser: user
-    })
-  }
-
-  confirmDeleteUser(){
-    deleteUser(this.state.deleteUser.uuid, (res) => {
-
-      this.setState({
-        dialogAlert: false,
-        deleteUser: {}
-      })
-      this.props.changeOnUserList()
-    }, (res) => {
-      console.log(`delete user error: ${res}`);
-    })
-  }
-
   render() {
+
     const alertActions = [
       <FlatButton
         label="Cancel"
@@ -84,33 +64,38 @@ export default class UsersTable extends React.Component {
         label="Delete"
         style={{color: "#ff0000"}}
         primary={true}
-        onTouchTap={this.confirmDeleteUser.bind(this)}
+        onTouchTap={this.dialogClose.bind(this)}
       />,
     ]
 
     return (
       <div className={style.app}>
+        {/* Table with created Vechicles */}
         <Table
           selectable={false}>
            <TableHeader
              displaySelectAll={false}
              adjustForCheckbox={false}>
              <TableRow>
-               <TableHeaderColumn>Email</TableHeaderColumn>
+               <TableHeaderColumn>Plate ID</TableHeaderColumn>
+               <TableHeaderColumn>Type</TableHeaderColumn>
+               <TableHeaderColumn>Groups</TableHeaderColumn>
                <TableHeaderColumn>Options</TableHeaderColumn>
              </TableRow>
            </TableHeader>
            <TableBody
              displayRowCheckbox={false}>
 
-             {/* Maps through the users state to render user rows */}
-             {this.props.users.map((user, index) => {
+             {/* Maps through the vehicleList state to render vehicle rows */}
+             {this.props.vehicleList.map((vehicle, index) => {
                return (
                  <TableRow key={index}>
-                   <TableRowColumn>{user.email && user.email}</TableRowColumn>
+                   <TableRowColumn>{vehicle.plate_id && vehicle.plate_id}</TableRowColumn>
+                   <TableRowColumn>{vehicle.type && vehicle.type}</TableRowColumn>
+                   <TableRowColumn>{vehicle.groups || ""}</TableRowColumn>
                    <TableRowColumn>
                      <IconButton
-                       onTouchTap={this.handleDeleteUser.bind(this, user)}
+                       onTouchTap={this.dialogAlert.bind(this)}
                        style={muiStyle.iconButton}
                        iconStyle={muiStyle.iconDeleteButton}
                        touch={true}>
@@ -120,25 +105,19 @@ export default class UsersTable extends React.Component {
                  </TableRow>
                )
              })}
-
            </TableBody>
-        </Table>
+         </Table>
 
-        {/* Delete User Dialog */}
+        {/* Delete Vehicle Dialog */}
         <Dialog
-          className={style.dialog}
-          title="Delete User"
-          actions={alertActions}
-          modal={false}
-          open={this.state.dialogAlert}
-          onRequestClose={this.dialogClose.bind(this)}>
-          Do you realy want to delete
-          <span className={style.highlight}>
-            {this.state.deleteUser.email}
-          </span>
-          ?
-        </Dialog>
-      </div>
+         title="Delete Vehicle"
+         actions={alertActions}
+         modal={false}
+         open={this.state.dialogAlert}
+         onRequestClose={this.dialogClose.bind(this)}>
+         Do you realy want to delete this vehicle?
+       </Dialog>
+     </div>
     )
   }
 }

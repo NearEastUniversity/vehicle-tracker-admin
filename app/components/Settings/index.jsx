@@ -4,7 +4,7 @@ import React from 'react'
 import Navbar from '../Navbar'
 import CreateUserContainer from '../CreateUserContainer'
 import CreateAgentContainer from '../CreateAgentContainer'
-import CreateVehicle from '../CreateVehicle'
+import CreateVehicleContainer from '../CreateVehicleContainer'
 
 export default class Dashoboard extends React.Component {
   render() {
@@ -13,7 +13,7 @@ export default class Dashoboard extends React.Component {
         <Navbar />
         <CreateUserContainer />
         <CreateAgentContainer />
-        <CreateVehicle />
+        <CreateVehicleContainer />
       </div>
     )
   }
