@@ -155,7 +155,6 @@ export default class CreateVehicleForm extends React.Component {
           <div style={{display: 'inline-flex'}}>
             <div style={{maxWidth: '600px'}}>
             <div className={style.container}>
-
               <TextField
                 value={this.state.plateIdInput}
                 onChange={this.handlePlateIdChange.bind(this)}
@@ -171,10 +170,7 @@ export default class CreateVehicleForm extends React.Component {
                 floatingLabelText="Type"
                 errorText={this.state.inputError}
                 value={this.state.vehicleTypeSelect}
-                onChange={
-                  (event, key, value) => {this.handleVehicleTypeChange(event, key, value)}
-                }
-              >
+                onChange={(event, key, value) => {this.handleVehicleTypeChange(event, key, value)}}>
                 {this.state.vehicleTypeList.map((type, index) => {
                   return (
                     <MenuItem key={index} value={type} primaryText={type} />
@@ -184,15 +180,11 @@ export default class CreateVehicleForm extends React.Component {
 
             </div>
             <div className={style.container}>
-
               <SelectField
                 className={style.selectField}
                 floatingLabelText="Agent"
                 value={this.state.agentListSelect}
-                onChange={
-                  (event, key, value) => {this.handleAgentListChange(event, key, value)}
-                }
-              >
+                onChange={(event, key, value) => {this.handleAgentListChange(event, key, value)}}>
                 {this.state.agentsList.map((type, index) => {
                   return (
                     <MenuItem key={index} value={type} primaryText={type} />
