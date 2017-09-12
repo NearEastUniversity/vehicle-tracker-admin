@@ -2,7 +2,6 @@ import React from 'react'
 
 // Component's paths
 import Navbar from '../Navbar'
-import CreateConnectionContainer from '../CreateConnectionContainer'
 import ConnectionsContainer from '../ConnectionsContainer'
 
 // Component Style
@@ -13,7 +12,6 @@ export default class Dashoboard extends React.Component {
     return (
       <div>
         <Navbar />
-        <CreateConnectionContainer />
         <ConnectionsContainer />
      </div>
     )

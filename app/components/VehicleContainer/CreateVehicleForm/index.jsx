@@ -48,16 +48,9 @@ export default class CreateVehicleForm extends React.Component {
 
   updateAgentSelectList(){
     getAgents((data) => {
-      if (data.length = 0) {
-        this.setState({
-          agentsList: data,
-        });
-      } else {
-        this.setState({
-          agentsList: ["---"],
-        });
-      }
-
+      this.setState({
+        agentsList: data,
+      });
     }, (error) => {
       console.error(error);
     })
@@ -88,7 +81,7 @@ export default class CreateVehicleForm extends React.Component {
 
   handleAgentListChange(event, key, value){
     this.setState({
-      vehicleTypeSelect: value
+      agentListSelect: value
     })
   }
 
@@ -103,10 +96,10 @@ export default class CreateVehicleForm extends React.Component {
     // action of submitting the form.
     event.preventDefault();
 
-    // let agentUuid = this.state.agentListSelect
+    let agentUuid = this.state.agentListSelect
     let vehicleType = this.state.vehicleTypeSelect
     let plateId = this.state.plateIdInput
-    let groupNum = this.state.groupNumInput
+    let groupArr = this.state.groupNumInput
 
     let validateForm = function(arr) {
       for (var i = 0; i < arr.length; i++) {
@@ -120,10 +113,22 @@ export default class CreateVehicleForm extends React.Component {
     let reqInputs = [plateId, vehicleType];
 
     if (validateForm(reqInputs)) {
+
       let formData = {
         plate_id: plateId,
         type: vehicleType
       }
+
+      // if (agentUuid) {
+      //   formData.agent_uuid = agentUuid
+      //   console.log("if true" + agentUuid);
+      // } else {
+      //   console.log("error");
+      // }
+
+      // if (groupArr) {
+      //   formData.agent = agentUuid
+      // }
 
       createVehicle(formData, (res) => {
         this.setState({
@@ -185,9 +190,9 @@ export default class CreateVehicleForm extends React.Component {
                 floatingLabelText="Agent"
                 value={this.state.agentListSelect}
                 onChange={(event, key, value) => {this.handleAgentListChange(event, key, value)}}>
-                {this.state.agentsList.map((type, index) => {
+                {this.state.agentsList.map((agent, index) => {
                   return (
-                    <MenuItem key={index} value={type} primaryText={type} />
+                    <MenuItem key={index} value={agent.uuid} primaryText={agent.uuid} />
                   )
                 })}
               </SelectField>

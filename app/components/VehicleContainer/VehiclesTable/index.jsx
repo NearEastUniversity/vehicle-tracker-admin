@@ -9,13 +9,19 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table'
+import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
+import SelectField from 'material-ui/SelectField'
+import ImageEdit from 'material-ui/svg-icons/image/edit'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
 
 // Material UI Styles
 const muiStyle = {
+  iconEditButton: {
+    color: '#039BE5',
+  },
   floatingLabelStyle: {
     fontWeight: 'normal',
   },
@@ -40,16 +46,21 @@ export default class VehiclesTable extends React.Component {
     this.state = {
       vehicleList: props.vehicleList,
       dialogAlert: false,
+      dialogEdit: false,
       deleteVehicle: {}
     }
   }
+
+  dialogEdit() {
+    this.setState({dialogEdit: true})
+	}
 
   dialogAlert() {
     this.setState({dialogAlert: true})
 	}
 
 	dialogClose() {
-		this.setState({dialogAlert: false})
+		this.setState({dialogAlert: false, dialogEdit: false})
 	}
 
   handleDeleteVehicle(vehicle) {
@@ -73,6 +84,22 @@ export default class VehiclesTable extends React.Component {
   }
 
   render() {
+
+    const editActions = [
+      <FlatButton
+        label="Cancel"
+        style={{color: "#747374"}}
+        primary={true}
+        onTouchTap={this.dialogClose.bind(this)}
+      />,
+      <FlatButton
+        label="Edit"
+        style={{color: "#039BE5"}}
+        primary={true}
+        onTouchTap={this.dialogClose.bind(this)}
+      />,
+    ]
+
     const alertActions = [
       <FlatButton
         label="Cancel"
@@ -98,6 +125,7 @@ export default class VehiclesTable extends React.Component {
              <TableRow>
                <TableHeaderColumn>Plate ID</TableHeaderColumn>
                <TableHeaderColumn>Type</TableHeaderColumn>
+               <TableHeaderColumn>Agent</TableHeaderColumn>
                <TableHeaderColumn>Groups</TableHeaderColumn>
                <TableHeaderColumn>Options</TableHeaderColumn>
              </TableRow>
@@ -111,8 +139,16 @@ export default class VehiclesTable extends React.Component {
                  <TableRow key={index}>
                    <TableRowColumn>{vehicle.plate_id && vehicle.plate_id}</TableRowColumn>
                    <TableRowColumn>{vehicle.type && vehicle.type}</TableRowColumn>
+                   <TableRowColumn>{vehicle.agent.uuid && vehicle.agent.uuid}</TableRowColumn>
                    <TableRowColumn>{vehicle.groups || ""}</TableRowColumn>
                    <TableRowColumn>
+                     <IconButton
+                       onTouchTap={this.dialogEdit.bind(this)}
+                       style={muiStyle.iconButton}
+                       iconStyle={muiStyle.iconEditButton}
+                       touch={true}>
+                         <ImageEdit/>
+                     </IconButton>
                      <IconButton
                        onTouchTap={this.handleDeleteVehicle.bind(this, vehicle)}
                        style={muiStyle.iconButton}
@@ -126,6 +162,38 @@ export default class VehiclesTable extends React.Component {
              })}
            </TableBody>
          </Table>
+
+         {/* Edit Connection dialog */}
+         <Dialog
+          title="Edit Connection"
+          actions={editActions}
+          modal={false}
+          open={this.state.dialogEdit}
+          onRequestClose={this.dialogClose.bind(this)}>
+            <div className={style.dropDown}>
+              {/* <SelectField
+                floatingLabelText="Select Agent"
+                floatingLabelFixed={true}
+                floatingLabelStyle={muiStyle.floatingLabelStyle}
+                maxHeight={300}
+                value={this.state.agentValue}
+                onChange={this.agentChange.bind(this)}>
+                {agents}
+              </SelectField> */}
+            </div>
+
+            <div className={style.dropDown}>
+              {/* <SelectField
+                floatingLabelText="Select vehicle"
+                floatingLabelFixed={true}
+                floatingLabelStyle={muiStyle.floatingLabelStyle}
+                maxHeight={300}
+                value={this.state.vehicleValue}
+                onChange={this.vehicleChange.bind(this)}>
+                {vehicles}
+              </SelectField> */}
+            </div>
+        </Dialog>
 
         {/* Delete Vehicle Dialog */}
         <Dialog

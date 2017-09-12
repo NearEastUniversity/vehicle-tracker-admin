@@ -16,14 +16,38 @@ const muiStyle = {
 // Component Style
 import style from './style'
 
+// Component Actions
+import {getVehicles } from './actions'
+
 export default class ConnectionsContainer extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      vehicleList: []
+    }
+  }
+
+  componentWillMount() {
+    this.updateVehicleList()
+  }
+
+  updateVehicleList(){
+    getVehicles((data) => {
+      this.setState({
+        vehicleList: data,
+      });
+    }, (res) => {
+      console.error(res);
+    })
+  }
 
   render() {
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={muiStyle.paper}>
           <h3>Connections Table</h3>
-          <ConnectionsTable />
+          <ConnectionsTable vehicleList={this.state.vehicleList}/>
         </Paper>
      </div>
     )
