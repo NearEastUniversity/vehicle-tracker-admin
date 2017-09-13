@@ -26,16 +26,18 @@ const muiStyle = {
     zIndex: 1,
 	},
 	textFieldFirst: {
-		marginTop: 40,
+		margin: '0px 20px',
+		display: 'block',
 	},
 	textFieldSecond: {
-		marginTop: -20,
+		margin: '-30px 20px',
+		display: 'block',
 	},
 	floatingLabelTextStyle: {
 		fontWeight: 'normal',
 	},
 	button: {
-		marginTop: 50,
+		marginTop: 40,
 		height: 45,
 	},
 	buttonText: {
@@ -57,9 +59,8 @@ class SignIn extends React.Component {
 	constructor(props) {
 		super();
 		this.state = {
-			email: '',
-			password: '',
-			form: ''
+			email: "",
+			password: ""
 		}
 		this.handleEmailChange = this.handleEmailChange.bind(this);
 		this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -88,27 +89,38 @@ class SignIn extends React.Component {
 
 		console.log(email, password);
 
-		// const form = [email, password];
-		// for (var i = 0; i < form.length; i++) {
-		// 		if (form[i] == null || form[i] == '') {
-		// 			// this.setState({
-		// 			// 	error:"has-error"
-		// 			// })
-		// 			console.log("form error");
-		// 			// return false
-		// 		}
-		// }
+		let validateForm = function(arr) {
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] == null || arr[i] == "") {
+					return false
+				}
+			}
+			return true
+		}
+
+		let reqInputs = [email, password];
+
+		if (validateForm(reqInputs)) {
+			let formData = {
+				email: email,
+				password: password
+			}
 
 		authUser(email, password, () => {
 				console.log("success")
 				this.props.history.push('/dashboard')
-
 		}, () => {
 				console.log('error')
 				this.setState({
 						error: 'has-error'
 				})
-		});
+		})
+
+		} else {
+			this.setState({
+				inputError: "This field is required"
+			})
+		}
 	}
 
 	render() {
@@ -124,6 +136,7 @@ class SignIn extends React.Component {
 							<TextField
 								hintText="email@example.com"
 								floatingLabelText="Email"
+								errorText={this.state.inputError}
 								value={this.state.email}
 								onChange={this.handleEmailChange}
 								floatingLabelStyle={muiStyle.floatingLabelTextStyle}
@@ -133,6 +146,7 @@ class SignIn extends React.Component {
 								hintText="********"
 								floatingLabelText="Password"
 								type="password"
+								errorText={this.state.inputError}
 								value={this.state.password}
 								onChange={this.handlePasswordChange}
 								floatingLabelStyle={muiStyle.floatingLabelTextStyle}

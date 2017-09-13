@@ -5,16 +5,13 @@ function getToken() {
   return localStorage.token
 }
 
-export function createUser(email, password, handler, errorHandler) {
+export function createUser(userData, handler, errorHandler) {
   axios({
     method: 'post',
     headers: {Authorization: "Bearer " + getToken()},
     responseType: 'json',
     url: USER_URL,
-    data: {
-      email: email,
-      password: password
-    }
+    data: userData
   })
   .then(function (res){
     if (res.status < 400) {

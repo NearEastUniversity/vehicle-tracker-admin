@@ -155,8 +155,7 @@ export default class CreateVehicleForm extends React.Component {
         {/* Create new Vehicle Form */}
         <form
           id="createVehicle"
-          onSubmit={this.handleCreateVehicle.bind(this)}
-          >
+          onSubmit={this.handleCreateVehicle.bind(this)}>
           <div style={{display: 'inline-flex'}}>
             <div style={{maxWidth: '600px'}}>
             <div className={style.container}>
@@ -167,8 +166,7 @@ export default class CreateVehicleForm extends React.Component {
                 floatingLabelText="Plate ID"
                 errorText={this.state.inputError}
                 floatingLabelStyle={muiStyle.floatingLabelStyle}
-                style={muiStyle.textFieldStyle}
-              />
+                style={muiStyle.textFieldStyle}/>
 
               <SelectField
                 className={style.selectField}

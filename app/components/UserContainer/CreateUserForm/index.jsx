@@ -14,12 +14,14 @@ const muiStyle = {
     margin: '0px 20px 40px 20px',
   },
   createButtonStyle:{
-    margin: '0px 20px 40px 20px',
+    margin: '0px 40px 20px',
   }
 }
 
 // Component Actions
 import {createUser} from './actions'
+
+import style from './style'
 
 export default class CreateUserForm extends React.Component {
 
@@ -27,7 +29,8 @@ export default class CreateUserForm extends React.Component {
     super(props)
     this.state = {
       emailInput: "",
-      passwordInput: ""
+      passwordInput: "",
+      inputError: ""
     }
   }
 
@@ -48,49 +51,82 @@ export default class CreateUserForm extends React.Component {
     // action of submitting the form.
     event.preventDefault();
 
-    const email = this.state.emailInput;
-    const password = this.state.passwordInput;
+    let email = this.state.emailInput;
+    let password = this.state.passwordInput;
 
     console.log(email, password);
 
-    createUser(email, password, (res) => {
+    let validateForm = function(arr) {
+      for (var i = 0; i < arr.length; i++) {
+    		if (arr[i] == null || arr[i] == "") {
+          return false
+    		}
+      }
+      return true
+    }
+
+    let reqInputs = [email, password];
+
+    if (validateForm(reqInputs)) {
+      let formData = {
+        email: email,
+        password: password
+      }
+
+    createUser(formData, (res) => {
       this.setState({
         emailInput: "",
-        passwordInput: ""
+        passwordInput: "",
+        inputError: ""
       })
-      this.props.userCreated(res)
-    }, (res) => {
-      console.log(`error on creating user: ${res}`);
+      this.props.userCreated(res);
+    }, (err) => {
+      console.log(err);
     })
+
+    } else {
+      this.setState({
+        inputError: "This field is required."
+      })
+    }
   }
 
   render() {
     return (
       <div>
-        {/* Create new User TextFields */}
+        {/* Create new User TForm */}
         <form id="createUser" onSubmit={this.handleCreateUser.bind(this)}>
+          <div className={style.but}>
           <TextField
             value={this.state.emailInput}
             onChange={this.handleEmailChange.bind(this)}
             type="email"
             hintText="example@example.com"
             floatingLabelText="Email"
+            errorText={this.state.inputError}
             floatingLabelStyle={muiStyle.floatingLabelStyle}
             style={muiStyle.textFieldStyle}/>
-          <TextField
-            value={this.state.passwordInput}
-            onChange={this.handlePasswordChange.bind(this)}
-            hintText="set a password"
-            floatingLabelText="Password"
-            floatingLabelStyle={muiStyle.floatingLabelStyle}
-            style={muiStyle.textFieldStyle}/>
-          <RaisedButton
-            type="submit"
-            label="Create"
-            icon={<ContentAdd/>}
-            labelColor="#fff"
-            backgroundColor="#039BE5"
-            style={muiStyle.createButtonStyle}/>
+          </div>
+          <div className={style.but}>
+            <TextField
+              value={this.state.passwordInput}
+              onChange={this.handlePasswordChange.bind(this)}
+              type="password"
+              hintText="set a password"
+              floatingLabelText="Password"
+              errorText={this.state.inputError}
+              floatingLabelStyle={muiStyle.floatingLabelStyle}
+              style={muiStyle.textFieldStyle}/>
+          </div>
+          <div className={style.but}>
+            <RaisedButton
+              type="submit"
+              label="Create"
+              icon={<ContentAdd/>}
+              labelColor="#fff"
+              backgroundColor="#039BE5"
+              style={muiStyle.createButtonStyle}/>
+          </div>
         </form>
      </div>
     )
