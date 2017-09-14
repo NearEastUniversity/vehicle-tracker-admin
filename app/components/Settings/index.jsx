@@ -3,6 +3,7 @@
 // Component's paths
 import Navbar from '../Navbar'
 import UserContainer from '../UserContainer'
+import GroupsContainer from '../GroupsContainer'
 import VehicleContainer from '../VehicleContainer'
 
 export default class Dashoboard extends React.Component {
@@ -11,6 +12,7 @@ export default class Dashoboard extends React.Component {
       <div>
         <Navbar />
         <UserContainer />
+        <GroupsContainer />
         <VehicleContainer />
       </div>
     )

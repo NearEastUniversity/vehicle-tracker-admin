@@ -19,7 +19,7 @@ const muiStyle = {
 }
 
 // Component Actions
-import {createUser} from './actions'
+import { createGroup } from './actions'
 
 // Component Style
 import style from './style'
@@ -29,33 +29,25 @@ export default class CreateUserForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      emailInput: "",
-      passwordInput: "",
+      groupInput: "",
       inputError: ""
     }
   }
 
-  handleEmailChange(event){
+  handleGroupChange(event){
     this.setState({
-      emailInput: event.target.value
+      groupInput: event.target.value
     })
   }
 
-  handlePasswordChange(event){
-    this.setState({
-      passwordInput: event.target.value
-    })
-  }
-
-  handleCreateUser(event){
+  handleCreateGroup(event){
     // Call preventDefault() on the event to prevent the browser's default
     // action of submitting the form.
     event.preventDefault();
 
-    let email = this.state.emailInput;
-    let password = this.state.passwordInput;
+    let groupName = this.state.groupInput;
 
-    console.log(email, password);
+    console.log(groupName);
 
     let validateForm = function(arr) {
       for (var i = 0; i < arr.length; i++) {
@@ -66,21 +58,19 @@ export default class CreateUserForm extends React.Component {
       return true
     }
 
-    let reqInputs = [email, password];
+    let reqInputs = [groupName];
 
     if (validateForm(reqInputs)) {
       let formData = {
-        email: email,
-        password: password
+        name: groupName
       }
 
-    createUser(formData, (res) => {
+    createGroup(formData, (res) => {
       this.setState({
-        emailInput: "",
-        passwordInput: "",
+        groupInput: "",
         inputError: ""
       })
-      this.props.userCreated(res);
+      this.props.groupCreated(res);
     }, (err) => {
       console.log(err);
     })
@@ -95,29 +85,17 @@ export default class CreateUserForm extends React.Component {
   render() {
     return (
       <div>
-        {/* Create new User TForm */}
-        <form id="createUser" onSubmit={this.handleCreateUser.bind(this)}>
+        {/* Create new Group Form */}
+        <form id="createGroup" onSubmit={this.handleCreateGroup.bind(this)}>
           <div className={style.container}>
           <TextField
-            value={this.state.emailInput}
-            onChange={this.handleEmailChange.bind(this)}
-            type="email"
-            hintText="example@example.com"
-            floatingLabelText="Email"
+            value={this.state.groupInput}
+            onChange={this.handleGroupChange.bind(this)}
+            hintText="School Bus"
+            floatingLabelText="Group"
             errorText={this.state.inputError}
             floatingLabelStyle={muiStyle.floatingLabelStyle}
             style={muiStyle.textFieldStyle}/>
-          </div>
-          <div className={style.container}>
-            <TextField
-              value={this.state.passwordInput}
-              onChange={this.handlePasswordChange.bind(this)}
-              type="password"
-              hintText="set a password"
-              floatingLabelText="Password"
-              errorText={this.state.inputError}
-              floatingLabelStyle={muiStyle.floatingLabelStyle}
-              style={muiStyle.textFieldStyle}/>
           </div>
           <div className={style.container}>
             <RaisedButton

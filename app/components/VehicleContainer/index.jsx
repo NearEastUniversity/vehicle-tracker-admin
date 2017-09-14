@@ -18,7 +18,7 @@ const muiStyle = {
 import style from './style'
 
 // Component Actions
-import {getVehicles } from './actions'
+import { getVehicles } from './actions'
 
 export default class VehicleContainer extends React.Component {
 
