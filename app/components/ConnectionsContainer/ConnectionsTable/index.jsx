@@ -47,8 +47,17 @@ export default class ConnectionsTable extends React.Component {
                  <TableRow key={index}>
                    <TableRowColumn>{vehicle.plate_id && vehicle.plate_id}</TableRowColumn>
                    <TableRowColumn>{vehicle.type && vehicle.type}</TableRowColumn>
-                   <TableRowColumn>{vehicle.agent.uuid && vehicle.agent.uuid}</TableRowColumn>
-                   <TableRowColumn>{vehicle.groups || ""}</TableRowColumn>
+                   <TableRowColumn>{vehicle.agent ? vehicle.agent.uuid : "---"}</TableRowColumn>
+                   <TableRowColumn>{(() => {
+                     if (vehicle.groups) {
+                       return (
+                         vehicle.groups.map((group, index) =>
+                          <span style={{display: "block"}} key={index}>{group.name}</span>
+                       ))
+                     } else {
+                       return "---"
+                     }
+                   })()}</TableRowColumn>
                  </TableRow>
                )
              })}

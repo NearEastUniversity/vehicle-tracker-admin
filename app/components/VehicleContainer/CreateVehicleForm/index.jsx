@@ -116,14 +116,15 @@ export default class CreateVehicleForm extends React.Component {
 
       let formData = {
         plate_id: plateId,
-        type: vehicleType
+        type: vehicleType,
+        agent_uuid: agentUuid
       }
 
       // if (agentUuid) {
-      //   formData.agent_uuid = agentUuid
-      //   console.log("if true" + agentUuid);
+      //   formData.agent.uuid = agentUuid
+      //   console.log("if true " + agentUuid);
       // } else {
-      //   console.log("error");
+      //   console.log("Has error");
       // }
 
       // if (groupArr) {
@@ -135,7 +136,8 @@ export default class CreateVehicleForm extends React.Component {
           plateIdInput: "",
           vehicleTypeSelect: "",
           agentListSelect: "",
-          groupNumInput: ""
+          groupNumInput: "",
+          inputError: ""
         })
         this.props.vehicleCreated(res)
       }, (err) => {
