@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 // Component Actions
-import { isAuthenticated, removeUserEssentials } from './actions'
+import { isAuthenticated } from './actions'
 
 export default function requiresAuth(Component, config) {
   class AuthenticatedComponent extends React.Component {
@@ -14,23 +14,12 @@ export default function requiresAuth(Component, config) {
     }
 
     componentDidMount() {
-        console.log('didMount: AuthenticatedComponent')
-        // this._checkAndRedirect()
-        // console.log(config)
+
     }
 
     componentDidUpdate() {
-        console.log('didUpdate: AuthenticatedComponent')
-    }
 
-    // _checkAndRedirect() {
-    //   if(!isAuthenticated()) {
-    //     this.props.history.push('/')
-    //     removeUserEssentials()
-    //   } else {
-    //     console.log("authenticated user")
-    //   }
-    // }
+    }
 
     render() {
       return (
@@ -39,7 +28,7 @@ export default function requiresAuth(Component, config) {
             <Component {...this.props}/>
           ) : (
             <Redirect to={{
-              pathname: '/signin',
+              pathname: '/signout',
               state: { from: this.props.location }
             }}/>
           )}

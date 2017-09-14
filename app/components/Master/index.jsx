@@ -38,7 +38,7 @@ export default class Master extends Component {
           <Route exact path="/signin" component={SignIn}/>
           <Route path="/dashboard" component={requiresAuth(Dashboard)}/>
           <Route path="/settings" component={requiresAuth(Settings)}/>
-          <Route path="/signout" component={requiresAuth(SignOut)}/>
+          <Route path="/signout" component={SignOut}/>
         </div>
       </Router>
     );
