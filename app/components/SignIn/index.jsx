@@ -112,13 +112,13 @@ class SignIn extends React.Component {
 		}, () => {
 				console.log('error')
 				this.setState({
-						error: 'has-error'
+						inputError: "Email or Password is wrong."
 				})
 		})
 
 		} else {
 			this.setState({
-				inputError: "This field is required"
+				inputError: "This field is required."
 			})
 		}
 	}
@@ -134,6 +134,7 @@ class SignIn extends React.Component {
 							<h2>Sign In</h2>
 							<form onSubmit={this.handleSubmit}>
 							<TextField
+								type="email"
 								hintText="email@example.com"
 								floatingLabelText="Email"
 								errorText={this.state.inputError}
