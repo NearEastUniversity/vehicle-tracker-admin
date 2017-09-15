@@ -62,7 +62,10 @@ export default class UserContainer extends React.Component {
         <Paper zDepth={1} style={muiStyle.paper}>
           <h3>Create User</h3>
           <CreateUserForm userCreated={this.userCreated.bind(this)}/>
-          <UsersTable users={this.state.users} changeOnUserList={this.changeOnUserList.bind(this)}/>
+          <UsersTable
+            activeUser={this.props.activeUser}
+            users={this.state.users}
+            changeOnUserList={this.changeOnUserList.bind(this)}/>
         </Paper>
      </div>
     )

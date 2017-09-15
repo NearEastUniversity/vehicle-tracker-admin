@@ -6,12 +6,36 @@ import UserContainer from '../UserContainer'
 import GroupsContainer from '../GroupsContainer'
 import VehicleContainer from '../VehicleContainer'
 
+// Component Actions
+import { getUserCredentials } from './actions'
+
 export default class Dashoboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeUser: {}
+    }
+  }
+
+  componentWillMount() {
+    this.setUserCredentials()
+  }
+
+  setUserCredentials(){
+    getUserCredentials((data) => {
+      this.setState({
+        activeUser: data,
+      });
+    }, (err) => {
+      console.error(err);
+    })
+  }
+
   render() {
     return (
       <div>
         <Navbar />
-        <UserContainer />
+        <UserContainer activeUser={this.state.activeUser}/>
         <GroupsContainer />
         <VehicleContainer />
       </div>

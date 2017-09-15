@@ -38,7 +38,6 @@ export default class UsersTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: props.users,
       dialogAlert: false,
       deleteUser: {}
     }
@@ -109,13 +108,19 @@ export default class UsersTable extends React.Component {
                  <TableRow key={index}>
                    <TableRowColumn>{user.email && user.email}</TableRowColumn>
                    <TableRowColumn>
-                     <IconButton
-                       onTouchTap={this.handleDeleteUser.bind(this, user)}
-                       style={muiStyle.iconButton}
-                       iconStyle={muiStyle.iconDeleteButton}
-                       touch={true}>
-                         <ActionDelete/>
-                     </IconButton>
+                     {(() => {
+                       if (this.props.activeUser.uuid != user.uuid) {
+                         return (
+                           <IconButton
+                             onTouchTap={this.handleDeleteUser.bind(this, user)}
+                             style={muiStyle.iconButton}
+                             iconStyle={muiStyle.iconDeleteButton}
+                             touch={true}>
+                               <ActionDelete/>
+                           </IconButton>
+                         )
+                       }
+                     })()}
                    </TableRowColumn>
                  </TableRow>
                )
