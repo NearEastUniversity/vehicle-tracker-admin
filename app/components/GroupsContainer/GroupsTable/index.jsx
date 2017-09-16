@@ -60,7 +60,7 @@ export default class GroupsTable extends React.Component {
   }
 
   confirmDeleteGroup(){
-    deleteGroup(this.state.deleteGroup.name, (res) => {
+    deleteGroup(this.state.deleteGroup.id, (res) => {
 
       this.setState({
         dialogAlert: false,
@@ -68,7 +68,7 @@ export default class GroupsTable extends React.Component {
       })
       this.props.changeOnGroupList()
     }, (res) => {
-      console.log(`delete user error: ${res}`);
+      console.log(`delete group error: ${res}`);
     })
   }
 
