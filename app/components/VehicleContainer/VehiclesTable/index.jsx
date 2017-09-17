@@ -14,14 +14,12 @@ import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
 import SelectField from 'material-ui/SelectField'
-import ImageEdit from 'material-ui/svg-icons/image/edit'
-import ActionDelete from 'material-ui/svg-icons/action/delete'
+import AgentIcon from 'material-ui/svg-icons/hardware/router'
+import GroupIcon from 'material-ui/svg-icons/action/group-work'
+import DeleteIcon from 'material-ui/svg-icons/action/delete'
 
 // Material UI Styles
 const muiStyle = {
-  iconEditButton: {
-    color: '#039BE5',
-  },
   floatingLabelStyle: {
     fontWeight: 'normal',
   },
@@ -32,6 +30,10 @@ const muiStyle = {
     zIndex: '9999 !important',
   }
 }
+
+// import components
+import AgentDialog from './AgentDialog'
+import GroupsDialog from './GroupsDialog'
 
 // Component Style
 import style from './style'
@@ -46,22 +48,38 @@ export default class VehiclesTable extends React.Component {
     this.state = {
       vehicleList: props.vehicleList,
       dialogAlert: false,
-      dialogEdit: false,
+      agentDialogOpen: false,
+      groupsDialogOpen: false,
       deleteVehicle: {}
     }
   }
 
-  dialogEdit() {
-    this.setState({dialogEdit: true})
-	}
 
+  // Dialog Actions
   dialogAlert() {
     this.setState({dialogAlert: true})
 	}
 
 	dialogClose() {
-		this.setState({dialogAlert: false, dialogEdit: false})
+		this.setState({dialogAlert: false})
 	}
+
+  handleAgentDialogOpen(){
+    this.setState({agentDialogOpen: true})
+  }
+
+  handleAgentDialogClose(){
+    this.setState({agentDialogOpen: false})
+  }
+
+  handleGroupsDialogOpen(){
+    this.setState({groupsDialogOpen: true})
+  }
+
+  handleGroupsDialogClose(){
+    this.setState({groupsDialogOpen: false})
+  }
+
 
   handleDeleteVehicle(vehicle) {
     this.setState({
@@ -84,21 +102,6 @@ export default class VehiclesTable extends React.Component {
   }
 
   render() {
-
-    const editActions = [
-      <FlatButton
-        label="Cancel"
-        style={{color: "#747374"}}
-        primary={true}
-        onTouchTap={this.dialogClose.bind(this)}
-      />,
-      <FlatButton
-        label="Edit"
-        style={{color: "#039BE5"}}
-        primary={true}
-        onTouchTap={this.dialogClose.bind(this)}
-      />,
-    ]
 
     const alertActions = [
       <FlatButton
@@ -151,20 +154,29 @@ export default class VehiclesTable extends React.Component {
                      }
                    })()}</TableRowColumn>
                    <TableRowColumn>
+
                      <IconButton
-                       onTouchTap={this.dialogEdit.bind(this)}
+                      onTouchTap={this.handleAgentDialogOpen.bind(this)}
                        style={muiStyle.iconButton}
-                       iconStyle={muiStyle.iconEditButton}
                        touch={true}>
-                         <ImageEdit/>
+                         <AgentIcon/>
                      </IconButton>
+
+                     <IconButton
+                      onTouchTap={this.handleGroupsDialogOpen.bind(this)}
+                       style={muiStyle.iconButton}
+                       touch={true}>
+                         <GroupIcon/>
+                     </IconButton>
+
                      <IconButton
                        onTouchTap={this.handleDeleteVehicle.bind(this, vehicle)}
                        style={muiStyle.iconButton}
                        iconStyle={muiStyle.iconDeleteButton}
                        touch={true}>
-                         <ActionDelete/>
+                         <DeleteIcon/>
                      </IconButton>
+
                    </TableRowColumn>
                  </TableRow>
                )
@@ -172,37 +184,18 @@ export default class VehiclesTable extends React.Component {
            </TableBody>
          </Table>
 
-         {/* Edit Connection dialog */}
-         <Dialog
-          title="Edit Connection"
-          actions={editActions}
-          modal={false}
-          open={this.state.dialogEdit}
-          onRequestClose={this.dialogClose.bind(this)}>
-            <div className={style.dropDown}>
-              {/* <SelectField
-                floatingLabelText="Select Agent"
-                floatingLabelFixed={true}
-                floatingLabelStyle={muiStyle.floatingLabelStyle}
-                maxHeight={300}
-                value={this.state.agentValue}
-                onChange={this.agentChange.bind(this)}>
-                {agents}
-              </SelectField> */}
-            </div>
 
-            <div className={style.dropDown}>
-              {/* <SelectField
-                floatingLabelText="Select vehicle"
-                floatingLabelFixed={true}
-                floatingLabelStyle={muiStyle.floatingLabelStyle}
-                maxHeight={300}
-                value={this.state.vehicleValue}
-                onChange={this.vehicleChange.bind(this)}>
-                {vehicles}
-              </SelectField> */}
-            </div>
-        </Dialog>
+         <AgentDialog
+           open={this.state.agentDialogOpen}
+           close={this.handleAgentDialogClose.bind(this)}
+           confirm={this.handleAgentDialogClose.bind(this)}
+         />
+
+         <GroupsDialog
+           open={this.state.groupsDialogOpen}
+           close={this.handleGroupsDialogClose.bind(this)}
+           confirm={this.handleGroupsDialogClose.bind(this)}
+         />
 
         {/* Delete Vehicle Dialog */}
         <Dialog
