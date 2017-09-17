@@ -5,12 +5,12 @@ function getToken() {
   return localStorage.token
 }
 
-export function deleteGroup(handler, errorHandler) {
+export function deleteGroup(group_id, handler, errorHandler) {
   axios({
     method: 'delete',
     headers: {Authorization: "Bearer " + getToken()},
     responseType: 'json',
-    url: VEHICLE_GROUP_URL
+    url: VEHICLE_GROUP_URL + group_id
   })
   .then(function (res){
     if (res.status < 400) {
