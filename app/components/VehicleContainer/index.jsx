@@ -18,24 +18,70 @@ const muiStyle = {
 import style from './style'
 
 // Component Actions
-import { getVehicles } from './actions'
+import {
+  getVehicles,
+  getUnassignedAgents,
+  getVehicleGroups,
+  getVehicleTypes
+} from './actions'
 
 export default class VehicleContainer extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      vehicleList: []
+      vehicleList: [],
+      agentList: [],
+      vehicleGroupList: [],
+      vehicleTypeList: []
     }
   }
 
   componentWillMount() {
+    this.init()
+  }
+
+  init(){
     this.updateVehicleList()
+    this.updateAgentList()
+    this.updateVehicleGroups()
+    this.updateVehicleTypes()
   }
 
   changeOnVehicleList() {
     this.updateVehicleList()
   }
+
+  updateAgentList(){
+    getUnassignedAgents((data) => {
+      this.setState({
+        agentList: data,
+      });
+    }, (error) => {
+      console.error(error);
+    })
+  }
+
+  updateVehicleGroups(){
+    getVehicleGroups((data) => {
+      this.setState({
+        vehicleGroupList: data,
+      });
+    }, (error) => {
+      console.error(error);
+    })
+  }
+
+  updateVehicleTypes(){
+    getVehicleTypes((data) => {
+      this.setState({
+        vehicleTypeList: data,
+      });
+    }, (error) => {
+      console.error(error);
+    })
+  }
+
 
   vehicleCreated(res){
     let newVehicle = res
@@ -61,8 +107,16 @@ export default class VehicleContainer extends React.Component {
       <div className={style.app}>
         <Paper zDepth={1} style={muiStyle.paper}>
           <h3>Create Vehicle</h3>
-          <CreateVehicleForm vehicleCreated={this.vehicleCreated.bind(this)}/>
-          <VehiclesTable vehicleList={this.state.vehicleList} changeOnVehicleList={this.changeOnVehicleList.bind(this)}/>
+
+          <CreateVehicleForm
+            vehicleTypeList = {this.state.vehicleTypeList}
+            vehicleGroupList = {this.state.vehicleGroupList}
+            agentList = {this.state.agentList}
+            vehicleCreated = {this.vehicleCreated.bind(this)}
+          />
+
+          <VehiclesTable vehicleList={this.state.vehicleList} changeOnVehicleList={this.changeOnVehicleList.bind(this)}
+          />
          </Paper>
      </div>
     )

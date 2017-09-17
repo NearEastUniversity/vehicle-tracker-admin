@@ -24,7 +24,8 @@ const muiStyle = {
 // Component Style
 import style from './style'
 
-import {createVehicle, getVehicleTypes, getVehicleGroups, getUnassignedAgents} from './actions'
+// Component Actions
+import { createVehicle } from './actions'
 
 export default class CreateVehicleForm extends React.Component {
 
@@ -33,50 +34,12 @@ export default class CreateVehicleForm extends React.Component {
     this.state = {
       plateIdInput: "",
       vehicleTypeSelect: "",
-      vehicleTypeList: [],
       vehicleGroupSelect: "",
-      vehicleGroupList: [],
       agentListSelect: "",
-      agentsList:[],
       inputError: ""
     }
   }
 
-  componentWillMount() {
-    this.updateVehicleTypes()
-    this.updateVehicleGroups()
-    this.updateAgentSelectList()
-  }
-
-  updateVehicleTypes(){
-    getVehicleTypes((data) => {
-      this.setState({
-        vehicleTypeList: data,
-      });
-    }, (error) => {
-      console.error(error);
-    })
-  }
-
-  updateVehicleGroups(){
-    getVehicleGroups((data) => {
-      this.setState({
-        vehicleGroupList: data,
-      });
-    }, (error) => {
-      console.error(error);
-    })
-  }
-
-  updateAgentSelectList(){
-    getUnassignedAgents((data) => {
-      this.setState({
-        agentsList: data,
-      });
-    }, (error) => {
-      console.error(error);
-    })
-  }
 
   // Handle Inputs
   handlePlateIdChange(event){
@@ -142,12 +105,11 @@ export default class CreateVehicleForm extends React.Component {
       createVehicle(formData, (res) => {
         this.setState({
           plateIdInput: "",
-          vehicleTypeSelect: "",
+          vehicleTypeSelect: [],
           vehicleGroupSelect: [],
           agentListSelect: "",
           inputError: ""
         })
-        this.updateAgentSelectList()
         this.props.vehicleCreated(res)
       }, (err) => {
         console.error(err);
@@ -185,7 +147,7 @@ export default class CreateVehicleForm extends React.Component {
                 errorText={this.state.inputError}
                 value={this.state.vehicleTypeSelect}
                 onChange={(event, key, value) => {this.handleVehicleTypeChange(event, key, value)}}>
-                {this.state.vehicleTypeList.map((type, index) => {
+                {this.props.vehicleTypeList.map((type, index) => {
                   return (
                     <MenuItem key={index} value={type} primaryText={type} />
                   )
@@ -199,7 +161,7 @@ export default class CreateVehicleForm extends React.Component {
                 floatingLabelText="Agent (optional)"
                 value={this.state.agentListSelect}
                 onChange={(event, key, value) => {this.handleAgentListChange(event, key, value)}}>
-                {this.state.agentsList.map((agent, index) => {
+                {this.props.agentList.map((agent, index) => {
                   return (
                     <MenuItem key={index} value={agent.uuid} primaryText={agent.uuid} />
                   )
@@ -212,7 +174,7 @@ export default class CreateVehicleForm extends React.Component {
                 floatingLabelText="Group (optional)"
                 value={this.state.vehicleGroupSelect}
                 onChange={(event, key, value) => {this.handleVehicleGroupChange(event, key, value)}}>
-                {this.state.vehicleGroupList.map((groups, index) => {
+                {this.props.vehicleGroupList.map((groups, index) => {
                   return (
                     <MenuItem
                       key={index} value={groups.id} primaryText={groups.name} />
