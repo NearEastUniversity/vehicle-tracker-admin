@@ -34,7 +34,6 @@ export default class ConnectionsContainer extends React.Component {
 
   updateVehicleList(){
     getVehicles((data) => {
-      console.log(data);
       this.setState({
         vehicleList: data,
       });

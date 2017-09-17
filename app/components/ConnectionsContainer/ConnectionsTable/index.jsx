@@ -18,7 +18,6 @@ export default class ConnectionsTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      vehicleList: props.vehicleList,
     }
   }
 
@@ -43,23 +42,25 @@ export default class ConnectionsTable extends React.Component {
 
              {/* Maps through the vehicleList state to render vehicle rows */}
              {this.props.vehicleList.map((vehicle, index) => {
-               return (
-                 <TableRow key={index}>
-                   <TableRowColumn>{vehicle.plate_id && vehicle.plate_id}</TableRowColumn>
-                   <TableRowColumn>{vehicle.type && vehicle.type}</TableRowColumn>
-                   <TableRowColumn>{vehicle.agent ? vehicle.agent.uuid : "---"}</TableRowColumn>
-                   <TableRowColumn>{(() => {
-                     if (vehicle.groups) {
-                       return (
-                         vehicle.groups.map((group, index) =>
-                          <span style={{display: "block"}} key={index}>{group.name}</span>
-                       ))
-                     } else {
-                       return "---"
-                     }
-                   })()}</TableRowColumn>
-                 </TableRow>
-               )
+               if(vehicle.agent) {
+                 return (
+                   <TableRow key={index}>
+                     <TableRowColumn>{vehicle.plate_id && vehicle.plate_id}</TableRowColumn>
+                     <TableRowColumn>{vehicle.type && vehicle.type}</TableRowColumn>
+                     <TableRowColumn>{vehicle.agent && vehicle.agent.uuid}</TableRowColumn>
+                     <TableRowColumn>{(() => {
+                       if (vehicle.groups) {
+                         return (
+                           vehicle.groups.map((group, index) =>
+                            <span style={{display: "block"}} key={index}>{group.name}</span>
+                         ))
+                       } else {
+                         return "---"
+                       }
+                     })()}</TableRowColumn>
+                   </TableRow>
+                 )
+               }
              })}
            </TableBody>
          </Table>
