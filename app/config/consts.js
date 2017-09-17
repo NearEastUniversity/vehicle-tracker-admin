@@ -11,6 +11,7 @@ export const USER_URL = `${API_ROOT}/user/`;
 export const VEHICLE_URL = `${API_ROOT}/vehicle/`;
 export const VEHICLE_TYPE_URL = `${API_ROOT}/vehicle/type/`;
 export const VEHICLE_GROUP_URL = `${API_ROOT}/vehicle/group/`;
+export const VEHICLES_WITH_AGENTS_URL = `${API_ROOT}/vehicle/filter?agent_state=ASSIGNED`;
 
 // Agent
 export const AGENT_URL = `${API_ROOT}/agent/`;
