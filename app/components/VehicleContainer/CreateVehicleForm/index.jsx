@@ -24,7 +24,7 @@ const muiStyle = {
 // Component Style
 import style from './style'
 
-import {createVehicle, getVehicleTypes, getVehicleGroups, getAgents} from './actions'
+import {createVehicle, getVehicleTypes, getVehicleGroups, getUnassignedAgents} from './actions'
 
 export default class CreateVehicleForm extends React.Component {
 
@@ -69,7 +69,7 @@ export default class CreateVehicleForm extends React.Component {
   }
 
   updateAgentSelectList(){
-    getAgents((data) => {
+    getUnassignedAgents((data) => {
       this.setState({
         agentsList: data,
       });
@@ -147,6 +147,7 @@ export default class CreateVehicleForm extends React.Component {
           agentListSelect: "",
           inputError: ""
         })
+        this.updateAgentSelectList()
         this.props.vehicleCreated(res)
       }, (err) => {
         console.error(err);

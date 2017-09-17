@@ -14,3 +14,4 @@ export const VEHICLE_GROUP_URL = `${API_ROOT}/vehicle/group/`;
 
 // Agent
 export const AGENT_URL = `${API_ROOT}/agent/`;
+export const UNASSIGNED_AGENT_URL = `${API_ROOT}/agent/?state=UNASSIGNED`;
