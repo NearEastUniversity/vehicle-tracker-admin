@@ -52,6 +52,10 @@ export default class VehicleContainer extends React.Component {
     this.updateVehicleList()
   }
 
+  changeOnAgentList() {
+    this.updateAgentList()
+  }
+
   updateAgentList(){
     getUnassignedAgents((data) => {
       this.setState({
@@ -115,7 +119,12 @@ export default class VehicleContainer extends React.Component {
             vehicleCreated = {this.vehicleCreated.bind(this)}
           />
 
-          <VehiclesTable vehicleList={this.state.vehicleList} changeOnVehicleList={this.changeOnVehicleList.bind(this)}
+          <VehiclesTable
+            vehicleList = {this.state.vehicleList}
+            changeOnVehicleList = {this.changeOnVehicleList.bind(this)}
+            changeOnAgentList = {this.changeOnAgentList.bind(this)}
+            vehicleGroupList = {this.state.vehicleGroupList}
+            agentList = {this.state.agentList}
           />
          </Paper>
      </div>
