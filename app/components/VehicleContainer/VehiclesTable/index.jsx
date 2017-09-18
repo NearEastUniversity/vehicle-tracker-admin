@@ -50,7 +50,8 @@ export default class VehiclesTable extends React.Component {
       dialogAlert: false,
       agentDialogOpen: false,
       groupsDialogOpen: false,
-      deleteVehicle: {}
+      deleteVehicle: {},
+      editVehicle: {}
     }
   }
 
@@ -64,20 +65,43 @@ export default class VehiclesTable extends React.Component {
 		this.setState({dialogAlert: false})
 	}
 
-  handleAgentDialogOpen(){
-    this.setState({agentDialogOpen: true})
+
+  // Agents Dialog Actions
+  handleAgentDialogOpen(vehicle){
+    this.setState({
+      editVehicle: vehicle,
+      agentDialogOpen: true
+    })
   }
 
   handleAgentDialogClose(){
-    this.setState({agentDialogOpen: false})
+    this.setState({
+      agentDialogOpen: false,
+      editVehicle: {}
+    })
   }
 
-  handleGroupsDialogOpen(){
-    this.setState({groupsDialogOpen: true})
+  handleAgentDialogConfirm(){
+    this.props.changeOnAgentList()
+    this.props.changeOnVehicleList()
+    this.handleAgentDialogClose()
   }
+
+  // Groups Dialog Actions
+  handleGroupsDialogOpen(vehicle){
+    this.setState({
+      groupsDialogOpen: true,
+      editVehicle: vehicle
+    })
+  }
+
+
 
   handleGroupsDialogClose(){
-    this.setState({groupsDialogOpen: false})
+    this.setState({
+      groupsDialogOpen: false,
+      editVehicle: {}
+    })
   }
 
 
@@ -156,24 +180,27 @@ export default class VehiclesTable extends React.Component {
                    <TableRowColumn>
 
                      <IconButton
-                      onTouchTap={this.handleAgentDialogOpen.bind(this)}
-                       style={muiStyle.iconButton}
-                       touch={true}>
+                        onTouchTap={this.handleAgentDialogOpen.bind(this, vehicle)}
+                        style={muiStyle.iconButton}
+                        touch={true}
+                       >
                          <AgentIcon/>
                      </IconButton>
 
                      <IconButton
-                      onTouchTap={this.handleGroupsDialogOpen.bind(this)}
-                       style={muiStyle.iconButton}
-                       touch={true}>
+                        onTouchTap={this.handleGroupsDialogOpen.bind(this, vehicle)}
+                        style={muiStyle.iconButton}
+                        touch={true}
+                       >
                          <GroupIcon/>
                      </IconButton>
 
                      <IconButton
-                       onTouchTap={this.handleDeleteVehicle.bind(this, vehicle)}
-                       style={muiStyle.iconButton}
-                       iconStyle={muiStyle.iconDeleteButton}
-                       touch={true}>
+                        onTouchTap={this.handleDeleteVehicle.bind(this, vehicle)}
+                        style={muiStyle.iconButton}
+                        iconStyle={muiStyle.iconDeleteButton}
+                        touch={true}
+                       >
                          <DeleteIcon/>
                      </IconButton>
 
@@ -186,15 +213,19 @@ export default class VehiclesTable extends React.Component {
 
 
          <AgentDialog
-           open={this.state.agentDialogOpen}
-           close={this.handleAgentDialogClose.bind(this)}
-           confirm={this.handleAgentDialogClose.bind(this)}
+           open = {this.state.agentDialogOpen}
+           close = {this.handleAgentDialogClose.bind(this)}
+           confirm = {this.handleAgentDialogConfirm.bind(this)}
+           agentList = {this.props.agentList}
+           editVehicle = {this.state.editVehicle}
          />
 
          <GroupsDialog
-           open={this.state.groupsDialogOpen}
-           close={this.handleGroupsDialogClose.bind(this)}
-           confirm={this.handleGroupsDialogClose.bind(this)}
+           open = {this.state.groupsDialogOpen}
+           close = {this.handleGroupsDialogClose.bind(this)}
+           confirm = {this.handleGroupsDialogClose.bind(this)}
+           vehicleGroupList = {this.props.vehicleGroupList}
+           editVehicle = {this.state.editVehicle}
          />
 
         {/* Delete Vehicle Dialog */}
