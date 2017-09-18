@@ -86,8 +86,12 @@ export default class CreateUserForm extends React.Component {
     return (
       <div>
         {/* Create new Group Form */}
-        <form id="createGroup" onSubmit={this.handleCreateGroup.bind(this)}>
-          <div className={style.container}>
+        <form
+          id="createGroup"
+          onSubmit={this.handleCreateGroup.bind(this)}
+          className={style.formStyle}>
+          <div className={style.container}
+          >
           <TextField
             value={this.state.groupInput}
             onChange={this.handleGroupChange.bind(this)}

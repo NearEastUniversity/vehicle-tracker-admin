@@ -60,7 +60,7 @@ export default class GroupsContainer extends React.Component {
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={muiStyle.paper}>
-          <h3>Create Group</h3>
+          <h3 className={style.title}>Create Group</h3>
           <CreateGroupForm groupCreated={this.groupCreated.bind(this)}/>
           <GroupsTable groupList={this.state.groupList} changeOnGroupList={this.changeOnGroupList.bind(this)}/>
         </Paper>

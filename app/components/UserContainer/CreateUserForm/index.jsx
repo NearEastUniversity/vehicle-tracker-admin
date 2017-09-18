@@ -96,7 +96,11 @@ export default class CreateUserForm extends React.Component {
     return (
       <div>
         {/* Create new User TForm */}
-        <form id="createUser" onSubmit={this.handleCreateUser.bind(this)}>
+        <form
+          id="createUser"
+          onSubmit={this.handleCreateUser.bind(this)}
+          className={style.formStyle}
+          >
           <div className={style.container}>
           <TextField
             value={this.state.emailInput}

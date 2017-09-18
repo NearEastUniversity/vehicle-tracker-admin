@@ -46,7 +46,7 @@ export default class ConnectionsContainer extends React.Component {
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={muiStyle.paper}>
-          <h3>Connections Table</h3>
+          <h3 className={style.title}>Connections Table</h3>
           <ConnectionsTable vehicleList={this.state.vehicleList}/>
         </Paper>
      </div>

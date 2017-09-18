@@ -60,7 +60,7 @@ export default class UserContainer extends React.Component {
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={muiStyle.paper}>
-          <h3>Create User</h3>
+          <h3 className={style.title}>Create User</h3>
           <CreateUserForm userCreated={this.userCreated.bind(this)}/>
           <UsersTable
             activeUser={this.props.activeUser}
