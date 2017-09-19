@@ -84,7 +84,6 @@ export default class VehicleContainer extends React.Component {
     }, (error) => {
       console.error(error);
     })
-    this.updateAgentList()
   }
 
 
@@ -95,6 +94,7 @@ export default class VehicleContainer extends React.Component {
     this.setState({
       vehicleList: newVehicles,
     });
+    this.updateAgentList()
   }
 
   updateVehicleList(){

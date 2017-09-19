@@ -45,7 +45,6 @@ export default class VehiclesTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      vehicleList: props.vehicleList,
       dialogAlert: false,
       agentDialogOpen: false,
       groupsDialogOpen: false,
