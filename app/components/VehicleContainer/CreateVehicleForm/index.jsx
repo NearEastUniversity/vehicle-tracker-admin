@@ -34,8 +34,8 @@ export default class CreateVehicleForm extends React.Component {
     this.state = {
       plateIdInput: "",
       vehicleTypeSelect: "",
-      vehicleGroupSelect: "",
-      agentListSelect: "",
+      vehicleGroupSelect: null,
+      agentListSelect: null,
       inputError: ""
     }
   }
@@ -105,8 +105,8 @@ export default class CreateVehicleForm extends React.Component {
       createVehicle(formData, (res) => {
         this.setState({
           plateIdInput: "",
-          vehicleTypeSelect: [],
-          vehicleGroupSelect: [],
+          vehicleTypeSelect: null,
+          vehicleGroupSelect: null,
           agentListSelect: "",
           inputError: ""
         })
