@@ -13,7 +13,6 @@ import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
-import SelectField from 'material-ui/SelectField'
 import AgentIcon from 'material-ui/svg-icons/hardware/router'
 import GroupIcon from 'material-ui/svg-icons/action/group-work'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
@@ -92,16 +91,19 @@ export default class VehiclesTable extends React.Component {
     this.setState({
       groupsDialogOpen: true,
       editVehicle: vehicle
-    })
+    });
   }
-
-
 
   handleGroupsDialogClose(){
     this.setState({
       groupsDialogOpen: false,
       editVehicle: {}
     })
+  }
+
+  handleGroupsDialogConfirm(){
+    this.handleGroupsDialogClose()
+    this.props.changeOnVehicleList()
   }
 
 
@@ -223,7 +225,7 @@ export default class VehiclesTable extends React.Component {
          <GroupsDialog
            open = {this.state.groupsDialogOpen}
            close = {this.handleGroupsDialogClose.bind(this)}
-           confirm = {this.handleGroupsDialogClose.bind(this)}
+           confirm = {this.handleGroupsDialogConfirm.bind(this)}
            vehicleGroupList = {this.props.vehicleGroupList}
            editVehicle = {this.state.editVehicle}
          />
