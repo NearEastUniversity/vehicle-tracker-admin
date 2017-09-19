@@ -84,6 +84,7 @@ export default class VehicleContainer extends React.Component {
     }, (error) => {
       console.error(error);
     })
+    this.updateAgentList()
   }
 
 
