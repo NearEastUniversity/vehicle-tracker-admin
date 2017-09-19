@@ -5,6 +5,7 @@ import Paper from 'material-ui/Paper'
 
 // Component's paths
 import ConnectionsTable from './ConnectionsTable'
+import FilterForm from './FilterForm'
 
 // Material UI Styles
 const muiStyle = {
@@ -17,23 +18,38 @@ const muiStyle = {
 import style from './style'
 
 // Component Actions
-import {getVehicles } from './actions'
+import {
+  getVehicles,
+  getVehicleGroups,
+  getVehicleTypes,
+  getVehiclesList
+ } from './actions'
 
 export default class ConnectionsContainer extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      vehicleList: []
+      vehicleList: [],
+      vehicleTypeList: [],
+      vehicleGroupList: [],
+      initType: "",
+      initGroup: ""
     }
   }
 
   componentWillMount() {
-    this.updateVehicleList()
+    this.init()
   }
 
-  updateVehicleList(){
-    getVehicles((data) => {
+  init() {
+    this.initVehicleList()
+    this.updateVehicleTypes()
+    this.updateVehicleGroups()
+  }
+
+  initVehicleList(){
+    getVehicles(this.state.initType, this.state.initGroup, (data) => {
       this.setState({
         vehicleList: data,
       });
@@ -42,12 +58,48 @@ export default class ConnectionsContainer extends React.Component {
     })
   }
 
+  updateVehicleList(vehicleType, vehicleGroup){
+    getVehicles(vehicleType, vehicleGroup, (data) => {
+      this.setState({
+        vehicleList: data,
+      });
+    }, (res) => {
+      console.log(res);
+    })
+  }
+
+  updateVehicleTypes(){
+    getVehicleTypes((data) => {
+      this.setState({
+        vehicleTypeList: data,
+      });
+    }, (error) => {
+      console.error(error);
+    })
+  }
+
+  updateVehicleGroups(){
+    getVehicleGroups((data) => {
+      this.setState({
+        vehicleGroupList: data,
+      });
+    }, (error) => {
+      console.error(error);
+    })
+  }
+
   render() {
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={muiStyle.paper}>
-          <h3 className={style.title}>Connections Table</h3>
-          <ConnectionsTable vehicleList={this.state.vehicleList}/>
+          <h3 className={style.title}>Assigned Vehicles</h3>
+          <FilterForm
+            vehicleTypeList = {this.state.vehicleTypeList}
+            vehicleGroupList = {this.state.vehicleGroupList}
+            updateVehicleList = {this.updateVehicleList.bind(this)}/>
+          <ConnectionsTable
+            vehicleList={this.state.vehicleList}
+          />
         </Paper>
      </div>
     )
