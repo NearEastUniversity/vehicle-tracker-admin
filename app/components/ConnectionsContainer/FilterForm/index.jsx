@@ -38,8 +38,7 @@ export default class FilterForm extends React.Component {
       <div>
         {/* Filter Vehicles by Type and Group Form */}
         <form
-          className={style.formStyle}
-          >
+          className={style.formStyle}>
           <div className={style.container}>
             <SelectField
               className={style.selectField}
