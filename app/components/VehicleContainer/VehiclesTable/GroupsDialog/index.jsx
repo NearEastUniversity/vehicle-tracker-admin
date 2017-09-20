@@ -9,6 +9,9 @@ import SelectField from 'material-ui/SelectField'
 // import component actions
 import { setVehicleGroups } from './actions';
 
+// Component Style
+import style from './style'
+
 export default class GroupsDialog extends Component {
 
   constructor(props) {
@@ -76,13 +79,15 @@ export default class GroupsDialog extends Component {
 
     return (
       <Dialog
+        className={style.divStyle}
         title={`Set groups for Vehicle ${this.props.editVehicle.plate_id}`}
         actions={dialogActions}
         modal={false}
         open={this.props.open}
-        onRequestClose={this.props.close.bind(this)}
-        >
+        onRequestClose={this.props.close.bind(this)}>
+
           <SelectField
+            className={style.selectField}
           multiple={true}
           hintText="Select group"
           value={this.state.vehicleGroupListSelect}
@@ -100,8 +105,7 @@ export default class GroupsDialog extends Component {
                 />
               )
             })}
-
-        </SelectField>
+          </SelectField>
 
       </Dialog>
     );

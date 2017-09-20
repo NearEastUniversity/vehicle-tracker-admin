@@ -127,6 +127,7 @@ export default class CreateVehicleForm extends React.Component {
       <div>
         {/* Create new Vehicle Form */}
         <form
+          className={style.formStyle}
           id="createVehicle"
           onSubmit={this.handleCreateVehicle.bind(this)}>
           <div style={{display: 'inline-flex'}}>

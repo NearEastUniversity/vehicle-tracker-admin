@@ -9,6 +9,8 @@ import SelectField from 'material-ui/SelectField';
 // import component actions
 import {changeAgent, unassignAgent} from './actions';
 
+// Component Style
+import style from './style'
 
 export default class AgentDialog extends Component {
 
@@ -91,7 +93,6 @@ export default class AgentDialog extends Component {
       <FlatButton
         label="Cancel"
         style={{color: "#747374"}}
-        // secondary={true}
         onTouchTap={this.handleClose.bind(this)}
       />,
       <FlatButton
@@ -103,31 +104,33 @@ export default class AgentDialog extends Component {
     ]
 
     return (
-      <Dialog
-        title={`Set an agent for Vehicle ${this.props.editVehicle.plate_id}`}
-        actions={dialogActions}
-        modal={false}
-        open={this.props.open}
-        onRequestClose={this.handleClose.bind(this)}
-        >
-          <SelectField
-            floatingLabelText="Agent List"
-            errorText={this.state.errorText}
-            floatingLabelFixed={true}
-            hintText = {
-              this.props.editVehicle.agent ? this.props.editVehicle.agent.uuid : "Select an agent"
-            }
-            value={this.state.agentListSelect}
-            onChange={(event, key, value) => {this.handleAgentListChange(event, key, value)}}
-            >
-            {this.props.agentList.map((agent, index) => {
-              return (
-                <MenuItem key={index} value={agent.uuid} primaryText={agent.uuid}/>
-              )
-            })}
-          </SelectField>
+        <Dialog
+          className={style.divStyle}
+          title={`Set an agent for Vehicle ${this.props.editVehicle.plate_id}`}
+          actions={dialogActions}
+          modal={false}
+          open={this.props.open}
+          onRequestClose={this.handleClose.bind(this)}>
 
-      </Dialog>
+            <SelectField
+              className={style.selectField}
+              floatingLabelText="Agent List"
+              errorText={this.state.errorText}
+              floatingLabelFixed={true}
+              hintText = {
+                this.props.editVehicle.agent ? this.props.editVehicle.agent.uuid : "Select an agent"
+              }
+              value={this.state.agentListSelect}
+              onChange={(event, key, value) => {this.handleAgentListChange(event, key, value)}}
+              >
+              {this.props.agentList.map((agent, index) => {
+                return (
+                  <MenuItem key={index} value={agent.uuid} primaryText={agent.uuid}/>
+                )
+              })}
+            </SelectField>
+
+        </Dialog>
     );
   }
 
