@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {VEHICLE_GROUP_URL} from '../../../config/consts'
+import {VEHICLE_GROUP_URL} from '../../../../config/consts'
 
 function getToken() {
   return localStorage.token

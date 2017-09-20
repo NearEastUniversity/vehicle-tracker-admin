@@ -35,6 +35,7 @@ export default class GroupsContainer extends React.Component {
 
   changeOnGroupList() {
     this.updateGroupList()
+    this.props.changeOnGroups()
   }
 
   groupCreated(res){
@@ -44,6 +45,7 @@ export default class GroupsContainer extends React.Component {
     this.setState({
       groupList: newGroups,
     });
+    this.changeOnGroupList()
   }
 
   updateGroupList() {

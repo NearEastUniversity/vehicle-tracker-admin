@@ -3,7 +3,6 @@
 // Component's paths
 import Navbar from '../Navbar'
 import UserContainer from '../UserContainer'
-import GroupsContainer from '../GroupsContainer'
 import VehicleContainer from '../VehicleContainer'
 
 // Component Actions
@@ -36,7 +35,6 @@ export default class Dashoboard extends React.Component {
       <div>
         <Navbar />
         <UserContainer activeUser={this.state.activeUser}/>
-        <GroupsContainer />
         <VehicleContainer />
       </div>
     )

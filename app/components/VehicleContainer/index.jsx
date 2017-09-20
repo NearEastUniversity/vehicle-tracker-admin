@@ -6,6 +6,7 @@ import Paper from 'material-ui/Paper'
 // Component's paths
 import CreateVehicleForm from './CreateVehicleForm'
 import VehiclesTable from './VehiclesTable'
+import GroupsContainer from './GroupsContainer'
 
 // Material UI Styles
 const muiStyle = {
@@ -64,6 +65,11 @@ export default class VehicleContainer extends React.Component {
     }, (error) => {
       console.error(error);
     })
+  }
+
+  changeOnGroups(){
+    this.updateVehicleGroups()
+    this.updateVehicleList()
   }
 
   updateVehicleGroups(){
@@ -128,6 +134,7 @@ export default class VehicleContainer extends React.Component {
             agentList = {this.state.agentList}
           />
          </Paper>
+         <GroupsContainer changeOnGroups = {this.changeOnGroups.bind(this)}/>
      </div>
     )
   }
