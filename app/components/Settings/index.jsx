@@ -34,8 +34,8 @@ export default class Dashoboard extends React.Component {
     return (
       <div>
         <Navbar />
-        <UserContainer activeUser={this.state.activeUser}/>
         <VehicleContainer />
+        <UserContainer activeUser={this.state.activeUser}/>
       </div>
     )
   }

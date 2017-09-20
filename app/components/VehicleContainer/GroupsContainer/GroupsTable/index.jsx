@@ -90,7 +90,7 @@ export default class GroupsTable extends React.Component {
     ]
 
     return (
-      <div className={style.groupsContainer}>
+      <div className={style.app}>
         <Table
           selectable={false}>
            <TableHeader
