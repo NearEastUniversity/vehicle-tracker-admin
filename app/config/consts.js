@@ -1,5 +1,10 @@
 // API ROOT
-const API_ROOT = "http://127.0.0.1:5004";
+let API_ROOT = "https://api.vehicles.neu.edu.tr";
+
+// Development route
+if (process.env.NODE_ENV !== 'production') {
+  API_ROOT = "http://127.0.0.1:5004";
+}
 
 // AUTH
 export const AUTH_URL = `${API_ROOT}/auth/`;
