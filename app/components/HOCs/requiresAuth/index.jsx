@@ -13,14 +13,6 @@ export default function requiresAuth(Component, config) {
       }
     }
 
-    componentDidMount() {
-
-    }
-
-    componentDidUpdate() {
-
-    }
-
     render() {
       return (
         <div className="authenticated">

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { AUTH_URL } from '../../config/consts'
 
-export function authUser(email, password, handler, errorHandler) {
+export function authUser(email, password, scc, err) {
   axios({
     method: 'post',
     headers: {},
@@ -15,12 +15,11 @@ export function authUser(email, password, handler, errorHandler) {
   .then(function (res){
     if (res.status < 400){
       localStorage.token = res.data.authorization_token;
-      console.log(res);
-      handler();
+      scc();
     }
   })
-  .catch(function (res) {
-    errorHandler();
+  .catch(function (err) {
+    err(err);
   });
 }
 

@@ -56,7 +56,9 @@ export default class GroupsDialog extends Component {
     setVehicleGroups(plate_id, groups, (res) => {
       this.props.confirm()
     }, (err) => {
-      console.log(err);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err);
+      }
     })
   }
 

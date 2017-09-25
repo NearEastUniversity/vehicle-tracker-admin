@@ -5,7 +5,7 @@ function getToken() {
   return localStorage.token
 }
 
-export function getUserCredentials(handler, errorHandler) {
+export function getUserCredentials(scc, err) {
   axios({
     method: 'get',
     headers: {Authorization: "Bearer " + getToken()},
@@ -14,10 +14,10 @@ export function getUserCredentials(handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data.user)
+      scc(res.data.user)
     }
   })
-  .catch(function (res){
-    errorHandler(res)
+  .catch(function (err){
+    err(err)
   })
 }

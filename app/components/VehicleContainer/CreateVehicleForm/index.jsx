@@ -112,7 +112,9 @@ export default class CreateVehicleForm extends React.Component {
         })
         this.props.vehicleCreated(res)
       }, (err) => {
-        console.error(err);
+        if (process.env.NODE_ENV !== 'production') {
+          console.error(err);
+        }
       })
 
       } else {

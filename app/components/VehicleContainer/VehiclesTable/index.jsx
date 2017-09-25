@@ -115,14 +115,15 @@ export default class VehiclesTable extends React.Component {
 
   confirmDeleteVehicle(){
     deleteVehicle(this.state.deleteVehicle.plate_id, (res) => {
-
       this.setState({
         dialogAlert: false,
         deleteVehicle: {}
       })
       this.props.changeOnVehicleList()
-    }, (res) => {
-      console.log(`delete vehicle error: ${res}`);
+    }, (err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err);
+      }
     })
   }
 

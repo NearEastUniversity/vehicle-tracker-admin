@@ -5,7 +5,7 @@ function getToken() {
   return localStorage.token
 }
 
-export function deleteUser(uuid, handler, errorHandler) {
+export function deleteUser(uuid, scc, err) {
   axios({
     method: 'delete',
     headers: {Authorization: "Bearer " + getToken()},
@@ -14,11 +14,10 @@ export function deleteUser(uuid, handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data)
+      scc(res.data)
     }
   })
-  .catch(function (res){
-    console.log(res);
-    errorHandler(res)
+  .catch(function (err){
+    err(err)
   })
 }

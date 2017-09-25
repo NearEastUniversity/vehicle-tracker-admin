@@ -55,7 +55,9 @@ export default class AgentDialog extends Component {
 
         this.props.confirm()
       }, (err) => {
-        console.log(err);
+        if (process.env.NODE_ENV !== 'production') {
+          console.error(err);
+        }
       })
     } else {
       this.setState({
@@ -78,7 +80,9 @@ export default class AgentDialog extends Component {
       this.props.confirm()
 
     }, (err) => {
-      console.log("err " + err);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err);
+      }
     })
   }
 

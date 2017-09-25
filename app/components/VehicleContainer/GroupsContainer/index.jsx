@@ -53,8 +53,10 @@ export default class GroupsContainer extends React.Component {
       this.setState({
         groupList: data,
       });
-    }, (error) => {
-      console.error(error);
+    }, (err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err);
+      }
     })
   }
 

@@ -53,8 +53,10 @@ export default class ConnectionsContainer extends React.Component {
       this.setState({
         vehicleList: data,
       });
-    }, (res) => {
-      console.log(res);
+    }, (err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err);
+      }
     })
   }
 
@@ -63,8 +65,10 @@ export default class ConnectionsContainer extends React.Component {
       this.setState({
         vehicleList: data,
       });
-    }, (res) => {
-      console.log(res);
+    }, (err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err);
+      }
     })
   }
 
@@ -73,8 +77,10 @@ export default class ConnectionsContainer extends React.Component {
       this.setState({
         vehicleTypeList: data,
       });
-    }, (error) => {
-      console.error(error);
+    }, (err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err);
+      }
     })
   }
 
@@ -83,8 +89,10 @@ export default class ConnectionsContainer extends React.Component {
       this.setState({
         vehicleGroupList: data,
       });
-    }, (error) => {
-      console.error(error);
+    }, (err) => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err);
+      }
     })
   }
 

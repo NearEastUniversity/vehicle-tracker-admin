@@ -5,7 +5,7 @@ function getToken() {
   return localStorage.token
 }
 
-export function getVehicles(handler, errorHandler) {
+export function getVehicles(scc, err) {
   axios({
     method: 'get',
     headers: {Authorization: "Bearer " + getToken()},
@@ -14,15 +14,15 @@ export function getVehicles(handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data)
+      scc(res.data)
     }
   })
-  .catch(function (res){
-    errorHandler(res)
+  .catch(function (err){
+    err(err)
   })
 }
 
-export function getUnassignedAgents(handler, errorHandler) {
+export function getUnassignedAgents(scc, err) {
   axios({
     method: 'get',
     headers: {Authorization: "Bearer " + getToken()},
@@ -31,15 +31,15 @@ export function getUnassignedAgents(handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data)
+      scc(res.data)
     }
   })
-  .catch(function (res){
-    errorHandler(res)
+  .catch(function (err){
+    err(err)
   })
 }
 
-export function getVehicleGroups(handler, errorHandler) {
+export function getVehicleGroups(scc, err) {
   axios({
     method: 'get',
     headers: {Authorization: "Bearer " + getToken()},
@@ -48,15 +48,15 @@ export function getVehicleGroups(handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data)
+      scc(res.data)
     }
   })
-  .catch(function (res){
-    errorHandler(res)
+  .catch(function (err){
+    err(err)
   })
 }
 
-export function getVehicleTypes(handler, errorHandler) {
+export function getVehicleTypes(scc, err) {
   axios({
     method: 'get',
     headers: {Authorization: "Bearer " + getToken()},
@@ -65,10 +65,10 @@ export function getVehicleTypes(handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data)
+      scc(res.data)
     }
   })
-  .catch(function (res){
-    errorHandler(res)
+  .catch(function (err){
+    err(err)
   })
 }

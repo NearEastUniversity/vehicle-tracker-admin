@@ -5,7 +5,7 @@ function getToken() {
   return localStorage.token
 }
 
-export function changeAgent(plate_id, agent_uuid, handler, errorHandler) {
+export function changeAgent(plate_id, agent_uuid, scc, err) {
   axios({
     method: 'post',
     headers: {Authorization: "Bearer " + getToken()},
@@ -15,11 +15,11 @@ export function changeAgent(plate_id, agent_uuid, handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data)
+      scc(res.data)
     }
   })
-  .catch(function (res){
-    errorHandler(res)
+  .catch(function (err){
+    err(err)
   })
 }
 
@@ -33,7 +33,7 @@ export function unassignAgent(plate_id, scc, err) {
   .then(function (res){
     scc(res.data)
   })
-  .catch(function (res){
-    err(res)
+  .catch(function (err){
+    err(err)
   })
 }

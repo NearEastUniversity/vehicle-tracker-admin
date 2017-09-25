@@ -5,7 +5,7 @@ function getToken() {
   return localStorage.token
 }
 
-export function createUser(userData, handler, errorHandler) {
+export function createUser(userData, scc, err) {
   axios({
     method: 'post',
     headers: {Authorization: "Bearer " + getToken()},
@@ -15,11 +15,10 @@ export function createUser(userData, handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data)
+      scc(res.data)
     }
   })
-  .catch(function (res){
-    // console.log(res);
-    errorHandler(res)
+  .catch(function (err){
+    err(err)
   })
 }

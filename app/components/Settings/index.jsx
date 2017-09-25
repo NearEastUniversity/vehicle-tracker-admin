@@ -26,7 +26,9 @@ export default class Dashoboard extends React.Component {
         activeUser: data,
       });
     }, (err) => {
-      console.error(err);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(err);
+      }
     })
   }
 

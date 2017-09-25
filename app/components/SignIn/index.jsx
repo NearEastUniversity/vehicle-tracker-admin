@@ -87,8 +87,6 @@ class SignIn extends React.Component {
 		const email = this.state.email;
 		const password = this.state.password;
 
-		console.log(email, password);
-
 		let validateForm = function(arr) {
 			for (var i = 0; i < arr.length; i++) {
 				if (arr[i] == null || arr[i] == "") {
@@ -107,13 +105,16 @@ class SignIn extends React.Component {
 			}
 
 		authUser(email, password, () => {
-				console.log("success")
 				this.props.history.push('/dashboard')
-		}, () => {
-				console.log('error')
+		}, (err) => {
 				this.setState({
 						inputError: "Email or Password is wrong."
 				})
+
+				// Log error
+				if (process.env.NODE_ENV !== 'production') {
+					console.error(err);
+				}
 		})
 
 		} else {

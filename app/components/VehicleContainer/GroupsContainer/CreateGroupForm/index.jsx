@@ -47,8 +47,6 @@ export default class CreateUserForm extends React.Component {
 
     let groupName = this.state.groupInput;
 
-    console.log(groupName);
-
     let validateForm = function(arr) {
       for (var i = 0; i < arr.length; i++) {
     		if (arr[i] == null || arr[i] == "") {
@@ -72,7 +70,9 @@ export default class CreateUserForm extends React.Component {
       })
       this.props.groupCreated(res);
     }, (err) => {
-      console.log(err);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err);
+      }
     })
 
     } else {

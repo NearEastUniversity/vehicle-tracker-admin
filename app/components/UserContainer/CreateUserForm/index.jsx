@@ -55,8 +55,6 @@ export default class CreateUserForm extends React.Component {
     let email = this.state.emailInput;
     let password = this.state.passwordInput;
 
-    console.log(email, password);
-
     let validateForm = function(arr) {
       for (var i = 0; i < arr.length; i++) {
     		if (arr[i] == null || arr[i] == "") {
@@ -82,7 +80,9 @@ export default class CreateUserForm extends React.Component {
       })
       this.props.userCreated(res);
     }, (err) => {
-      console.log(err);
+      if (process.env.NODE_ENV !== 'production') {
+        console.log(err);
+      }
     })
 
     } else {
