@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import {
-  BrowserRouter as
-  Router,
-  Route,
-  Redirect
-} from 'react-router-dom'
+import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 
 // Higher Order components
 import requiresAuth from '../HOCs/requiresAuth'
@@ -28,7 +23,7 @@ export default class Master extends Component {
 
   render() {
     return (
-      <Router history={history}>
+      <BrowserRouter>
         <div>
           <Route exact path="/"
             render={() => (
@@ -40,7 +35,7 @@ export default class Master extends Component {
           <Route path="/settings" component={requiresAuth(Settings)}/>
           <Route path="/signout" component={SignOut}/>
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
