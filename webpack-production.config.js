@@ -68,6 +68,6 @@ module.exports = {
         })
     ],
     performance: {
-        hints: "error"
+        hints: "warning"
     }
 };
