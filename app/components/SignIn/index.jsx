@@ -55,6 +55,9 @@ import logo from './img/logo.svg'
 // Component Actions
 import {authUser, isSignedIn} from './actions'
 
+// i18n
+import translate from './translate';
+
 class SignIn extends React.Component {
 	constructor(props) {
 		super();
@@ -125,6 +128,9 @@ class SignIn extends React.Component {
 	}
 
 	render() {
+
+		let lang = "EN"
+
 		return (
 			<div className={style.app}>
 				{isSignedIn() ? (
@@ -146,7 +152,7 @@ class SignIn extends React.Component {
 							 <br />
 							<TextField
 								hintText="********"
-								floatingLabelText="Password"
+								floatingLabelText={translate[lang].password}
 								type="password"
 								errorText={this.state.inputError}
 								value={this.state.password}
@@ -167,7 +173,7 @@ class SignIn extends React.Component {
 
 						<Paper style={muiStyle.blankDiv}>
 								<img src={logo} alt={"logo"}/>
-								<h3 style={muiStyle.adminText}>NEU Bus Tracker Admin</h3>
+								<h3 style={muiStyle.adminText}>{translate[lang].appTitle}</h3>
 						</Paper>
 					</div>
 					)}
