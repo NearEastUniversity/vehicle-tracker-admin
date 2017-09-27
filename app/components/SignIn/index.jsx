@@ -8,31 +8,6 @@ import Paper from 'material-ui/Paper'
 
 // Material UI Styles
 const muiStyle = {
-	signIN: {
-		padding: 30,
-		width: 350,
-		height: 400,
-		float: 'left',
-		zIndex: 5,
-		position: 'relative',
-	},
-	blankDiv: {
-		paddingTop: 100,
-		marginTop: 15,
-    width: 450,
-    height: 370,
-    backgroundColor: '#FFEF6A',
-    float: 'left',
-    zIndex: 1,
-	},
-	textFieldFirst: {
-		margin: '0px 20px',
-		display: 'block',
-	},
-	textFieldSecond: {
-		margin: '-30px 20px',
-		display: 'block',
-	},
 	floatingLabelTextStyle: {
 		fontWeight: 'normal',
 	},
@@ -43,9 +18,6 @@ const muiStyle = {
 	buttonText: {
 		fontSize: 20,
 	},
-	adminText: {
-		color: '#4A4A4A',
-	}
 }
 
 // Component Style
@@ -137,7 +109,7 @@ class SignIn extends React.Component {
 					<Redirect to="/"/>
 				) : (
 					<div className={style.container}>
-						<Paper zDepth={4} style={muiStyle.signIN} >
+						<Paper zDepth={4} className={style.signIN} >
 							<h2>Sign In</h2>
 							<form onSubmit={this.handleSubmit}>
 							<TextField
@@ -148,7 +120,7 @@ class SignIn extends React.Component {
 								value={this.state.email}
 								onChange={this.handleEmailChange}
 								floatingLabelStyle={muiStyle.floatingLabelTextStyle}
-								style={muiStyle.textFieldFirst} />
+								className={style.textFieldFirst} />
 							 <br />
 							<TextField
 								hintText="********"
@@ -158,7 +130,7 @@ class SignIn extends React.Component {
 								value={this.state.password}
 								onChange={this.handlePasswordChange}
 								floatingLabelStyle={muiStyle.floatingLabelTextStyle}
-								style={muiStyle.textFieldSecond} />
+								className={style.textFieldSecond} />
 							<br />
 							<RaisedButton
 								type="submit"
@@ -171,9 +143,9 @@ class SignIn extends React.Component {
 							</form>
 						</Paper>
 
-						<Paper style={muiStyle.blankDiv}>
+						<Paper className={style.blankDiv}>
 								<img src={logo} alt={"logo"}/>
-								<h3 style={muiStyle.adminText}>{translate[lang].appTitle}</h3>
+								<h3 className={style.adminText}>{translate[lang].appTitle}</h3>
 						</Paper>
 					</div>
 					)}
