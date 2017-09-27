@@ -12,8 +12,8 @@ const muiStyle = {
 		fontWeight: 'normal',
 	},
 	button: {
-		marginTop: '40',
-		height: '45',
+		marginTop: 40,
+		height: 45,
 	},
 	buttonText: {
 		fontSize: 20,
