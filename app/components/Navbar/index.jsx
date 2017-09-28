@@ -27,18 +27,23 @@ const muiStyle = {
 // Component Style
 import style from './style'
 
+// i18n
+import translate from './translate'
+
+let lang = "EN"
+
 const Navbar = () => (
   <div className={style.app}>
     <AppBar
       style={muiStyle.appbar}
-   		title="NEU Bus Tracker Admin"
+   		title={translate[lang].appTitle}
       showMenuIconButton={false}
     	iconElementRight={
       <div>
         <NavLink to="/dashboard" activeClassName={style.active}>
           <IconButton
             iconStyle={muiStyle.iconButtons}
-            tooltip="Dashboard"
+            tooltip={translate[lang].dashboardTooltip}
             touch={true}>
               <ActionDashboard/>
           </IconButton>
@@ -46,7 +51,7 @@ const Navbar = () => (
         <NavLink to="/settings" activeClassName={style.active}>
           <IconButton
             iconStyle={muiStyle.iconButtons}
-            tooltip="Settings"
+            tooltip={translate[lang].settingsTooltip}
             touch={true}>
               <ActionSettings/>
           </IconButton>
@@ -54,7 +59,7 @@ const Navbar = () => (
         <NavLink to="/signout">
           <IconButton
             iconStyle={muiStyle.iconButtons}
-            tooltip="Sign out"
+            tooltip={translate[lang].signoutTooltip}
             tooltipPosition="bottom-left"
             touch={true}>
               <ActionexitToapp/>

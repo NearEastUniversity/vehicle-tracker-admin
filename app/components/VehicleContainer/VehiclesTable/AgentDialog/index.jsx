@@ -12,6 +12,9 @@ import {changeAgent, unassignAgent} from './actions';
 // Component Style
 import style from './style'
 
+// i18n
+import translate from './translate'
+
 export default class AgentDialog extends Component {
 
   constructor(props) {
@@ -88,19 +91,21 @@ export default class AgentDialog extends Component {
 
   render() {
 
+    let lang = "EN"
+
     const dialogActions = [
       <FlatButton
-        label="Unassign Agent"
+        label={translate[lang].unassignAgent}
         style={{float: "left", color: "#FF0000"}}
         onTouchTap={this.handleUnassignAgent.bind(this)}
       />,
       <FlatButton
-        label="Cancel"
+        label={translate[lang].cancel}
         style={{color: "#747374"}}
         onTouchTap={this.handleClose.bind(this)}
       />,
       <FlatButton
-        label="Save Changes"
+        label={translate[lang].saveChanges}
         style={{color: "#02C386"}}
         primary={true}
         onTouchTap={this.handleSaveChanges.bind(this)}
@@ -110,7 +115,7 @@ export default class AgentDialog extends Component {
     return (
         <Dialog
           className={style.divStyle}
-          title={`Set an agent for Vehicle ${this.props.editVehicle.plate_id}`}
+          title={`${translate[lang].titleText} ${this.props.editVehicle.plate_id}`}
           actions={dialogActions}
           modal={false}
           open={this.props.open}
@@ -118,7 +123,7 @@ export default class AgentDialog extends Component {
 
             <SelectField
               className={style.selectField}
-              floatingLabelText="Agent List"
+              floatingLabelText={translate[lang].agentList}
               errorText={this.state.errorText}
               floatingLabelFixed={true}
               hintText = {

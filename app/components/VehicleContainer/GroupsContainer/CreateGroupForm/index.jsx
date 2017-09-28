@@ -24,6 +24,9 @@ import { createGroup } from './actions'
 // Component Style
 import style from './style'
 
+// i18n
+import translate from './translate'
+
 export default class CreateUserForm extends React.Component {
 
   constructor(props) {
@@ -83,6 +86,9 @@ export default class CreateUserForm extends React.Component {
   }
 
   render() {
+
+    let lang = "EN"
+
     return (
       <div>
         {/* Create new Group Form */}
@@ -95,8 +101,8 @@ export default class CreateUserForm extends React.Component {
           <TextField
             value={this.state.groupInput}
             onChange={this.handleGroupChange.bind(this)}
-            hintText="School Bus"
-            floatingLabelText="Group"
+            hintText={translate[lang].groupHint}
+            floatingLabelText={translate[lang].group}
             errorText={this.state.inputError}
             floatingLabelStyle={muiStyle.floatingLabelStyle}
             style={muiStyle.textFieldStyle}/>
@@ -104,7 +110,7 @@ export default class CreateUserForm extends React.Component {
           <div className={style.container}>
             <RaisedButton
               type="submit"
-              label="Create"
+              label={translate[lang].create}
               icon={<ContentAdd/>}
               labelColor="#fff"
               backgroundColor="#039BE5"

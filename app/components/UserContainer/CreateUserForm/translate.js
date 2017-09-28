@@ -3,16 +3,16 @@ const translate = {
     email: 'Email',
     emailHint: 'email@example.com',
     password: 'Password',
-    signIn: 'Sign In',
-    appTitle: 'NEU Bus Tracker Admin',
+    passwordHint: 'Set a password',
+    create: 'Create',
   },
 
   TR: {
     email: '',
     emailHint: '',
     password: '',
-    signIn: '',
-    appTitle: 'YDÜ Otobüs Takip Yönetimi',
+    passwordHint: '',
+    create: '',
   }
 }
 

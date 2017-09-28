@@ -24,6 +24,9 @@ import {createUser} from './actions'
 // Component Style
 import style from './style'
 
+// i18n
+import translate from './translate'
+
 export default class CreateUserForm extends React.Component {
 
   constructor(props) {
@@ -93,6 +96,9 @@ export default class CreateUserForm extends React.Component {
   }
 
   render() {
+
+    let lang = "EN"
+
     return (
       <div>
         {/* Create new User TForm */}
@@ -106,8 +112,8 @@ export default class CreateUserForm extends React.Component {
             value={this.state.emailInput}
             onChange={this.handleEmailChange.bind(this)}
             type="email"
-            hintText="example@example.com"
-            floatingLabelText="Email"
+            hintText={translate[lang].emailHint}
+            floatingLabelText={translate[lang].email}
             errorText={this.state.inputError}
             floatingLabelStyle={muiStyle.floatingLabelStyle}
             style={muiStyle.textFieldStyle}/>
@@ -117,8 +123,8 @@ export default class CreateUserForm extends React.Component {
               value={this.state.passwordInput}
               onChange={this.handlePasswordChange.bind(this)}
               type="password"
-              hintText="set a password"
-              floatingLabelText="Password"
+              hintText={translate[lang].passwordHint}
+              floatingLabelText={translate[lang].password}
               errorText={this.state.inputError}
               floatingLabelStyle={muiStyle.floatingLabelStyle}
               style={muiStyle.textFieldStyle}/>
@@ -126,7 +132,7 @@ export default class CreateUserForm extends React.Component {
           <div className={style.container}>
             <RaisedButton
               type="submit"
-              label="Create"
+              label={translate[lang].create}
               icon={<ContentAdd/>}
               labelColor="#fff"
               backgroundColor="#039BE5"

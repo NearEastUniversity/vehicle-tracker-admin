@@ -8,6 +8,9 @@ import MenuItem from 'material-ui/MenuItem'
 // Component Style
 import style from './style'
 
+// i18n
+import translate from './translate'
+
 export default class FilterForm extends React.Component {
 
   constructor(props) {
@@ -34,6 +37,9 @@ export default class FilterForm extends React.Component {
   }
 
   render() {
+
+    let lang = "EN"
+
     return (
       <div>
         {/* Filter Vehicles by Type and Group Form */}
@@ -43,10 +49,10 @@ export default class FilterForm extends React.Component {
             <SelectField
               className={style.selectField}
               floatingLabelFixed={true}
-              floatingLabelText="Filter by Type"
+              floatingLabelText={translate[lang].filterByType}
               value={this.state.vehicleTypeSelect}
               onChange={(event, key, value) => {this.handleVehicleTypeChange(event, key, value)}}>
-                <MenuItem value={""} primaryText="All" />
+                <MenuItem value={""} primaryText={translate[lang].allItems} />
                 <Divider />
                 {this.props.vehicleTypeList.map((type, index) => {
                   return (
@@ -57,10 +63,10 @@ export default class FilterForm extends React.Component {
             <SelectField
               className={style.selectField}
               floatingLabelFixed={true}
-              floatingLabelText="Filter by Group"
+              floatingLabelText={translate[lang].filterByGroup}
               value={this.state.vehicleGroupSelect}
               onChange={(event, key, value) => {this.handleVehicleGroupChange(event, key, value)}}>
-                <MenuItem value={""} primaryText="All" />
+                <MenuItem value={""} primaryText={translate[lang].allItems} />
                 <Divider />
                 {this.props.vehicleGroupList.map((groups, index) => {
                   return (

@@ -27,6 +27,9 @@ import style from './style'
 // Component Actions
 import { createVehicle } from './actions'
 
+// i18n
+import translate from './translate'
+
 export default class CreateVehicleForm extends React.Component {
 
   constructor(props) {
@@ -39,7 +42,6 @@ export default class CreateVehicleForm extends React.Component {
       inputError: ""
     }
   }
-
 
   // Handle Inputs
   handlePlateIdChange(event){
@@ -125,6 +127,9 @@ export default class CreateVehicleForm extends React.Component {
   }
 
   render() {
+
+    let lang = "EN"
+
     return (
       <div>
         {/* Create new Vehicle Form */}
@@ -139,14 +144,14 @@ export default class CreateVehicleForm extends React.Component {
                 value={this.state.plateIdInput}
                 onChange={this.handlePlateIdChange.bind(this)}
                 hintText="AA535"
-                floatingLabelText="Plate ID"
+                floatingLabelText={translate[lang].plateID}
                 errorText={this.state.inputError}
                 floatingLabelStyle={muiStyle.floatingLabelStyle}
                 style={muiStyle.textFieldStyle}/>
 
               <SelectField
                 className={style.selectField}
-                floatingLabelText="Type"
+                floatingLabelText={translate[lang].type}
                 errorText={this.state.inputError}
                 value={this.state.vehicleTypeSelect}
                 onChange={(event, key, value) => {this.handleVehicleTypeChange(event, key, value)}}>
@@ -161,7 +166,7 @@ export default class CreateVehicleForm extends React.Component {
             <div className={style.container}>
               <SelectField
                 className={style.selectField}
-                floatingLabelText="Agent (optional)"
+                floatingLabelText={translate[lang].agent}
                 value={this.state.agentListSelect}
                 onChange={(event, key, value) => {this.handleAgentListChange(event, key, value)}}>
                 {this.props.agentList.map((agent, index) => {
@@ -174,7 +179,7 @@ export default class CreateVehicleForm extends React.Component {
               <SelectField
                 className={style.selectField}
                 multiple={true}
-                floatingLabelText="Group (optional)"
+                floatingLabelText={translate[lang].group}
                 value={this.state.vehicleGroupSelect}
                 onChange={(event, key, value) => {this.handleVehicleGroupChange(event, key, value)}}>
                 {this.props.vehicleGroupList.map((groups, index) => {
@@ -190,7 +195,7 @@ export default class CreateVehicleForm extends React.Component {
 
           <RaisedButton
             type="submit"
-            label="Create"
+            label={translate[lang].create}
             icon={<ContentAdd/>}
             labelColor="#fff"
             backgroundColor="#039BE5"

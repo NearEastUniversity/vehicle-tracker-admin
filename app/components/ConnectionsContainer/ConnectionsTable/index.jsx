@@ -13,6 +13,9 @@ import {
 // Component Style
 import style from './style'
 
+// i18n
+import translate from './translate'
+
 export default class ConnectionsTable extends React.Component {
 
   constructor(props) {
@@ -22,6 +25,9 @@ export default class ConnectionsTable extends React.Component {
   }
 
   render() {
+
+    let lang = "EN"
+
     return (
       <div className={style.app}>
         {/* Table with vehicles connected to agents */}
@@ -31,10 +37,10 @@ export default class ConnectionsTable extends React.Component {
              displaySelectAll={false}
              adjustForCheckbox={false}>
              <TableRow>
-               <TableHeaderColumn>Plate ID</TableHeaderColumn>
-               <TableHeaderColumn>Type</TableHeaderColumn>
-               <TableHeaderColumn>Agent</TableHeaderColumn>
-               <TableHeaderColumn>Groups</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].plateID}</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].type}</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].agent}</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].group}</TableHeaderColumn>
              </TableRow>
            </TableHeader>
            <TableBody

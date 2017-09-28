@@ -26,6 +26,9 @@ import {
   getVehicleTypes
 } from './actions'
 
+// i18n
+import translate from './translate'
+
 export default class VehicleContainer extends React.Component {
 
   constructor(props) {
@@ -98,7 +101,6 @@ export default class VehicleContainer extends React.Component {
     })
   }
 
-
   vehicleCreated(res){
     let newVehicle = res
     let newVehicles = this.state.vehicleList.slice()
@@ -122,10 +124,13 @@ export default class VehicleContainer extends React.Component {
   }
 
   render() {
+
+    let lang = "EN"
+
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={muiStyle.paper}>
-          <h3 className={style.title}>Create Vehicle</h3>
+          <h3 className={style.title}>{translate[lang].createVehicle}</h3>
 
           <CreateVehicleForm
             vehicleTypeList = {this.state.vehicleTypeList}

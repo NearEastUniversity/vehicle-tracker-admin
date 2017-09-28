@@ -40,6 +40,9 @@ import style from './style'
 // Component Actions
 import {deleteVehicle} from './actions'
 
+// i18n
+import translate from './translate'
+
 export default class VehiclesTable extends React.Component {
 
   constructor(props) {
@@ -53,7 +56,6 @@ export default class VehiclesTable extends React.Component {
     }
   }
 
-
   // Dialog Actions
   dialogAlert() {
     this.setState({dialogAlert: true})
@@ -62,7 +64,6 @@ export default class VehiclesTable extends React.Component {
 	dialogClose() {
 		this.setState({dialogAlert: false})
 	}
-
 
   // Agents Dialog Actions
   handleAgentDialogOpen(vehicle){
@@ -129,15 +130,17 @@ export default class VehiclesTable extends React.Component {
 
   render() {
 
+    let lang = "EN"
+
     const alertActions = [
       <FlatButton
-        label="Cancel"
+        label={translate[lang].cancel}
         style={{color: "#747374"}}
         primary={true}
         onTouchTap={this.dialogClose.bind(this)}
       />,
       <FlatButton
-        label="Delete"
+        label={translate[lang].delete}
         style={{color: "#ff0000"}}
         primary={true}
         onTouchTap={this.confirmDeleteVehicle.bind(this)}
@@ -152,11 +155,11 @@ export default class VehiclesTable extends React.Component {
              displaySelectAll={false}
              adjustForCheckbox={false}>
              <TableRow>
-               <TableHeaderColumn>Plate ID</TableHeaderColumn>
-               <TableHeaderColumn>Type</TableHeaderColumn>
-               <TableHeaderColumn>Agent</TableHeaderColumn>
-               <TableHeaderColumn>Groups</TableHeaderColumn>
-               <TableHeaderColumn>Options</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].plateID}</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].type}</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].agent}</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].group}</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].options}</TableHeaderColumn>
              </TableRow>
            </TableHeader>
            <TableBody
@@ -233,16 +236,16 @@ export default class VehiclesTable extends React.Component {
         {/* Delete Vehicle Dialog */}
         <Dialog
          className={style.dialog}
-         title="Delete Vehicle"
+         title={translate[lang].deleteVehicle}
          actions={alertActions}
          modal={false}
          open={this.state.dialogAlert}
          onRequestClose={this.dialogClose.bind(this)}>
-         Do you realy want to delete
+         {translate[lang].questionFirstPart}
          <span className={style.highlight}>
            {this.state.deleteVehicle.plate_id}
          </span>
-         plate ID vehicle?
+         {translate[lang].questionSecondPart}
        </Dialog>
      </div>
     )

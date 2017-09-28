@@ -33,6 +33,9 @@ import style from './style'
 // Component Actions
 import {deleteGroup} from './actions'
 
+// i18n
+import translate from './translate'
+
 export default class GroupsTable extends React.Component {
 
   constructor(props) {
@@ -76,15 +79,17 @@ export default class GroupsTable extends React.Component {
 
   render() {
 
+    let lang = "EN"
+
     const alertActions = [
       <FlatButton
-        label="Cancel"
+        label={translate[lang].cancel}
         style={{color: "#747374"}}
         primary={true}
         onTouchTap={this.dialogClose.bind(this)}
       />,
       <FlatButton
-        label="Delete"
+        label={translate[lang].delete}
         style={{color: "#ff0000"}}
         primary={true}
         onTouchTap={this.confirmDeleteGroup.bind(this)}
@@ -99,8 +104,8 @@ export default class GroupsTable extends React.Component {
              displaySelectAll={false}
              adjustForCheckbox={false}>
              <TableRow>
-               <TableHeaderColumn>Group</TableHeaderColumn>
-               <TableHeaderColumn>Options</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].group}</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].options}</TableHeaderColumn>
              </TableRow>
            </TableHeader>
            <TableBody
@@ -130,12 +135,12 @@ export default class GroupsTable extends React.Component {
         {/* Delete Group Dialog */}
         <Dialog
           className={style.dialog}
-          title="Delete User"
+          title={translate[lang].deleteGroup}
           actions={alertActions}
           modal={false}
           open={this.state.dialogAlert}
           onRequestClose={this.dialogClose.bind(this)}>
-          Do you realy want to delete
+          {translate[lang].question}
           <span className={style.highlight}>
             {this.state.deleteGroup.name}
           </span>

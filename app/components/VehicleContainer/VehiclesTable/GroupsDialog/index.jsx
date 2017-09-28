@@ -12,6 +12,9 @@ import { setVehicleGroups } from './actions';
 // Component Style
 import style from './style'
 
+// i18n
+import translate from './translate'
+
 export default class GroupsDialog extends Component {
 
   constructor(props) {
@@ -64,15 +67,17 @@ export default class GroupsDialog extends Component {
 
   render() {
 
+    let lang = "EN"
+
     const dialogActions = [
       <FlatButton
-        label="Cancel"
+        label={translate[lang].cancel}
         style={{color: "#747374"}}
         primary={true}
         onTouchTap={this.props.close.bind(this)}
       />,
       <FlatButton
-        label="Save Changes"
+        label={translate[lang].saveChanges}
         style={{color: "#02C386"}}
         primary={true}
         onTouchTap={this.handleGroupDialogConfirm.bind(this)}
@@ -82,7 +87,7 @@ export default class GroupsDialog extends Component {
     return (
       <Dialog
         className={style.divStyle}
-        title={`Set groups for Vehicle ${this.props.editVehicle.plate_id}`}
+        title={`${translate[lang].titleText} ${this.props.editVehicle.plate_id}`}
         actions={dialogActions}
         modal={false}
         open={this.props.open}
@@ -91,7 +96,7 @@ export default class GroupsDialog extends Component {
           <SelectField
             className={style.selectField}
           multiple={true}
-          hintText="Select group"
+          hintText={translate[lang].selectGroup}
           value={this.state.vehicleGroupListSelect}
           onChange={this.handleVehicleGroupListChange.bind(this)}
           >

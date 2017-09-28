@@ -20,6 +20,9 @@ import style from './style'
 // Component Actions
 import {getUsers} from './actions'
 
+// i18n
+import translate from './translate'
+
 export default class UserContainer extends React.Component {
 
   constructor(props) {
@@ -59,10 +62,13 @@ export default class UserContainer extends React.Component {
   }
 
   render() {
+
+    let lang = "EN"
+
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={muiStyle.paper}>
-          <h3 className={style.title}>Create User</h3>
+          <h3 className={style.title}>{translate[lang].createUser}</h3>
           <CreateUserForm userCreated={this.userCreated.bind(this)}/>
           <UsersTable
             activeUser={this.props.activeUser}

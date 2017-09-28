@@ -20,6 +20,9 @@ import style from './style'
 // Component Actions
 import { getGroups } from './actions'
 
+// i18n
+import translate from './translate'
+
 export default class GroupsContainer extends React.Component {
 
   constructor(props) {
@@ -61,10 +64,13 @@ export default class GroupsContainer extends React.Component {
   }
 
   render() {
+
+    let lang = "EN"
+
     return (
       <div className={style.app}>
         <Paper zDepth={1} style={muiStyle.paper}>
-          <h3 className={style.title}>Create Group</h3>
+          <h3 className={style.title}>{translate[lang].createGroup}</h3>
           <CreateGroupForm groupCreated={this.groupCreated.bind(this)}/>
           <GroupsTable groupList={this.state.groupList} changeOnGroupList={this.changeOnGroupList.bind(this)}/>
         </Paper>

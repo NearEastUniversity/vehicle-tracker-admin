@@ -28,7 +28,7 @@ import logo from './img/logo.svg'
 import {authUser, isSignedIn} from './actions'
 
 // i18n
-import translate from './translate';
+import translate from './translate'
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -110,12 +110,12 @@ class SignIn extends React.Component {
 				) : (
 					<div className={style.container}>
 						<Paper zDepth={4} className={style.signIN} >
-							<h2>Sign In</h2>
+							<h2>{translate[lang].signIn}</h2>
 							<form onSubmit={this.handleSubmit}>
 							<TextField
 								type="email"
-								hintText="email@example.com"
-								floatingLabelText="Email"
+								hintText={translate[lang].emailHint}
+								floatingLabelText={translate[lang].email}
 								errorText={this.state.inputError}
 								value={this.state.email}
 								onChange={this.handleEmailChange}
@@ -134,7 +134,7 @@ class SignIn extends React.Component {
 							<br />
 							<RaisedButton
 								type="submit"
-								label="SIGN IN"
+								label={translate[lang].signIn}
 								backgroundColor="#039BE5"
 								labelColor="#ffffff"
 								fullWidth={true}

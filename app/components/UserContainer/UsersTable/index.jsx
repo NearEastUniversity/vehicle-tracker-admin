@@ -33,6 +33,9 @@ import style from './style'
 // Component Actions
 import {deleteUser} from './actions'
 
+// i18n
+import translate from './translate'
+
 export default class UsersTable extends React.Component {
 
   constructor(props) {
@@ -74,15 +77,18 @@ export default class UsersTable extends React.Component {
   }
 
   render() {
+
+    let lang = "EN"
+
     const alertActions = [
       <FlatButton
-        label="Cancel"
+        label={translate[lang].cancel}
         style={{color: "#747374"}}
         primary={true}
         onTouchTap={this.dialogClose.bind(this)}
       />,
       <FlatButton
-        label="Delete"
+        label={translate[lang].delete}
         style={{color: "#ff0000"}}
         primary={true}
         onTouchTap={this.confirmDeleteUser.bind(this)}
@@ -97,8 +103,8 @@ export default class UsersTable extends React.Component {
              displaySelectAll={false}
              adjustForCheckbox={false}>
              <TableRow>
-               <TableHeaderColumn>Email</TableHeaderColumn>
-               <TableHeaderColumn>Options</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].email}</TableHeaderColumn>
+               <TableHeaderColumn>{translate[lang].options}</TableHeaderColumn>
              </TableRow>
            </TableHeader>
            <TableBody
@@ -134,12 +140,12 @@ export default class UsersTable extends React.Component {
         {/* Delete User Dialog */}
         <Dialog
           className={style.dialog}
-          title="Delete User"
+          title={translate[lang].deleteUser}
           actions={alertActions}
           modal={false}
           open={this.state.dialogAlert}
           onRequestClose={this.dialogClose.bind(this)}>
-          Do you realy want to delete
+          {translate[lang].question}
           <span className={style.highlight}>
             {this.state.deleteUser.email}
           </span>
