@@ -1,0 +1,16 @@
+sudo: required
+before_install:
+- sudo apt-get -qq update
+- sudo apt-get install -y npm
+script:
+- npm install
+- npm run build
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: deploy.sh
+  on:
+    branch: master
+env:
+  global:
+    secure: hsfdAmiFL6vhZOCxKbsKILSNS9/o7dq4byQQPlCSiy3A8Pyj0wbhoN0EmunBmKaCCItc+eVymGdBbOuLwNT2kF9mk/9xyRcU58gUmLN4jGhGkn01/5i9anwM7ZTVKgJskv+Qv6igiUR0gDcMbPv1eg1BEJ1DNLLWAKCpLwDSjxkUJO5tH2ddWdJs+sDodJao1zkGQjwY+Im09fAeG1fZExLZs4DoRjbQn5LShmZ6HbGl8yfdIeQ0gTRPxSRO/+WHWlfXZJHy/tQHaPD7L/o5U9BnB+xgtbotxVhtWsr/UhKwOCOd9qfE+g1FJX1T/jJLcSOlIhoFTmpL5hqHm50KhCp5Y19Sdu5yjSa7e4H8wdFXIg3nPZu4yJ+F3fRveOJGB7iAyDNknnwmkl0rVLWGtFh+f+GNs9X94AV/zZMMLFBgwAbtEHgFqrNwwSWevle0sWJCtUfyXYHo/g1PzJ8FqhIWiI0/OmeUR0IcOKT2EJMT3ctKN6LE2OHl3R7cgQxfQjJ9OWfKmHFN+JaLnDK5HyeZtk1O1FPK97lvdvkxoyNpzPCXjreQJXNHgySdGoQXoA/jHfuzQFiKdOExihnscgCUnxVIg8e7SM/43finzS3a4TmXHPPYE8WRI+Ylp/Fi8eDLwdTY4GbikexYtcC307eMno4Mc88II78rbUZhUbs=
