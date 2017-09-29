@@ -8,7 +8,7 @@ import {
 // Material UI imports
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
-import ActionDashboard from 'material-ui/svg-icons/action/Dashboard'
+import ActionDashboard from 'material-ui/svg-icons/action/dashboard'
 import ActionSettings from 'material-ui/svg-icons/action/settings'
 import ActionexitToapp from 'material-ui/svg-icons/action/exit-to-app'
 
