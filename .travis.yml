@@ -1,14 +1,15 @@
 sudo: required
 before_install:
-- sudo apt-get -qq update
-- sudo apt-get install -y npm
+  - sudo apt-get -qq update
+  - sudo apt-get install -y npm
 script:
-- npm install
-- npm run build
+  - npm install
+  - npm run build
+  - chmod +x ./deploy.sh
 deploy:
   provider: script
   skip_cleanup: true
-  script: deploy.sh
+  script: ./deploy.sh
   on:
     branch: master
 env:
