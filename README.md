@@ -1,3 +1,7 @@
+# Vehicle Tracker Admin
+
+[![Build Status](https://travis-ci.org/NearEastUniversity/vehicle-tracker-admin.svg?branch=dev)](https://travis-ci.org/NearEastUniversity/vehicle-tracker-admin)
+
 
 ## Getting started
 
