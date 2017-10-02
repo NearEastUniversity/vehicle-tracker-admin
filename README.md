@@ -1,8 +1,6 @@
 # Vehicle Tracker Admin
 
-[![Build Status](https://travis-ci.org/NearEastUniversity/vehicle-tracker-admin.svg?branch=dev)](https://travis-ci.org/NearEastUniversity/vehicle-tracker-admin)
-
-[![GitHub version](https://badge.fury.io/gh/NearEastUniversity%2Fvehicle-tracker-admin.svg)](https://badge.fury.io/gh/NearEastUniversity%2Fvehicle-tracker-admin)
+[![Build Status](https://travis-ci.org/NearEastUniversity/vehicle-tracker-admin.svg?branch=dev)](https://travis-ci.org/NearEastUniversity/vehicle-tracker-admin) [![GitHub version](https://badge.fury.io/gh/NearEastUniversity%2Fvehicle-tracker-admin.svg)](https://badge.fury.io/gh/NearEastUniversity%2Fvehicle-tracker-admin)
 
 
 ## Getting started
