@@ -51,9 +51,9 @@ export default class UserContainer extends React.Component {
       this.setState({
         users: data,
       });
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
   }

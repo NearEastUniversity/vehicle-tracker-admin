@@ -18,8 +18,8 @@ export function changeAgent(plate_id, agent_uuid, scc, err) {
       scc(res.data)
     }
   })
-  .catch(function (err){
-    err(err)
+  .catch(function (error){
+    err(error)
   })
 }
 
@@ -33,7 +33,7 @@ export function unassignAgent(plate_id, scc, err) {
   .then(function (res){
     scc(res.data)
   })
-  .catch(function (err){
-    err(err)
+  .catch(function (error){
+    err(error)
   })
 }

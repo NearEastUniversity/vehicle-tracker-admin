@@ -16,7 +16,7 @@ export function setVehicleGroups(plate_id, groups, scc, err) {
   .then(function (res){
     scc(res.data)
   })
-  .catch(function (err){
-    err(err)
+  .catch(function (error){
+    err(error)
   })
 }

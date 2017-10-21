@@ -21,8 +21,8 @@ export function getVehicles(vehicleType, vehicleGroup, scc, err) {
       scc(res.data)
     }
   })
-  .catch(function (err){
-    err(err)
+  .catch(function (error){
+    err(error)
   })
 }
 
@@ -38,8 +38,8 @@ export function getVehicleTypes(scc, err) {
       scc(res.data)
     }
   })
-  .catch(function (err){
-    err(err)
+  .catch(function (error){
+    err(error)
   })
 }
 
@@ -55,7 +55,7 @@ export function getVehicleGroups(scc, err) {
       scc(res.data)
     }
   })
-  .catch(function (err){
-    err(err)
+  .catch(function (error){
+    err(error)
   })
 }

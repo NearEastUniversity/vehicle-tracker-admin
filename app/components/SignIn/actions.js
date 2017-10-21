@@ -18,8 +18,8 @@ export function authUser(email, password, scc, err) {
       scc();
     }
   })
-  .catch(function (err) {
-    err(err);
+  .catch(function (error) {
+    err(error)
   });
 }
 

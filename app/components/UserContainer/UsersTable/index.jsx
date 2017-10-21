@@ -66,9 +66,9 @@ export default class UsersTable extends React.Component {
         deleteUser: {}
       })
       this.props.changeOnUserList()
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
   }

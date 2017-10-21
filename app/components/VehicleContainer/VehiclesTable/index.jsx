@@ -120,9 +120,9 @@ export default class VehiclesTable extends React.Component {
         deleteVehicle: {}
       })
       this.props.changeOnVehicleList()
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
   }

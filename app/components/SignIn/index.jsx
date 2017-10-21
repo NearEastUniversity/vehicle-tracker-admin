@@ -78,14 +78,14 @@ class SignIn extends React.Component {
 
 		authUser(email, password, () => {
 				this.props.history.push('/dashboard')
-		}, (err) => {
+		}, (error) => {
 				this.setState({
 						inputError: "Email or Password is wrong."
 				})
 
 				// Log error
 				if (process.env.NODE_ENV !== 'production') {
-					console.error(err);
+					console.error(error);
 				}
 		})
 

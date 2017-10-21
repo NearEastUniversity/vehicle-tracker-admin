@@ -67,9 +67,9 @@ export default class GroupsTable extends React.Component {
         deleteGroup: {}
       })
       this.props.changeOnGroupList()
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
   }

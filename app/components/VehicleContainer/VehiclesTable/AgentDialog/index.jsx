@@ -54,9 +54,9 @@ export default class AgentDialog extends Component {
         });
 
         this.props.confirm()
-      }, (err) => {
+      }, (error) => {
         if (process.env.NODE_ENV !== 'production') {
-          console.error(err);
+          console.error(error);
         }
       })
     } else {
@@ -79,9 +79,9 @@ export default class AgentDialog extends Component {
 
       this.props.confirm()
 
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
   }

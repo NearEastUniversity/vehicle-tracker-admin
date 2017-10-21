@@ -69,9 +69,9 @@ export default class CreateUserForm extends React.Component {
         inputError: ""
       })
       this.props.groupCreated(res);
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
 

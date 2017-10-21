@@ -17,7 +17,7 @@ export function deleteVehicle(plate_id, scc, err) {
       scc(res.data)
     }
   })
-  .catch(function (err){
-    err(err)
+  .catch(function (error){
+    err(error)
   })
   }

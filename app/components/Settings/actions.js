@@ -17,7 +17,7 @@ export function getUserCredentials(scc, err) {
       scc(res.data.user)
     }
   })
-  .catch(function (err){
-    err(err)
+  .catch(function (error){
+    err(error)
   })
 }

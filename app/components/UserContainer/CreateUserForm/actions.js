@@ -18,7 +18,7 @@ export function createUser(userData, scc, err) {
       scc(res.data)
     }
   })
-  .catch(function (err){
-    err(err)
+  .catch(function (error){
+    err(error)
   })
 }

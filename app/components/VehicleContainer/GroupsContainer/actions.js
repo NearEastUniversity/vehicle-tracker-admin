@@ -5,7 +5,7 @@ function getToken() {
   return localStorage.token
 }
 
-export function getGroups(handler, errorHandler) {
+export function getGroups(scc, err) {
   axios({
     method: 'get',
     headers: {Authorization: "Bearer " + getToken()},
@@ -14,11 +14,11 @@ export function getGroups(handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data)
+      scc(res.data)
     }
   })
-  .catch(function (res){
+  .catch(function (error){
     // console.log(res);
-    errorHandler(res)
+    err(error)
   })
 }

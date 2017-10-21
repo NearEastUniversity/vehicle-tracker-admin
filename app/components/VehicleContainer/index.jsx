@@ -62,9 +62,9 @@ export default class VehicleContainer extends React.Component {
       this.setState({
         agentList: data,
       });
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
   }
@@ -79,9 +79,9 @@ export default class VehicleContainer extends React.Component {
       this.setState({
         vehicleGroupList: data,
       });
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
   }
@@ -91,9 +91,9 @@ export default class VehicleContainer extends React.Component {
       this.setState({
         vehicleTypeList: data,
       });
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
   }
@@ -114,9 +114,9 @@ export default class VehicleContainer extends React.Component {
       this.setState({
         vehicleList: data,
       });
-    }, (err) => {
+    }, (error) => {
       if (process.env.NODE_ENV !== 'production') {
-        console.error(err);
+        console.error(error);
       }
     })
   }

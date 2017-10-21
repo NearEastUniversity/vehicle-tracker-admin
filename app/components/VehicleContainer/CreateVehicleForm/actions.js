@@ -5,7 +5,7 @@ function getToken() {
   return localStorage.token
 }
 
-export function createVehicle(vehicleData, handler, errorHandler) {
+export function createVehicle(vehicleData, scc, err) {
   axios({
     method: 'post',
     headers: {Authorization: "Bearer " + getToken()},
@@ -15,10 +15,10 @@ export function createVehicle(vehicleData, handler, errorHandler) {
   })
   .then(function (res){
     if (res.status < 400) {
-      handler(res.data)
+      scc(res.data)
     }
   })
-  .catch(function (res){
-    errorHandler(res)
+  .catch(function (error){
+    err(error)
   })
 }
