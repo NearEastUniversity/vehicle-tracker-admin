@@ -1,6 +1,6 @@
 {
   "name": "vehicle-tracker-admin",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Admin console for vehicle-tracker.",
   "main": "index.js",
   "scripts": {
