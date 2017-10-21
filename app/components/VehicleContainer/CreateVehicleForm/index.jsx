@@ -112,6 +112,10 @@ export default class CreateVehicleForm extends React.Component {
         })
         this.props.vehicleCreated(res)
       }, (error) => {
+        this.setState({
+          inputError: "Wrong Plate ID or Type."
+        });
+
         if (process.env.NODE_ENV !== 'production') {
           console.error(error);
         }
@@ -136,6 +140,7 @@ export default class CreateVehicleForm extends React.Component {
             <div style={{maxWidth: '600px'}}>
             <div className={style.container}>
               <TextField
+                className={style.textField}
                 value={this.state.plateIdInput}
                 onChange={this.handlePlateIdChange.bind(this)}
                 hintText="AA535"
